@@ -2,9 +2,9 @@
 
 namespace Tanamassar\Projet_4\Model;
 
-require_once("model/Manager.php");
+require_once("model/PDOFactory.php");
 
-class PostManager extends Manager
+class PostManager extends PDOFactory
 {
     public function getPosts()
     {

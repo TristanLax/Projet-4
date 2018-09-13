@@ -2,9 +2,9 @@
 
 namespace Tanamassar\Projet_4\Model;
 
-require_once("model/Manager.php");
+require_once("model/PDOFactory.php");
 
-class CommentManager extends Manager
+class CommentManager extends PDOFactory
 {
     public function getComments($postId)
     {
