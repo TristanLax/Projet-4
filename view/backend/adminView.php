@@ -16,7 +16,7 @@
 <?php
     while ($data = $posts->fetch())
 {
-  echo '<tr><td>', $data['id'], '</td><td>', $data['title'], '</td><td>', $data['creation_date_fr'], '</td><td>', ($data['creation_date_fr'] == $data['edit_date_fr'] ? '-' : $data['edit_date_fr']), '</td><td>','<a href="modifier=', $data['id'], '">Modifier</a> | <a href="supprimer=', $data['id'], '">Supprimer</a> ', '</td></tr>';
+  echo '<tr><td>', $data['id'], '</td><td>', $data['title'], '</td><td>', $data['creation_date_fr'], '</td><td>', ($data['creation_date_fr'] == $data['edit_date_fr'] ? '-' : $data['edit_date_fr']), '</td><td>','<a href="modifier=', $data['id'], '">Modifier</a> | <a href="?supprimer=', $data['id'], '">Supprimer</a> ', '</td></tr>';
 }
 ?>
     </table>
