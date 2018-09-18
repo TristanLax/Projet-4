@@ -29,9 +29,18 @@ class PostManager extends PDOFactory
         return $this->db->query('SELECT ID(*) FROM articles')->fetchColumn();
     }
     
-      public function Delete($id)
-  {
+    public function Delete($id)
+    {
     $db = $this->dbConnect();
     $req = $db->exec('DELETE FROM articles WHERE id = '.(int) $id);
-  }
+    }
+
+    public function postArticle($title, $content)
+    {
+        $db = $this->dbConnect();
+        $article = $db->prepare('INSERT INTO articles(title, content, article_date) VALUES(?, ?, NOW())');
+        $affectedLines = $article->execute(array($title, $content));
+
+        return $affectedLines;
+    }
 }

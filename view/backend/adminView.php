@@ -5,21 +5,45 @@
 
 
 <h1>Billet simple pour l'Alaska</h1>
+
 <h2>Un roman de Jean Rochefort</h2>
+
+
+
+<form method="post">
+    <div>
+        <label for="title">Titre :</label><br />
+        <input type="text" id="title" name="title" />
+    </div>
+    <div>
+        <label for="content">Contenu :</label><br />
+        <textarea rows="8" cols="60" id="content" name="content"></textarea>
+    </div>
+    <div>
+        <input type="submit" name="envoyer" />
+    </div>
+</form>
+
 
 
 <?php
 {
 ?>
-    <table>
-      <tr><th>Numéro</th><th>Titre</th><th>Date d'ajout</th><th>Dernière modification</th><th>Action</th></tr>
-<?php
+<table>
+    <tr>
+        <th>Numéro</th>
+        <th>Titre</th>
+        <th>Date d'ajout</th>
+        <th>Dernière modification</th>
+        <th>Action</th>
+    </tr>
+    <?php
     while ($data = $posts->fetch())
 {
   echo '<tr><td>', $data['id'], '</td><td>', $data['title'], '</td><td>', $data['creation_date_fr'], '</td><td>', ($data['creation_date_fr'] == $data['edit_date_fr'] ? '-' : $data['edit_date_fr']), '</td><td>','<a href="modifier=', $data['id'], '">Modifier</a> | <a href="?supprimer=', $data['id'], '">Supprimer</a> ', '</td></tr>';
 }
 ?>
-    </table>
+</table>
 <?php
 }
 $posts->closeCursor();

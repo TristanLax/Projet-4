@@ -43,3 +43,7 @@ table {
 td {
     padding: 3px;
 }
+
+form {
+    text-align: center;
+}
