@@ -11,6 +11,7 @@ if (isset($_GET['supprimer']))
   $message = 'La news a bien été supprimée !';
 }
 
+
 if (isset($_POST['envoyer']))
 {
     $manager->postArticle($_POST["title"], $_POST["content"]);
