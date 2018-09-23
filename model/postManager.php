@@ -31,8 +31,8 @@ class PostManager extends PDOFactory
     
     public function Delete($id)
     {
-    $db = $this->dbConnect();
-    $req = $db->exec('DELETE FROM articles WHERE id = '.(int) $id);
+        $db = $this->dbConnect();
+        $req = $db->exec('DELETE FROM articles WHERE id = '.(int) $id);
     }
 
     public function postArticle($title, $content)
@@ -43,4 +43,6 @@ class PostManager extends PDOFactory
 
         return $affectedLines;
     }
+    
+    
 }

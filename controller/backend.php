@@ -11,7 +11,6 @@ if (isset($_GET['supprimer']))
   $message = 'La news a bien été supprimée !';
 }
 
-
 if (isset($_POST['envoyer']))
 {
     $manager->postArticle($_POST["title"], $_POST["content"]);
@@ -30,6 +29,14 @@ function listPosts()
     $posts = $postManager->getPosts();
 
     require('view/backend/adminView.php');
+}
+
+function post()
+{
+    $postManager = new \Tanamassar\Projet_4\Model\PostManager();
+    $post = $postManager->getPost($_GET['id']);
+
+    require('view/backend/articleView.php');
 }
 
 
