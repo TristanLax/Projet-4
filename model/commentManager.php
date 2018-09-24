@@ -23,4 +23,10 @@ class CommentManager extends PDOFactory
 
         return $affectedLines;
     }
+    
+    public function reportComment($id) 
+    {
+        $db = $this->dbConnect();
+        $report = $db->exec('UPDATE comments SET reports=+1 WHERE id ='.(int) $id);
+    }
 }

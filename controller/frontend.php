@@ -4,6 +4,19 @@
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 
+$commentManager = new \Tanamassar\Projet_4\Model\commentManager();
+
+if (isset($message))
+{
+  echo $message, '<br />';
+}
+
+if (isset($_GET['signaler']))
+{
+  $commentManager->reportComment((int) $_GET['signaler']);
+  $message = 'La news a bien été supprimée !';
+}
+
 function listPosts()
 {
     $postManager = new \Tanamassar\Projet_4\Model\PostManager();
