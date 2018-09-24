@@ -44,5 +44,16 @@ class PostManager extends PDOFactory
         return $affectedLines;
     }
     
+    public function editArticle($id, $title, $content)
+    {
+        $db = $this->dbConnect();
+        $edit = $db->prepare('UPDATE articles SET title = :title, content = :content, article_edit = NOW() WHERE id = :id');
+        $edit->bindValue(':title', $title);
+        $edit->bindValue(':content', $content);
+        $edit->bindValue(':id', $id);
+
+        $edit->execute();
+    }
+    
     
 }

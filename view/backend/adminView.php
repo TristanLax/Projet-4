@@ -43,7 +43,6 @@ $posts->closeCursor();
     </div>
     <div>
         <input type="submit" name="envoyer" />
-        <input type="submit" name="editer" />
     </div>
 </form>
 

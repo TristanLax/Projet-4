@@ -17,6 +17,18 @@ if (isset($_POST['envoyer']))
     $message = 'La news a bien été ajoutée !';
 }
 
+if (isset($_POST['modifier']))
+{
+    $postManager = new \Tanamassar\Projet_4\Model\PostManager();
+    $id = $_POST['id'];
+    $title = $_POST['title'];
+    $content = $_POST['content'];
+    $edit = $postManager->editArticle($id, $title, $content);
+
+    $message = 'La news a bien été mise à jour !';
+    
+}
+
 
 if (isset($message))
 {
