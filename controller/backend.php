@@ -2,8 +2,10 @@
 
 // Chargement des classes
 require_once('model/PostManager.php');
+require_once('model/CommentManager.php');
 
 $manager = new \Tanamassar\Projet_4\Model\PostManager();
+$commentManager = new \Tanamassar\Projet_4\Model\CommentManager();
 
 if (isset($_GET['supprimer']))
 {
@@ -51,5 +53,12 @@ function post()
     require('view/backend/articleView.php');
 }
 
+function reportedComments()
+{
+    $commentManager = new \Tanamassar\Projet_4\Model\CommentManager();
+    $reportedComment = $commentManager->getReports();
+
+    require('view/backend/moderationView.php');
+}
 
 

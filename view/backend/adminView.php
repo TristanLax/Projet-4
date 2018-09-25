@@ -2,6 +2,7 @@
 
 <?php ob_start(); ?>
 <p><a href="index.php">Retourner sur le site</a></p>
+<p><a href="moderation.php">Accèder à la modération des commentaires</a></p>
 
 
 <h1>Billet simple pour l'Alaska</h1>
@@ -32,6 +33,7 @@ $posts->closeCursor();
 ?>
 
 
+
 <form method="post">
     <div>
         <label for="title">Titre :</label><br />
@@ -45,6 +47,7 @@ $posts->closeCursor();
         <input type="submit" name="envoyer" />
     </div>
 </form>
+
 
 
 <?php $content = ob_get_clean(); ?>

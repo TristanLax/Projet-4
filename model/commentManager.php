@@ -18,7 +18,7 @@ class CommentManager extends PDOFactory
     public function postComment($postId, $author, $comment)
     {
         $db = $this->dbConnect();
-        $comments = $db->prepare('INSERT INTO comments(article_id, author, comment, comment_date) VALUES(?, ?, ?, NOW())');
+        $comments = $db->prepare('INSERT INTO comments(article_id, author, comment, reports, comment_date) VALUES(?, ?, ?, 0, NOW())');
         $affectedLines = $comments->execute(array($postId, $author, $comment));
 
         return $affectedLines;
@@ -28,5 +28,14 @@ class CommentManager extends PDOFactory
     {
         $db = $this->dbConnect();
         $report = $db->exec('UPDATE comments SET reports = reports +1 WHERE id ='.(int) $id);
+    }
+    
+    public function getReports()
+    {
+        
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT id, author, comment, reports FROM comments WHERE reports > 0 ORDER BY reports DESC');
+        
+        return $req;
     }
 }

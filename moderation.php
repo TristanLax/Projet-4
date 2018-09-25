@@ -2,7 +2,7 @@
 require('controller/backend.php');
 
 try {
-    listPosts(); 
+    reportedComments();
 }
 catch(Exception $e) {
     echo 'Erreur : ' . $e->getMessage();
