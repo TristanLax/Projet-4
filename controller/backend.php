@@ -27,8 +27,19 @@ if (isset($_POST['modifier']))
     $content = $_POST['content'];
     $edit = $postManager->editArticle($id, $title, $content);
 
-    $message = 'La news a bien été mise à jour !';
-    
+    $message = 'La news a bien été mise à jour !'; 
+}
+
+if (isset($_GET['ignorer']))
+{
+    $commentManager->ignoreReport((int) $_GET['ignorer']);
+    $message = 'Le commentaire a bien été retiré de la liste de modération !';
+}
+
+if (isset($_GET['moderer']))
+{
+    $commentManager->moderateComment((int) $_GET['moderer']);
+    $message = 'Le commentaire a bien été modéré !'; 
 }
 
 

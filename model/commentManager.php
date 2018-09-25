@@ -34,8 +34,20 @@ class CommentManager extends PDOFactory
     {
         
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, author, comment, reports FROM comments WHERE reports > 0 ORDER BY reports DESC');
+        $req = $db->query('SELECT id, author, comment, reports FROM comments WHERE reports >= 0 ORDER BY reports DESC');
         
         return $req;
+    }
+    
+    public function ignoreReport($id)
+    {
+        $db = $this->dbConnect();
+        $ignore = $db->exec('UPDATE comments SET reports = 0 WHERE id = '.(int) $id);
+    }
+    
+    public function moderateComment($id)
+    {
+        $db = $this->dbConnect();
+        $ignore = $db->exec('UPDATE comments SET comment = "Commentaire modéré par l\'administration" WHERE id = '.(int) $id);
     }
 }
