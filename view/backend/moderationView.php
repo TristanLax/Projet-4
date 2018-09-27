@@ -1,4 +1,4 @@
-<?php $title = "Billet simple pour l'Alaska, un roman de Jean Rochefort"; ?>
+<?php $title = "Moderation"; ?>
 
 <?php ob_start(); ?>
 <p><a href="admin.php">Retourner à l'espace d'administration</a></p>

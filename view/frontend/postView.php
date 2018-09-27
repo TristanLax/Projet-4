@@ -32,12 +32,12 @@
 </form>
 
 <?php
-while ($comment = $comments->fetch())
+while ($comments = $getComments->fetch())
 {
 ?>
-    <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
-    <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-    <a href="?signaler=<?=$comment['id']?>">Signaler ce commentaire</a>
+    <p><strong><?= htmlspecialchars($comments['author']) ?></strong> le <?= $comments['comment_date_fr'] ?></p>
+    <p><?= nl2br(htmlspecialchars($comments['comment'])) ?></p>
+    <a href="?signaler=<?=$comments['id']?>">Signaler ce commentaire</a>
 <?php
 }
 ?>
