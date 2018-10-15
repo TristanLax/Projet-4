@@ -7,7 +7,7 @@
         <?= $title ?>
     </title>
     <link href="web/css/style.css" rel="stylesheet" />
-    <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=yjsi4djzw00wupol3thu9mxk4mehvvp3ite0bv4ndjtslbh5"></script>
+        <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=yjsi4djzw00wupol3thu9mxk4mehvvp3ite0bv4ndjtslbh5"></script>
     <script>
         tinymce.init({
             selector: '#content'

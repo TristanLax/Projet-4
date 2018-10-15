@@ -6,7 +6,7 @@
 
 <h2>Se connecter</h2>
 
-<form action="admin.php" method="post">
+<form action="" method="post">
     
     <div>
         <label for="email">Email</label><br />
@@ -14,10 +14,10 @@
     </div>
     <div>
         <label for="password">Mot de Passe</label><br />
-        <input type="text" id="password" name="password" size="30" />
+        <input type="password" id="password" name="password" size="30" />
     </div>
     <div>
-        <br /><input type="submit" />
+        <br /><input type="submit" name="connexion" value="Connexion" />
     </div>
 </form>
 

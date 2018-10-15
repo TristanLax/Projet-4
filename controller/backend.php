@@ -8,6 +8,8 @@ require_once('model/deleteArticle.php');
 require_once('model/getPost.php');
 require_once('model/getPosts.php');
 
+require_once('model/User.php');
+require_once('model/Session.php');
 
 require_once('model/CommentManager.php');
 require_once('model/ignoreReport.php');
@@ -21,6 +23,8 @@ $deleteArticle = new \Tanamassar\Projet_4\Model\deleteArticle();
 $getPost = new \Tanamassar\Projet_4\Model\getPost();
 $getPosts = new \Tanamassar\Projet_4\Model\getPosts();
 
+$getSession = new \Tanamassar\Projet_4\Model\Session();
+$getUser = new \Tanamassar\Projet_4\Model\User();
 
 $commentManager = new \Tanamassar\Projet_4\Model\CommentManager();
 $moderateComment = new \Tanamassar\Projet_4\Model\moderateComment();
@@ -61,6 +65,11 @@ if (isset($_GET['moderer']))
 {
     $moderateComment->moderateComment((int) $_GET['moderer']);
     $message = 'Le commentaire a bien été modéré !'; 
+}
+
+if (isset($_SESSION['id']))
+{
+
 }
 
 

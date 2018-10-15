@@ -1,4 +1,7 @@
+<?php session_start(); ?>
 <?php $title = "Administration"; ?>
+
+
 
 <?php ob_start(); ?>
 <p><a href="index.php">Retourner sur le site</a></p>
@@ -6,6 +9,8 @@
 
 
 <h1>Billet simple pour l'Alaska</h1>
+
+<?php echo 'Vous êtes connecté, numéro ' . $_SESSION['id']; ?>
 
 <h2>Un roman de Jean Rochefort</h2>
 
@@ -51,6 +56,9 @@ $posts->closeCursor();
 
 
 <?php $content = ob_get_clean(); ?>
+
+
+
 
 
 <?php require('template.php'); ?>
