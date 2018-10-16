@@ -67,16 +67,12 @@ if (isset($_GET['moderer']))
     $message = 'Le commentaire a bien été modéré !'; 
 }
 
-if (isset($_SESSION['id']))
-{
-
-}
-
 
 if (isset($message))
 {
   echo $message, '<br />';
 }
+
 
 function listPosts()
 {

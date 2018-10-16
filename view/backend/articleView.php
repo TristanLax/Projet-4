@@ -1,4 +1,10 @@
-<?php 
+<?php session_start();
+
+<?php if (!isset($_SESSION['user_id'])) 
+{
+    header("location: login.php");
+}
+?>
 
 $id = $_REQUEST['id'];
 

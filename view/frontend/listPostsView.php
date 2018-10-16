@@ -1,4 +1,5 @@
-<?php $title = "Billet simple pour l'Alaska, un roman de Jean Rochefort"; ?>
+<?php session_start();
+$title = "Billet simple pour l'Alaska, un roman de Jean Rochefort"; ?>
 
 <?php ob_start(); ?>
 <p><a href="login.php">Se connecter à l'espace d'administration</a></p>

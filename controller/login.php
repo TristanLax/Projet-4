@@ -14,3 +14,8 @@ if (isset($_POST['connexion']))
     $password = $_POST['password'];
     $login = $getUser->login($email, $password);
 }
+
+if (isset($_SESSION['user_id'])) 
+{
+    header("location: admin.php");
+}

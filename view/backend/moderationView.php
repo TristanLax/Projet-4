@@ -1,4 +1,11 @@
-<?php $title = "Moderation"; ?>
+<?php session_start();
+$title = "Moderation"; ?>
+
+<?php if (!isset($_SESSION['user_id'])) 
+{
+    header("location: login.php");
+}
+?>
 
 <?php ob_start(); ?>
 <p><a href="admin.php">Retourner à l'espace d'administration</a></p>

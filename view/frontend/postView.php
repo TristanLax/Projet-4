@@ -1,4 +1,5 @@
-<?php $title = htmlspecialchars($post['title']); ?>
+<?php session_start();
+$title = htmlspecialchars($post['title']); ?>
 
 <?php ob_start(); ?>
 <h1>Billet simple pour l'Alaska</h1>

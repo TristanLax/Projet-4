@@ -1,16 +1,24 @@
-<?php session_start(); ?>
-<?php $title = "Administration"; ?>
+<?php session_start();
+$title = "Administration"; ?>
+
+<?php if (!isset($_SESSION['user_id'])) 
+{
+    header("location: index.php");
+}
+?>
 
 
 
 <?php ob_start(); ?>
 <p><a href="index.php">Retourner sur le site</a></p>
 <p><a href="moderation.php">Accèder à la modération des commentaires</a></p>
+<p><a href="logout.php">Se deconnecter</a></p>
 
 
 <h1>Billet simple pour l'Alaska</h1>
 
-<?php echo 'Vous êtes connecté, numéro ' . $_SESSION['id']; ?>
+<?php echo 'Bonjour utilisateur numéro '. $_SESSION['user_id']; ?>
+
 
 <h2>Un roman de Jean Rochefort</h2>
 

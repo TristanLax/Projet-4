@@ -35,6 +35,7 @@ if (isset($_GET['signaler']))
   $message = 'La news a bien été supprimée !';
 }
 
+
 function listPosts()
 {
     $getPosts = new \Tanamassar\Projet_4\Model\getPosts();

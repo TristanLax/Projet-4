@@ -25,8 +25,8 @@ class User extends PDOFactory
             if ($passwordVerify)
             {
                 session_start();
-                $_SESSION['id'] = $resultat['id'];
-                header("location: admin.php");
+                $_SESSION['user_id'] = $resultat['id'];
+                $_SESSION['secured'] = "secured";
             }
 
                 else 
