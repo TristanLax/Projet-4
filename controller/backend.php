@@ -1,35 +1,22 @@
 <?php
 
-// Chargement des classes
-require_once('model/PostManager.php');
-require_once('model/editArticle.php');
-require_once('model/postArticle.php');
-require_once('model/deleteArticle.php');
-require_once('model/getPost.php');
-require_once('model/getPosts.php');
+require('\Autoloader.php');
+Projet_4\Autoloader::register();
 
-require_once('model/User.php');
-require_once('model/Session.php');
+$manager = new Projet_4\Model\PostManager();
+$editArticle = new Projet_4\Model\editArticle();
+$postArticle = new Projet_4\Model\postArticle();
+$deleteArticle = new Projet_4\Model\deleteArticle();
+$getPost = new Projet_4\Model\getPost();
+$getPosts = new Projet_4\Model\getPosts();
 
-require_once('model/CommentManager.php');
-require_once('model/ignoreReport.php');
-require_once('model/moderateComment.php');
-require_once('model/getReports.php');
+$getSession = new Projet_4\Model\Session();
+$getUser = new Projet_4\Model\User();
 
-$manager = new \Tanamassar\Projet_4\Model\PostManager();
-$editArticle = new \Tanamassar\Projet_4\Model\editArticle();
-$postArticle = new \Tanamassar\Projet_4\Model\postArticle();
-$deleteArticle = new \Tanamassar\Projet_4\Model\deleteArticle();
-$getPost = new \Tanamassar\Projet_4\Model\getPost();
-$getPosts = new \Tanamassar\Projet_4\Model\getPosts();
-
-$getSession = new \Tanamassar\Projet_4\Model\Session();
-$getUser = new \Tanamassar\Projet_4\Model\User();
-
-$commentManager = new \Tanamassar\Projet_4\Model\CommentManager();
-$moderateComment = new \Tanamassar\Projet_4\Model\moderateComment();
-$ignoreReport = new \Tanamassar\Projet_4\Model\ignoreReport();
-$getReports = new \Tanamassar\Projet_4\Model\getReports();
+$commentManager = new Projet_4\Model\CommentManager();
+$moderateComment = new Projet_4\Model\moderateComment();
+$ignoreReport = new Projet_4\Model\ignoreReport();
+$getReports = new Projet_4\Model\getReports();
 
 
 if (isset($_GET['supprimer']))
@@ -46,7 +33,7 @@ if (isset($_POST['envoyer']))
 
 if (isset($_POST['modifier']))
 {
-    $editArticle = new \Tanamassar\Projet_4\Model\editArticle();
+    $editArticle = new Projet_4\Model\editArticle();
     $id = $_POST['id'];
     $title = $_POST['title'];
     $content = $_POST['content'];
@@ -76,7 +63,7 @@ if (isset($message))
 
 function listPosts()
 {
-    $getPosts = new \Tanamassar\Projet_4\Model\getPosts();
+    $getPosts = new Projet_4\Model\getPosts();
     $posts = $getPosts->getPosts();
 
     require('view/backend/adminView.php');
@@ -84,7 +71,7 @@ function listPosts()
 
 function post()
 {
-    $getPost = new \Tanamassar\Projet_4\Model\getPost();
+    $getPost = new Projet_4\Model\getPost();
     $post = $getPost->getPost($_GET['id']);
 
     require('view/backend/articleView.php');
@@ -92,7 +79,7 @@ function post()
 
 function reportedComments()
 {
-    $getReports = new \Tanamassar\Projet_4\Model\getReports();
+    $getReports = new Projet_4\Model\getReports();
     $reportedComment = $getReports->getReports();
 
     require('view/backend/moderationView.php');

@@ -1,25 +1,18 @@
 <?php
 
 // Chargement des classes
-require_once('model/PostManager.php');
-require_once('model/getPost.php');
-require_once('model/getPosts.php');
+require('\Autoloader.php');
+Projet_4\Autoloader::register();
 
 
-require_once('model/CommentManager.php');
-require_once('model/reportComment.php');
-require_once('model/getComments.php');
-require_once('model/postComment.php');
+$getPost = new Projet_4\Model\getPost();
+$getPosts = new Projet_4\Model\getPosts();
 
 
-$getPost = new \Tanamassar\Projet_4\Model\getPost();
-$getPosts = new \Tanamassar\Projet_4\Model\getPosts();
-
-
-$commentManager = new \Tanamassar\Projet_4\Model\commentManager();
-$reportComment = new \Tanamassar\Projet_4\Model\reportComment();
-$getComments = new \Tanamassar\Projet_4\Model\getComments();
-$postComment = new \Tanamassar\Projet_4\Model\postComment();
+$commentManager = new Projet_4\Model\commentManager();
+$reportComment = new Projet_4\Model\reportComment();
+$getComments = new Projet_4\Model\getComments();
+$postComment = new Projet_4\Model\postComment();
 
 
 
@@ -38,7 +31,7 @@ if (isset($_GET['signaler']))
 
 function listPosts()
 {
-    $getPosts = new \Tanamassar\Projet_4\Model\getPosts();
+    $getPosts = new Projet_4\Model\getPosts();
     $posts = $getPosts->getPosts();
 
     require('view/frontend/listPostsView.php');
@@ -46,8 +39,8 @@ function listPosts()
 
 function post()
 {
-    $getPost = new \Tanamassar\Projet_4\Model\getPost();
-    $getComments = new \Tanamassar\Projet_4\Model\getComments();
+    $getPost = new Projet_4\Model\getPost();
+    $getComments = new Projet_4\Model\getComments();
 
     $post = $getPost->getPost($_GET['id']);
     $getComments = $getComments->getComments($_GET['id']);
@@ -57,7 +50,7 @@ function post()
 
 function addComment($postId, $author, $comment)
 {
-    $postComment = new \Tanamassar\Projet_4\Model\postComment();
+    $postComment = new Projet_4\Model\postComment();
 
     $affectedLines = $postComment->postComment($postId, $author, $comment);
 

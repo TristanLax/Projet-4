@@ -1,6 +1,6 @@
 <?php
 
-namespace Projet_4\Model;
+namespace Projet_4\Manager;
 
 class PDOFactory
 {

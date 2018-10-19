@@ -1,21 +1,27 @@
 <?php 
 
-// Chargement des classes
-require_once('model/Session.php');
-require_once('model/User.php');
+require('\Autoloader.php');
+Projet_4\Autoloader::register();
 
-$getSession = new \Tanamassar\Projet_4\Model\Session();
-$getUser = new \Tanamassar\Projet_4\Model\User();
+
+$getSession = new \Projet_4\Model\Session();
+$getUser = new \Projet_4\Model\User();
+$userManager = new Projet_4\Manager\UserManager();
 
 if (isset($_POST['connexion']))
 {
-    $getUser = new \Tanamassar\Projet_4\Model\User();
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $login = $getUser->login($email, $password);
-}
-
-if (isset($_SESSION['user_id'])) 
-{
-    header("location: admin.php");
+    $user = $userManager->getUser($email);
+    if (!$user) {
+        echo 'Erreur';
+        return;
+    }
+    if (!$user->checkPassword($password)) {
+        echo 'Erreur';
+        return;
+    }
+    // Ajouter redirection ouverture de session //
+    print_r($user);
+    exit;
 }
