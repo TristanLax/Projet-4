@@ -6,7 +6,7 @@ Projet_4\Autoloader::register();
 
 $getSession = new \Projet_4\Model\Session();
 $getUser = new \Projet_4\Model\User();
-$userManager = new Projet_4\Manager\UserManager();
+$userManager = new \Projet_4\Manager\UserManager();
 
 if (isset($_POST['connexion']))
 {

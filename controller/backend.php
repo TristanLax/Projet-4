@@ -3,7 +3,6 @@
 require('\Autoloader.php');
 Projet_4\Autoloader::register();
 
-$manager = new Projet_4\Model\PostManager();
 $editArticle = new Projet_4\Model\editArticle();
 $postArticle = new Projet_4\Model\postArticle();
 $deleteArticle = new Projet_4\Model\deleteArticle();
@@ -13,7 +12,6 @@ $getPosts = new Projet_4\Model\getPosts();
 $getSession = new Projet_4\Model\Session();
 $getUser = new Projet_4\Model\User();
 
-$commentManager = new Projet_4\Model\CommentManager();
 $moderateComment = new Projet_4\Model\moderateComment();
 $ignoreReport = new Projet_4\Model\ignoreReport();
 $getReports = new Projet_4\Model\getReports();

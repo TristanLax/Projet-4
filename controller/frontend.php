@@ -9,7 +9,6 @@ $getPost = new Projet_4\Model\getPost();
 $getPosts = new Projet_4\Model\getPosts();
 
 
-$commentManager = new Projet_4\Model\commentManager();
 $reportComment = new Projet_4\Model\reportComment();
 $getComments = new Projet_4\Model\getComments();
 $postComment = new Projet_4\Model\postComment();
