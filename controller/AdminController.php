@@ -6,12 +6,14 @@ Projet_4\Autoloader::register();
 
 if (isset($_GET['supprimer']))
 {
-  $deleteArticle->deleteArticle((int) $_GET['supprimer']);
-  $message = 'La news a bien été supprimée !';
+    $deleteArticle = new Projet_4\Model\deleteArticle();
+    $deleteArticle->deleteArticle((int) $_GET['supprimer']);
+    $message = 'La news a bien été supprimée !';
 }
 
 if (isset($_POST['envoyer']))
 {
+    $postArticle = new Projet_4\Model\postArticle();
     $postArticle->postArticle($_POST["title"], $_POST["content"]);
     $message = 'La news a bien été ajoutée !';
 }
@@ -29,12 +31,14 @@ if (isset($_POST['modifier']))
 
 if (isset($_GET['ignorer']))
 {
+    $ignoreReport = new Projet_4\Model\ignoreReport();
     $ignoreReport->ignoreReport((int) $_GET['ignorer']);
     $message = 'Le commentaire a bien été retiré de la liste de modération !';
 }
 
 if (isset($_GET['moderer']))
 {
+    $moderateComment = new Projet_4\Model\moderateComment();
     $moderateComment->moderateComment((int) $_GET['moderer']);
     $message = 'Le commentaire a bien été modéré !'; 
 }

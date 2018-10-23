@@ -1,32 +1,24 @@
 <?php
 
-// Chargement des classes
-require('\Autoloader.php');
-Projet_4\Autoloader::register();
+require_once('Controller.php');
 
 
-if (isset($message))
-{
-  echo $message, '<br />';
+class FrontController extends Controller {
+
+function signaler() {
+    
+    $reportComment = new Projet_4\Model\reportComment();
+    $reportComment->reportComment((int) $_GET['signaler']); 
 }
 
-if (isset($_GET['signaler']))
-{
-  $reportComment->reportComment((int) $_GET['signaler']);
-  $message = 'La news a bien été supprimée !';
-}
-
-
-function listPosts()
-{
+function listPosts() {
+    
     $getArticles = new Projet_4\Model\getArticles();
     $posts = $getArticles->getArticles();
-
     require('view/frontend/listPostsView.php');
 }
 
-function post()
-{
+function post() {
     $getArticle = new Projet_4\Model\getArticle();
     $getComments = new Projet_4\Model\getComments();
 
@@ -36,7 +28,7 @@ function post()
     require('view/frontend/postView.php');
 }
 
-function addComment($postId, $author, $comment)
+function addComment($postId, $author, $comment) 
 {
     $postComment = new Projet_4\Model\postComment();
 
@@ -48,4 +40,6 @@ function addComment($postId, $author, $comment)
     else {
         header('Location: index.php?action=post&id=' . $postId);
     }
+}
+    
 }

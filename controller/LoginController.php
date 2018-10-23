@@ -1,32 +1,15 @@
 <?php 
 
-require('\Autoloader.php');
-Projet_4\Autoloader::register();
+require_once('Controller.php');
 
 
-class LoginController {
+class LoginController extends Controller {
     
     public function connexionTest() {
         
         if (isset($_SESSION['secured'])) 
         {   
         header("location: admin.php");
-        }
-    }
-    
-    public function blog() {
-        
-        if (isset($_GET['action']))
-        {
-            $this->action = $_GET['action'];
-            $this->action();
-        }
-    }
-    
-    public function action() {
-        
-        if ($this->action == 'loginAction') {
-            $this->loginAction();
         }
     }
     
@@ -50,32 +33,6 @@ class LoginController {
         session_start();
         $_SESSION['secured'] = "secured";
     }
-    
-    
-    
-/*
-if (isset($_POST['connexion']))
-{
-    $getSession = new \Projet_4\Model\Session();
-    $getUser = new \Projet_4\Model\User();
-    $userManager = new \Projet_4\Manager\UserManager();
-
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $user = $userManager->getUser($email);
-    if (!$user) {
-        echo 'Erreur';
-        return;
-    }
-    if (!$user->checkPassword($password)) {
-        echo 'Erreur';
-        return;
-    }
-    // Ajouter redirection ouverture de session //
-    print_r($user);
-    exit;
-}
-*/
     
     
 }
