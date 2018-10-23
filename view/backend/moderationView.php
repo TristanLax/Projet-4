@@ -1,7 +1,7 @@
 <?php session_start();
 $title = "Moderation"; ?>
 
-<?php if (!isset($_SESSION['user_id'])) 
+<?php if (!isset($_SESSION['secured'])) 
 {
     header("location: login.php");
 }

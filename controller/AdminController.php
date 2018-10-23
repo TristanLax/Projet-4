@@ -3,19 +3,6 @@
 require('\Autoloader.php');
 Projet_4\Autoloader::register();
 
-$editArticle = new Projet_4\Model\editArticle();
-$postArticle = new Projet_4\Model\postArticle();
-$deleteArticle = new Projet_4\Model\deleteArticle();
-$getPost = new Projet_4\Model\getPost();
-$getPosts = new Projet_4\Model\getPosts();
-
-$getSession = new Projet_4\Model\Session();
-$getUser = new Projet_4\Model\User();
-
-$moderateComment = new Projet_4\Model\moderateComment();
-$ignoreReport = new Projet_4\Model\ignoreReport();
-$getReports = new Projet_4\Model\getReports();
-
 
 if (isset($_GET['supprimer']))
 {
@@ -61,16 +48,16 @@ if (isset($message))
 
 function listPosts()
 {
-    $getPosts = new Projet_4\Model\getPosts();
-    $posts = $getPosts->getPosts();
+    $getArticles = new Projet_4\Model\getArticles();
+    $posts = $getArticles->getArticles();
 
     require('view/backend/adminView.php');
 }
 
 function post()
 {
-    $getPost = new Projet_4\Model\getPost();
-    $post = $getPost->getPost($_GET['id']);
+    $getArticle = new Projet_4\Model\getArticle();
+    $post = $getArticle->getArticle($_GET['id']);
 
     require('view/backend/articleView.php');
 }

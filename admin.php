@@ -1,5 +1,5 @@
 <?php
-require('controller/backend.php');
+require('controller/AdminController.php');
 
 try {
     listPosts(); 

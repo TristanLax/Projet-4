@@ -5,17 +5,6 @@ require('\Autoloader.php');
 Projet_4\Autoloader::register();
 
 
-$getPost = new Projet_4\Model\getPost();
-$getPosts = new Projet_4\Model\getPosts();
-
-
-$reportComment = new Projet_4\Model\reportComment();
-$getComments = new Projet_4\Model\getComments();
-$postComment = new Projet_4\Model\postComment();
-
-
-
-
 if (isset($message))
 {
   echo $message, '<br />';
@@ -30,18 +19,18 @@ if (isset($_GET['signaler']))
 
 function listPosts()
 {
-    $getPosts = new Projet_4\Model\getPosts();
-    $posts = $getPosts->getPosts();
+    $getArticles = new Projet_4\Model\getArticles();
+    $posts = $getArticles->getArticles();
 
     require('view/frontend/listPostsView.php');
 }
 
 function post()
 {
-    $getPost = new Projet_4\Model\getPost();
+    $getArticle = new Projet_4\Model\getArticle();
     $getComments = new Projet_4\Model\getComments();
 
-    $post = $getPost->getPost($_GET['id']);
+    $post = $getArticle->getArticle($_GET['id']);
     $getComments = $getComments->getComments($_GET['id']);
 
     require('view/frontend/postView.php');

@@ -1,12 +1,11 @@
 <?php session_start();
 $title = "Administration"; ?>
 
-<?php if (!isset($_SESSION['user_id'])) 
+<?php if (!isset($_SESSION['secured'])) 
 {
     header("location: index.php");
 }
 ?>
-
 
 
 <?php ob_start(); ?>
@@ -16,8 +15,6 @@ $title = "Administration"; ?>
 
 
 <h1>Billet simple pour l'Alaska</h1>
-
-<?php echo 'Bonjour utilisateur numéro '. $_SESSION['user_id']; ?>
 
 
 <h2>Un roman de Jean Rochefort</h2>

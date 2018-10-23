@@ -1,5 +1,5 @@
 <?php
-require('controller/backend.php');
+require('Controller/AdminController.php');
 
 try {
     reportedComments();
