@@ -23,11 +23,11 @@ class LoginController extends Controller {
     $password = $_POST['password'];
     $user = $userManager->getUser($email);
     if (!$user) {
-        echo 'Erreur';
+        echo 'Mauvais identifiant ou mot de passe !';
         return;
     }
     if (!$user->checkPassword($password)) {
-        echo 'Erreur';
+        echo 'Mauvais identifiant ou mot de passe !';
         return;
     }
         session_start();

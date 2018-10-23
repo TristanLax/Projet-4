@@ -1,8 +1,11 @@
 <?php
 require('Controller/AdminController.php');
 
+$controller = new AdminController();
+$controller->blog();
+
 try {
-    reportedComments();
+    $controller->reportedComments();
 }
 catch(Exception $e) {
     echo 'Erreur : ' . $e->getMessage();

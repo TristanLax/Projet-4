@@ -5,20 +5,18 @@ require_once('Controller.php');
 
 class FrontController extends Controller {
 
-function signaler() {
-    
+    public function signaler() {
     $reportComment = new Projet_4\Model\reportComment();
     $reportComment->reportComment((int) $_GET['signaler']); 
 }
 
-function listPosts() {
-    
+    public function listPosts() {
     $getArticles = new Projet_4\Model\getArticles();
     $posts = $getArticles->getArticles();
     require('view/frontend/listPostsView.php');
 }
 
-function post() {
+    public function post() {
     $getArticle = new Projet_4\Model\getArticle();
     $getComments = new Projet_4\Model\getComments();
 
@@ -28,10 +26,8 @@ function post() {
     require('view/frontend/postView.php');
 }
 
-function addComment($postId, $author, $comment) 
-{
+    public function addComment($postId, $author, $comment) {
     $postComment = new Projet_4\Model\postComment();
-
     $affectedLines = $postComment->postComment($postId, $author, $comment);
 
     if ($affectedLines === false) {

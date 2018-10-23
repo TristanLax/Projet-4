@@ -44,7 +44,7 @@ $posts->closeCursor();
 
 
 
-<form method="post">
+<form method="post" action="<?php echo 'admin.php?action=envoyer' ?>">
     <div>
         <label for="title">Titre :</label><br />
         <input type="text" id="title" name="title" />
