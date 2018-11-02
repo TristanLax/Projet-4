@@ -1,28 +1,30 @@
 <?php
 
 require_once('Controller.php');
+require('Autoloader.php');
+Autoloader::register();
 
 
 class AdminController extends Controller {
     
     
 public function moderer() {
-    $moderateComment = new Projet_4\Model\moderateComment();
+    $moderateComment = new moderateComment();
     $moderateComment->moderateComment((int) $_GET['moderer']);
 }
     
 public function ignorer() {
-    $ignoreReport = new Projet_4\Model\ignoreReport();
+    $ignoreReport = new ignoreReport();
     $ignoreReport->ignoreReport((int) $_GET['ignorer']);
 }
     
 public function envoyer() {
-    $postArticle = new Projet_4\Model\postArticle();
+    $postArticle = new postArticle();
     $postArticle->postArticle($_POST["title"], $_POST["content"]);
 }
     
 public function modifier() {
-    $editArticle = new Projet_4\Model\editArticle();
+    $editArticle = new editArticle();
     $id = $_POST['id'];
     $title = $_POST['title'];
     $content = $_POST['content'];
@@ -31,33 +33,33 @@ public function modifier() {
     
 public function supprimer() {
     
-    $deleteArticle = new Projet_4\Model\deleteArticle();
+    $deleteArticle = new deleteArticle();
     $deleteArticle->deleteArticle((int) $_GET['supprimer']);
 }
 
 
 public function listPosts()
 {
-    $getArticles = new Projet_4\Model\getArticles();
+    $getArticles = new getArticles();
     $posts = $getArticles->getArticles();
 
-    require('view/backend/adminView.php');
+    require('view/adminView.php');
 }
 
     public function post()
 {
-    $getArticle = new Projet_4\Model\getArticle();
+    $getArticle = new getArticle();
     $post = $getArticle->getArticle($_GET['id']);
 
-    require('view/backend/articleView.php');
+    require('view/articleView.php');
 }
 
     public function reportedComments()
 {
-    $getReports = new Projet_4\Model\getReports();
+    $getReports = new getReports();
     $reportedComment = $getReports->getReports();
 
-    require('view/backend/moderationView.php');
+    require('view/moderationView.php');
 }
 
 }

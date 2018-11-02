@@ -1,7 +1,7 @@
 <?php session_start();
 $title = "Billet simple pour l'Alaska, un roman de Jean Rochefort"; ?>
 
-<?php ob_start(); ?>
+<?php include("header.php"); ?>
 <p><a href="login.php">Se connecter à l'espace d'administration</a></p>
 
 
@@ -22,7 +22,7 @@ while ($data = $posts->fetch())
         
         <p>
             <?= nl2br(htmlspecialchars($data['content'])) ?>
-            <br /><em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></em>
+            <br /><em><a href="index.php?controller=front&action=getarticle&id=<?= $data['id'] ?>">Commentaires</a></em>
         </p>
     </div>
 <?php

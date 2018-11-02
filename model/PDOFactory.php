@@ -1,6 +1,7 @@
 <?php
-namespace Projet_4\Model;
+
 class PDOFactory
+    
 {
   protected function dbConnect()
   {

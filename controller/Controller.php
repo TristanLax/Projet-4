@@ -1,10 +1,7 @@
 <?php
-    
-require('\Autoloader.php');
-Projet_4\Autoloader::register();
-    
 
 class Controller {
+    
     
         public function blog() {
         
@@ -36,6 +33,9 @@ class Controller {
         }
         if ($this->action == 'envoyer') {
             $this->envoyer();
+        }
+        if ($this->action == 'getArticle') {
+            $this->getArticle();
         }
 
     }

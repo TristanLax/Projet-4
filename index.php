@@ -1,40 +1,49 @@
 <?php
-require('controller/FrontController.php');
 
-$controller = new FrontController();
-$controller->blog();
+require('Autoloader.php');
+Autoloader::register();
 
-try {
-    if (isset($_GET['action'])) {
-        if ($_GET['action'] == 'listPosts') {
-            $controller->listPosts();
+class Dispatcher {
+    
+    public function getController($params) {
+        
+        if(!isset($params['controller'])) {
+            $params['controller'] = 'front';
         }
-        elseif ($_GET['action'] == 'post') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                $controller->post();
-            }
-            else {
-                throw new Exception('Aucun identifiant de billet envoyé');
-            }
+        
+        $controller = ucfirst(strtolower($params['controller'])) . 'Controller';
+        if(!file_exists('Controller/' . $controller . '.php' )) {
+            throw new \Exception('Page non existante');
         }
-        elseif ($_GET['action'] == 'addComment') {
-            if (isset($_GET['id']) && $_GET['id'] > 0) {
-                if (!empty($_POST['author']) && !empty($_POST['comment'])) {
-                    $controller->addComment($_GET['id'], $_POST['author'], $_POST['comment']);
-                }
-                else {
-                    throw new Exception('Tous les champs ne sont pas remplis !');
-                }
-            }
-            else {
-                throw new Exception('Aucun identifiant de billet envoyé');
-            }
-        }  
+        return $controller;
     }
-        else {
-        $controller->listPosts();
+    
+    public function getAction($params) {
+        
+        if(!isset($params['action'])) {
+            $params['action'] = 'accueil';
+        }
+        $action = ucfirst(strtolower($params['action'])) . 'Action';
+
+        return $action;
+    } 
+    
+    public function checkAction($controller, $action) {
+            
+          if(!method_exists($controller, $action)) {
+              throw new \Exception($action . ': Action/Controlleur non trouvés');
+          }
     }
+    
+
+    
 }
-catch(Exception $e) {
-    echo 'Erreur : ' . $e->getMessage();
-}
+
+$dispatcher = new Dispatcher();
+$controllerName = $dispatcher->getController($_GET);
+$controller = new $controllerName();
+$action = $dispatcher->getAction($_GET);
+$dispatcher->checkAction($controller, $action);
+$controller->$action();
+
+

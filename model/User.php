@@ -1,9 +1,8 @@
 <?php
 
-namespace Projet_4\Model;
+require('Modele.php');
 
-
-class User
+class User extends Modele 
 {
     
     private $id;
@@ -15,7 +14,7 @@ class User
         $this->fromArray($params);
     }
     
-    protected function fromArray(array $params)
+    /* protected function fromArray(array $params)
     {
         if (isset($params['id'])) {
             $this->setId($params['id']);
@@ -27,6 +26,18 @@ class User
             $this->setPassword($params['password']);
         }
     }
+
+    protected function fromArray(array $params)
+    {
+        foreach ($params as $name => $value) {
+            $setter = 'set' . ucfirst($name);
+            if (method_exists($this, $setter)) {
+                $this->$setter($value);
+            }
+        }
+        return $this;
+    } 
+    */
     
     public function setId($id)
     {

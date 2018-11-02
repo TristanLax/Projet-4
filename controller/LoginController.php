@@ -1,11 +1,26 @@
 <?php 
 
 require_once('Controller.php');
+require('Autoloader.php');
+Autoloader::register();
 
 
 class LoginController extends Controller {
     
-    public function connexionTest() {
+    public function __construct() {
+        
+    }
+    
+    public function loginView() {
+        require('view/loginView.php');
+    }
+    
+    public function testAction() {
+        
+        echo 'Bonjour';
+    }
+    
+   public function connexionTest() {
         
         if (isset($_SESSION['secured'])) 
         {   
@@ -15,9 +30,8 @@ class LoginController extends Controller {
     
     
     public function loginAction() {
-    $getSession = new \Projet_4\Model\Session();
-    $getUser = new \Projet_4\Model\User();
-    $userManager = new \Projet_4\Manager\UserManager();
+    $getUser = new User();
+    $userManager = new UserManager();
 
     $email = $_POST['email'];
     $password = $_POST['password'];

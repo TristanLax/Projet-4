@@ -1,18 +1,12 @@
 <?php
 
-namespace Projet_4\Manager;
+Autoloader::register();
 
-require_once("Manager/DB.php");
-
-use Projet_4\model\User;
-
-
-class UserManager
+class UserManager extends Manager
 {
     public function getUser($email)
     {
-        $db = DB::getInstance();
-        $req = $db->getConnection()->prepare('SELECT * FROM users WHERE email = :email');
+        $req = $this->db->prepare('SELECT * FROM users WHERE email = :email');
         $req->execute(array('email' => $email));
         $resultat = $req->fetch();
         if (!$resultat) {
