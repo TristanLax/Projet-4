@@ -7,33 +7,33 @@ class FrontController extends Controller  {
     
     public function AccueilAction() 
     {
-        $getArticles = new getArticles();
-        $posts = $getArticles->getArticles();
+        $ArticleManager = new ArticleManager();
+        $posts = $ArticleManager->getArticles();
         require('view/listPostsView.php');
     }
     
     public function GetarticleAction() 
     {
-        $getArticle = new getArticle($_GET['id']);
-        $getComments = new getComments($_GET['id']);
+        $ArticleManager = new ArticleManager($_GET['id']);
+        $CommentManager = new CommentManager($_GET['id']);
 
-        $post = $getArticle->getArticle($_GET['id']);
-        $getComments = $getComments->getComments($_GET['id']);
+        $post = $ArticleManager->getArticle($_GET['id']);
+        $getComments = $CommentManager->getComments($_GET['id']);
 
         require('view/postView.php');
     }
 
     public function signaler() 
     {
-        $reportComment = new reportComment();
-        $reportComment->reportComment((int) $_GET['signaler']); 
+        $CommentManager = new CommentManager();
+        $CommentManager->reportComment((int) $_GET['signaler']); 
     }
 
 
-    public function addComment($postId, $author, $comment) 
+    public function addCommentAction($postId, $author, $comment) 
     {
-        $postComment = new postComment();
-        $affectedLines = $postComment->postComment($postId, $author, $comment);
+        $CommentManager = new CommentManager();
+        $affectedLines = $CommentManager->postComment($postId, $author, $comment);
 
         if ($affectedLines === false) {
             throw new Exception('Impossible d\'ajouter le commentaire !');

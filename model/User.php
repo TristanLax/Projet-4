@@ -14,31 +14,6 @@ class User extends Modele
         $this->fromArray($params);
     }
     
-    /* protected function fromArray(array $params)
-    {
-        if (isset($params['id'])) {
-            $this->setId($params['id']);
-        }
-        if (isset($params['email'])) {
-            $this->setEmail($params['email']);
-        }
-        if (isset($params['password'])) {
-            $this->setPassword($params['password']);
-        }
-    }
-
-    protected function fromArray(array $params)
-    {
-        foreach ($params as $name => $value) {
-            $setter = 'set' . ucfirst($name);
-            if (method_exists($this, $setter)) {
-                $this->$setter($value);
-            }
-        }
-        return $this;
-    } 
-    */
-    
     public function setId($id)
     {
         $this->id = $id;

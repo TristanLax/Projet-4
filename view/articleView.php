@@ -25,7 +25,7 @@ $title = htmlspecialchars($post['title']); ?>
 <div>
 <h1>Editer l'article :</h1>
     
-    <form method="post" action="<?php echo 'admin.php?action=envoyer' ?>">
+    <form method="post" action="<?php echo 'admin.php?action=modifier' ?>">
     <div>
         <label for="title">Titre :</label><br />
         <input name="id" type="hidden" value="<?php echo $id;?>" />
