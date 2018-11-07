@@ -7,24 +7,21 @@ Autoloader::register();
 
 class LoginController extends Controller {
     
-    public function __construct() {
+    public function __construct() 
+    {
         
     }
     
-    public function loginView() {
+    public function loginView() 
+    {
         require('view/loginView.php');
     }
     
-    public function testAction() {
-        
-        echo 'Bonjour';
-    }
-    
-   public function connexionTest() {
-        
+   public function connexionTest() 
+   {
         if (isset($_SESSION['secured'])) 
         {   
-        header("location: admin.php");
+            header("location: admin.php");
         }
     }
     
@@ -36,6 +33,7 @@ class LoginController extends Controller {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $user = $userManager->getUser($email);
+        
     if (!$user) {
         echo 'Mauvais identifiant ou mot de passe !';
         return;

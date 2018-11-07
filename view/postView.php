@@ -1,5 +1,5 @@
 <?php session_start();
-$title = htmlspecialchars($post['title']); ?>
+$title = htmlspecialchars($article->getTitle()); ?>
 
 <?php ob_start(); ?>
 <h1>Billet simple pour l'Alaska</h1>
@@ -7,18 +7,18 @@ $title = htmlspecialchars($post['title']); ?>
 
 <div class="news">
     <h3>
-        <?= htmlspecialchars($post['title']) ?>
-        <em>parue le <?= $post['creation_date_fr'] ?></em>
+        <?= htmlspecialchars($article->getTitle()) ?>
+        <em>parue le <?= $article->getDate() ?></em>
     </h3>
     
     <p>
-        <?= nl2br(htmlspecialchars($post['content'])) ?>
+        <?= nl2br(htmlspecialchars($article->getContent())) ?>
     </p>
 </div>
 
 <h2>Commentaires</h2>
 
-<form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
+<form action="index.php?action=addComment&amp;id=<?=$article->getId() ?>" method="post">
     <div>
         <label for="author">Auteur</label><br />
         <input type="text" id="author" name="author" />

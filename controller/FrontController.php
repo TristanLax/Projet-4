@@ -17,13 +17,13 @@ class FrontController extends Controller  {
         $ArticleManager = new ArticleManager($_GET['id']);
         $CommentManager = new CommentManager($_GET['id']);
 
-        $post = $ArticleManager->getArticle($_GET['id']);
+        $article = $ArticleManager->getArticle($_GET['id']);
         $getComments = $CommentManager->getComments($_GET['id']);
 
         require('view/postView.php');
     }
 
-    public function signaler() 
+    public function signalerAction() 
     {
         $CommentManager = new CommentManager();
         $CommentManager->reportComment((int) $_GET['signaler']); 

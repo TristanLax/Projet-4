@@ -1,7 +1,6 @@
 <?php
 
-
-require_once("Manager/DB.php");
+Autoloader::register();
 
 class CommentManager extends Manager
 {

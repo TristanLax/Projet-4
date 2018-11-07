@@ -6,20 +6,20 @@ class ArticleManager extends Manager
 {
     public function getArticle($postId)
     {
-        $req = $this->db->prepare('SELECT id, title, content, DATE_FORMAT(article_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr, DATE_FORMAT(article_edit, \'%d/%m/%Y à %Hh%imin%ss\') AS edit_date_fr FROM articles WHERE id = ?');
-        $req->execute(array($postId));
-        $post = $req->fetch();
+        $sql = 'SELECT id, title, content, DATE_FORMAT(article_date, \'%d/%m/%Y à %Hh%imin%ss\') AS article_date, DATE_FORMAT(article_edit, \'%d/%m/%Y à %Hh%imin%ss\') FROM articles WHERE id = ?';
+        $article = $this->fetch($sql, 'Article', [$postId]);
 
-        return $post;
+        return $article;
     }
     
     public function getArticles()
     {
-        $req = $this->db->query('SELECT id, title, content, DATE_FORMAT(article_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr, DATE_FORMAT(article_edit, \'%d/%m/%Y à %Hh%imin%ss\') AS edit_date_fr FROM articles ORDER BY article_date DESC LIMIT 0, 5');
+        $sql = 'SELECT id, title, content, DATE_FORMAT(article_date, \'%d/%m/%Y à %Hh%imin%ss\') AS article_date, article_edit FROM articles ORDER BY article_date DESC';
+        $articles = $this->fetchAll($sql, 'Article');
 
-        return $req;
+        return $articles;
     }
-    
+
     public function postArticle($title, $content)
     {
         $article = $this->db->prepare('INSERT INTO articles(title, content, article_date) VALUES(?, ?, NOW())');
