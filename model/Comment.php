@@ -1,6 +1,6 @@
 <?php
 
-require('Modele.php');
+Autoloader::register();
 
 class Comment extends Modele 
 {
@@ -79,7 +79,7 @@ class Comment extends Modele
         return $this;
     }
     
-    public function getComment_date() 
+    public function getDate() 
     {
         return $this->comment_date;
     }

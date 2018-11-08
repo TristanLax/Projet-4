@@ -1,6 +1,6 @@
 <?php
 
-require('Modele.php');
+Autoloader::register();
 
 class Article extends Modele 
 {

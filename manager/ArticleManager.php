@@ -4,6 +4,7 @@ Autoloader::register();
 
 class ArticleManager extends Manager
 {
+    
     public function getArticle($postId)
     {
         $sql = 'SELECT id, title, content, DATE_FORMAT(article_date, \'%d/%m/%Y à %Hh%imin%ss\') AS article_date, DATE_FORMAT(article_edit, \'%d/%m/%Y à %Hh%imin%ss\') FROM articles WHERE id = ?';
@@ -42,6 +43,5 @@ class ArticleManager extends Manager
     {
         $req = $this->db->exec('DELETE FROM articles WHERE id = '.(int) $id);
     }
-
- 
+    
 }

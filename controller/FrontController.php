@@ -18,7 +18,7 @@ class FrontController extends Controller  {
         $CommentManager = new CommentManager($_GET['id']);
 
         $article = $ArticleManager->getArticle($_GET['id']);
-        $getComments = $CommentManager->getComments($_GET['id']);
+        $comments = $CommentManager->getComments($_GET['id']);
 
         require('view/postView.php');
     }

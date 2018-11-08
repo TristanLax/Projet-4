@@ -33,12 +33,12 @@ $title = htmlspecialchars($article->getTitle()); ?>
 </form>
 
 <?php
-while ($comments = $getComments->fetch())
+foreach ($comments as $comment)
 {
 ?>
-    <p><strong><?= htmlspecialchars($comments['author']) ?></strong> le <?= $comments['comment_date_fr'] ?></p>
-    <p><?= nl2br(htmlspecialchars($comments['comment'])) ?></p>
-    <a href="?signaler=<?=$comments['id']?>">Signaler ce commentaire</a>
+    <p><strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getDate() ?></p>
+    <p><?= nl2br(htmlspecialchars($comment->getComment())) ?></p>
+    <a href="?signaler=<?=$comment->getId()?>">Signaler ce commentaire</a>
 <?php
 }
 ?>
