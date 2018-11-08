@@ -1,7 +1,7 @@
 <?php session_start(); ?>
 <?php if (!isset($_SESSION['secured'])) 
 {
-    header("location: login.php");
+    header("location: index.php");
 }
 
 $id = $_REQUEST['id'];

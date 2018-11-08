@@ -1,7 +1,5 @@
 <?php 
 
-require_once('Controller.php');
-require('Autoloader.php');
 Autoloader::register();
 
 
@@ -12,12 +10,12 @@ class LoginController extends Controller {
         
     }
     
-    public function loginView() 
+    public function LoginaccueilAction() 
     {
         require('view/loginView.php');
     }
     
-   public function connexionTest() 
+   public function connexionTest() // A refaire (fonctionne actuellement plus en POO)  //
    {
         if (isset($_SESSION['secured'])) 
         {   
@@ -44,6 +42,7 @@ class LoginController extends Controller {
     }
         session_start();
         $_SESSION['secured'] = "secured";
+        header("location: index.php?controller=admin&action=Adminaccueil");
     }
     
     

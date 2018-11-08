@@ -3,7 +3,7 @@ $title = "Moderation"; ?>
 
 <?php if (!isset($_SESSION['secured'])) 
 {
-    header("location: login.php");
+    header("location: index.php");
 }
 ?>
 

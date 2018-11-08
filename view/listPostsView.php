@@ -2,7 +2,7 @@
 $title = "Billet simple pour l'Alaska, un roman de Jean Rochefort"; ?>
 
 <?php include("header.php"); ?>
-<p><a href="login.php">Se connecter à l'espace d'administration</a></p>
+<p><a href="index.php?controller=login&action=Loginaccueil">Se connecter à l'espace d'administration</a></p>
 
 
 <h1>Billet simple pour l'Alaska</h1>

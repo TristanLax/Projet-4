@@ -7,7 +7,7 @@ $title = "Connexion"; ?>
 
 <h2>Se connecter</h2>
 
-<form class="login" action="<?php echo 'login.php?action=loginAction' ?>" method="post">
+<form class="login" action="<?php echo 'index.php?controller=login&action=login' ?>" method="post">
     
     <div>
         <label for="email">Email</label><br />

@@ -18,7 +18,7 @@ $title = htmlspecialchars($article->getTitle()); ?>
 
 <h2>Commentaires</h2>
 
-<form action="index.php?action=addComment&amp;id=<?=$article->getId() ?>" method="post">
+<form action="index.php?controller=front&action=addComment&amp;id=<?=$article->getId() ?>" method="post">
     <div>
         <label for="author">Auteur</label><br />
         <input type="text" id="author" name="author" />

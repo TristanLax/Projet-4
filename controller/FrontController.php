@@ -1,6 +1,6 @@
 <?php
 
-require_once('Controller.php');
+Autoloader::register();
 
 
 class FrontController extends Controller  {
@@ -30,7 +30,7 @@ class FrontController extends Controller  {
     }
 
 
-    public function addCommentAction($postId, $author, $comment) 
+    public function addcommentAction($postId, $author, $comment) 
     {
         $CommentManager = new CommentManager();
         $affectedLines = $CommentManager->postComment($postId, $author, $comment);

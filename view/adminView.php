@@ -30,16 +30,17 @@ $title = "Administration"; ?>
         <th>Dernière modification</th>
         <th>Action</th>
     </tr>
-    <?php
-    while ($data = $posts->fetch())
+    
+<?php
+    
+foreach ($posts as $article)
 {
-   echo '<tr><td>', $data['id'], '</td><td>', $data['title'], '</td><td>', $data['creation_date_fr'], '</td><td>', ($data['creation_date_fr'] == $data['edit_date_fr'] ? '-' : $data['edit_date_fr']), '</td><td>','<a href="article.php?action=post&amp;id=', $data['id'], '">Modifier</a> | <a href="?supprimer=', $data['id'], '">Supprimer</a> ', '</td></tr>';
+   echo '<tr><td>', $article->getId(), '</td><td>', $article->getTitle(), '</td><td>', $article->getDate(), '</td><td>', ($article->getDate() == $article->getEdit() ? '-' : $article->getEdit()), '</td><td>','<a href="article.php?action=post&amp;id=', $article->getId(), '">Modifier</a> | <a href="?supprimer=', $article->getId(), '">Supprimer</a> ', '</td></tr>';
 }
 ?>
 </table>
 <?php
 }
-$posts->closeCursor();
 ?>
 
 
