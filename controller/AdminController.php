@@ -13,6 +13,14 @@ class AdminController extends Controller {
         require('view/adminView.php');
     }
     
+    public function getArticleAction()
+    {
+        $ArticleManager = new ArticleManager($_GET['id']);
+        $article = $ArticleManager->getArticle($_GET['id']);
+        
+        require('view/articleView.php');
+    }
+    
     public function moderer() 
     {
         $CommentManager = new CommentManager();
@@ -53,11 +61,18 @@ class AdminController extends Controller {
         require('view/articleView.php');
     }
 
-    public function reportedComments()
+    public function reportedCommentsAction()
     {
         $CommentManager = new CommentManager();
         $reportedComment = $CommentManager->getReports();
         require('view/moderationView.php');
+    }
+    
+    public function logoutAction()
+    {
+        session_destroy();
+        header('Location: index.php');
+        exit;
     }
 
 }

@@ -1,4 +1,3 @@
-<?php session_start(); ?>
 <?php if (!isset($_SESSION['secured'])) 
 {
     header("location: index.php");
@@ -6,20 +5,20 @@
 
 $id = $_REQUEST['id'];
 
-$title = htmlspecialchars($post['title']); ?>
+$title = htmlspecialchars($article->getTitle()); ?>
 
 <?php ob_start(); ?>
 <h1>Billet simple pour l'Alaska</h1>
-<p><a href="admin.php">Retour a l'Administration</a></p>
+<p><a href="index.php?controller=admin&action=Adminaccueil">Retour a l'Administration</a></p>
 
 <div class="news">
     <h3>
-        <?= htmlspecialchars($post['title']) ?>
-        <em>parue le <?= $post['creation_date_fr'] ?></em>
+        <?= htmlspecialchars($article->getTitle()) ?>
+        <em>parue le <?= $article->getDate() ?></em>
     </h3>
     
     <p>
-        <?= nl2br(htmlspecialchars($post['content'])) ?>
+        <?= nl2br(htmlspecialchars($article->getContent())) ?>
     </p>
 </div>
 <div>

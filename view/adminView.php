@@ -1,5 +1,4 @@
-<?php session_start();
-$title = "Administration"; ?>
+<?php $title = "Administration"; ?>
 
 <?php if (!isset($_SESSION['secured'])) 
 {
@@ -10,8 +9,8 @@ $title = "Administration"; ?>
 
 <?php ob_start(); ?>
 <p><a href="index.php">Retourner sur le site</a></p>
-<p><a href="moderation.php">Accèder à la modération des commentaires</a></p>
-<p><a href="logout.php">Se deconnecter</a></p>
+<p><a href="index.php?controller=admin&action=reportedComments">Accèder à la modération des commentaires</a></p>
+<p><a href="index.php?controller=admin&action=logout">Se deconnecter</a></p>
 
 
 <h1>Billet simple pour l'Alaska</h1>
@@ -35,7 +34,7 @@ $title = "Administration"; ?>
     
 foreach ($posts as $article)
 {
-   echo '<tr><td>', $article->getId(), '</td><td>', $article->getTitle(), '</td><td>', $article->getDate(), '</td><td>', ($article->getDate() == $article->getEdit() ? '-' : $article->getEdit()), '</td><td>','<a href="article.php?action=post&amp;id=', $article->getId(), '">Modifier</a> | <a href="?supprimer=', $article->getId(), '">Supprimer</a> ', '</td></tr>';
+   echo '<tr><td>', $article->getId(), '</td><td>', $article->getTitle(), '</td><td>', $article->getDate(), '</td><td>', ($article->getDate() == $article->getEdit() ? '-' : $article->getEdit()), '</td><td>','<a href="index.php?controller=admin&action=getarticle&id=', $article->getId(), '">Modifier</a> | <a href="?supprimer=', $article->getId(), '">Supprimer</a> ', '</td></tr>';
 }
 ?>
 </table>

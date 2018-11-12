@@ -1,5 +1,4 @@
-<?php session_start();
-$title = "Moderation"; ?>
+<?php $title = "Moderation"; ?>
 
 <?php if (!isset($_SESSION['secured'])) 
 {
@@ -8,7 +7,7 @@ $title = "Moderation"; ?>
 ?>
 
 <?php ob_start(); ?>
-<p><a href="admin.php">Retourner à l'espace d'administration</a></p>
+<p><a href="index.php?controller=admin&action=Adminaccueil">Retourner à l'espace d'administration</a></p>
 
 
 <h1>Billet simple pour l'Alaska</h1>

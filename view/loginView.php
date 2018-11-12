@@ -1,5 +1,4 @@
-<?php session_start();
-$title = "Connexion"; ?>
+<?php $title = "Connexion"; ?>
 
 <?php ob_start(); ?>
 <p><a href="index.php">Retourner sur le site</a></p>

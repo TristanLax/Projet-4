@@ -12,17 +12,14 @@ class LoginController extends Controller {
     
     public function LoginaccueilAction() 
     {
-        require('view/loginView.php');
-    }
-    
-   public function connexionTest() // A refaire (fonctionne actuellement plus en POO)  //
-   {
         if (isset($_SESSION['secured'])) 
         {   
-            header("location: admin.php");
+            header("location: index.php?controller=admin&action=Adminaccueil");
+        }
+        else { 
+            require('view/loginView.php');
         }
     }
-    
     
     public function loginAction() {
     $getUser = new User();
