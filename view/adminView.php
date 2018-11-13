@@ -44,7 +44,7 @@ foreach ($posts as $article)
 
 
 
-<form method="post" action="<?php echo 'admin.php?action=envoyer' ?>">
+<form method="post" action="<?php echo 'index.php?controller=admin&action=envoyer' ?>">
     <div>
         <label for="title">Titre :</label><br />
         <input type="text" id="title" name="title" />

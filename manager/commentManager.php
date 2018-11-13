@@ -28,8 +28,10 @@ class CommentManager extends Manager
     
     public function getReports()
     {
-        $req = $this->db->query('SELECT id, author, comment, reports FROM comments WHERE reports >= 0 ORDER BY reports DESC');
-        return $req;
+        $sql = 'SELECT id, author, comment, reports FROM comments WHERE reports >= 0 ORDER BY reports DESC';
+        $getReports = $this->fetchAll($sql, 'Comment');
+            
+        return $getReports;
     }
     
     public function ignoreReport($id)

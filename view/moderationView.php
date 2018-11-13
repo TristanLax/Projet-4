@@ -24,15 +24,14 @@
         <th>Action</th>
     </tr>
     <?php
-    while ($data = $reportedComment->fetch())
+    foreach ($reportedComments as $comment)
 {
-   echo '<tr><td>', $data['author'], '</td><td>', $data['comment'], '</td><td>', $data['reports'], '</td><td>', '<a href="?ignorer=', $data['id'], '">Ignorer</a> | <a href="?moderer=', $data['id'], '">Moderer</a> ', '</td></tr>';
+   echo '<tr><td>', $comment->getAuthor(), '</td><td>',$comment->getComment(), '</td><td>', $comment->getReports(), '</td><td>', '<a href="?ignorer=', $comment->getId(), '">Ignorer</a> | <a href="?moderer=', $comment->getId(), '">Moderer</a> ', '</td></tr>';
 }
 ?>
 </table>
 <?php
 }
-$reportedComment->closeCursor();
 ?>
 
 <?php $content = ob_get_clean(); ?>

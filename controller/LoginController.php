@@ -3,7 +3,8 @@
 Autoloader::register();
 
 
-class LoginController extends Controller {
+class LoginController
+{
     
     public function __construct() 
     {

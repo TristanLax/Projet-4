@@ -3,7 +3,8 @@
 Autoloader::register();
 
 
-class AdminController extends Controller {
+class AdminController 
+{
     
     
     public function AdminaccueilAction()
@@ -21,6 +22,20 @@ class AdminController extends Controller {
         require('view/articleView.php');
     }
     
+    public function reportedCommentsAction()
+    {
+        $CommentManager = new CommentManager();
+        $reportedComments = $CommentManager->getReports();
+        require('view/moderationView.php');
+    }
+    
+    public function logoutAction()
+    {
+        session_destroy();
+        header('Location: index.php');
+        exit;
+    }
+    
     public function moderer() 
     {
         $CommentManager = new CommentManager();
@@ -33,10 +48,11 @@ class AdminController extends Controller {
         $CommentManager->ignoreReport((int) $_GET['ignorer']);
     }
     
-    public function envoyer() 
+    public function envoyerAction() 
     {
         $ArticleManager = new ArticleManager();
         $ArticleManager->postArticle($_POST["title"], $_POST["content"]);
+        header('location: index.php?controller=admin&action=Adminaccueil');
     }
 
     public function modifier() 
@@ -52,27 +68,6 @@ class AdminController extends Controller {
     {
         $deleteArticle = new ArticleManager();
         $deleteArticle->deleteArticle((int) $_GET['supprimer']);
-    }
-
-    public function post()
-    {
-        $ArticleManager = new ArticleManager('id');
-        $post = $ArticleManager->getArticle($_GET['id']);
-        require('view/articleView.php');
-    }
-
-    public function reportedCommentsAction()
-    {
-        $CommentManager = new CommentManager();
-        $reportedComment = $CommentManager->getReports();
-        require('view/moderationView.php');
-    }
-    
-    public function logoutAction()
-    {
-        session_destroy();
-        header('Location: index.php');
-        exit;
     }
 
 }

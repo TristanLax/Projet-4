@@ -3,7 +3,8 @@
 Autoloader::register();
 
 
-class FrontController extends Controller  {
+class FrontController
+{
     
     public function AccueilAction() 
     {

@@ -24,9 +24,8 @@ class ArticleManager extends Manager
     public function postArticle($title, $content)
     {
         $article = $this->db->prepare('INSERT INTO articles(title, content, article_date) VALUES(?, ?, NOW())');
-        $affectedLines = $article->execute(array($title, $content));
-
-        return $affectedLines;
+        $addArticle = $article->execute(array($title, $content));
+        return $addArticle;
     }
     
     public function editArticle($id, $title, $content)
