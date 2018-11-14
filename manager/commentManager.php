@@ -13,17 +13,20 @@ class CommentManager extends Manager
         return $comments;
     }
     
-    public function postComment($postId, $author, $comment)
+    public function postComment($article_id, $author, $comment)
     {
-        $comments = $this->db->prepare('INSERT INTO comments(article_id, author, comment, reports, comment_date) VALUES(?, ?, ?, 0, NOW())');
-        $affectedLines = $comments->execute(array($postId, $author, $comment));
+        $sql = 'INSERT INTO comments(article_id, author, comment, reports, comment_date) VALUES(?, ?, ?, 0, NOW())';
+        $addComment = $this->upsert($sql, [$article_id, $author, $comment]);
 
-        return $affectedLines;
+        return $addComment;
     }
     
     public function reportComment($id) 
     {
-        $report =  $this->db->exec('UPDATE comments SET reports = reports +1 WHERE id ='.(int) $id);
+        $sql = 'UPDATE comments SET reports = reports +1 WHERE id ='.$id;
+        $reportComment = $this->upsert($sql, [$id]);
+        
+        return $reportComment;
     }
     
     public function getReports()
@@ -36,12 +39,18 @@ class CommentManager extends Manager
     
     public function ignoreReport($id)
     {
-        $ignore = $this->db->exec('UPDATE comments SET reports = 0 WHERE id = '.(int) $id);
+        $sql = 'UPDATE comments SET reports = 0 WHERE id = '.$id;
+        $ignoreReport = $this->upsert($sql, [$id]);
+        
+        return $ignoreReport;
     }
     
     public function moderateComment($id)
     {
-        $moderate = $this->db->exec('UPDATE comments SET comment = "Commentaire modéré par l\'administration" WHERE id = '.(int) $id);
+        $sql = 'UPDATE comments SET comment = "Commentaire modéré par l\'administration" WHERE id = '.$id;
+        $moderateComment = $this->upsert($sql, [$id]);
+        
+        return $moderateComment;
     }
     
 }

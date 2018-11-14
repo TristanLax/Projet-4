@@ -27,21 +27,18 @@ class FrontController
     public function signalerAction() 
     {
         $CommentManager = new CommentManager();
-        $CommentManager->reportComment((int) $_GET['signaler']); 
+        $CommentManager->reportComment($_GET['id']); 
+        
+        header('Location: index.php');
     }
 
 
-    public function addcommentAction($postId, $author, $comment) 
+    public function addcommentAction() 
     {
         $CommentManager = new CommentManager();
-        $affectedLines = $CommentManager->postComment($postId, $author, $comment);
+        $CommentManager->postComment($_POST["article_id"], $_POST["author"], $_POST["comment"]);
 
-        if ($affectedLines === false) {
-            throw new Exception('Impossible d\'ajouter le commentaire !');
-        }
-        else {
-            header('Location: index.php?action=post&id=' . $postId);
-        }
+        header('Location: index.php?controller=front&action=getarticle&id='. $_POST['article_id']);
     }
     
 }

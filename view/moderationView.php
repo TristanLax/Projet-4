@@ -26,7 +26,7 @@
     <?php
     foreach ($reportedComments as $comment)
 {
-   echo '<tr><td>', $comment->getAuthor(), '</td><td>',$comment->getComment(), '</td><td>', $comment->getReports(), '</td><td>', '<a href="?ignorer=', $comment->getId(), '">Ignorer</a> | <a href="?moderer=', $comment->getId(), '">Moderer</a> ', '</td></tr>';
+   echo '<tr><td>', $comment->getAuthor(), '</td><td>',$comment->getComment(), '</td><td>', $comment->getReports(), '</td><td>', '<a href="index.php?controller=admin&action=ignorer&id=', $comment->getId(), '">Ignorer</a> | <a href="index.php?controller=admin&action=moderer&id=', $comment->getId(), '">Moderer</a> ', '</td></tr>';
 }
 ?>
 </table>

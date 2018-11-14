@@ -17,7 +17,7 @@
 
 <h2>Commentaires</h2>
 
-<form action="index.php?controller=front&action=addComment&amp;id=<?=$article->getId() ?>" method="post">
+<form method="post" action="index.php?controller=front&action=addComment&id=<?=$article->getId() ?>">
     <div>
         <label for="author">Auteur</label><br />
         <input type="text" id="author" name="author" />
@@ -26,7 +26,8 @@
         <label for="comment">Commentaire</label><br />
         <textarea id="comment" name="comment"></textarea>
     </div>
-    <div>
+    <div>   
+        <input type="hidden" name="article_id" value="<?= $article->getId()?>" />
         <input type="submit" />
     </div>
 </form>
@@ -37,7 +38,7 @@ foreach ($comments as $comment)
 ?>
     <p><strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getDate() ?></p>
     <p><?= nl2br(htmlspecialchars($comment->getComment())) ?></p>
-    <a href="?signaler=<?=$comment->getId()?>">Signaler ce commentaire</a>
+    <a href="index.php?controller=front&action=signaler&id=<?=$comment->getId()?>">Signaler ce commentaire</a>
 <?php
 }
 ?>

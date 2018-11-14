@@ -3,8 +3,6 @@
     header("location: index.php");
 }
 
-$id = $_REQUEST['id'];
-
 $title = htmlspecialchars($article->getTitle()); ?>
 
 <?php ob_start(); ?>
@@ -24,10 +22,9 @@ $title = htmlspecialchars($article->getTitle()); ?>
 <div>
 <h1>Editer l'article :</h1>
     
-    <form method="post" action="<?php echo 'admin.php?action=modifier' ?>">
+    <form method="post" action="index.php?controller=admin&action=modifier">
     <div>
         <label for="title">Titre :</label><br />
-        <input name="id" type="hidden" value="<?php echo $id;?>" />
         <input type="text" id="title" name="title" />
     </div>
     <div>
@@ -35,7 +32,7 @@ $title = htmlspecialchars($article->getTitle()); ?>
         <textarea rows="8" cols="60" id="content" name="content"></textarea>
     </div>
     <div>
-        <input type="hidden" name="id" value="<?php echo $_GET['id'];?>" />
+        <input type="hidden" name="id" value="<?= $article->getId()?>" />
         <input type="submit" name="modifier" />
     </div>
 </form>

@@ -34,7 +34,7 @@
     
 foreach ($posts as $article)
 {
-   echo '<tr><td>', $article->getId(), '</td><td>', $article->getTitle(), '</td><td>', $article->getDate(), '</td><td>', ($article->getDate() == $article->getEdit() ? '-' : $article->getEdit()), '</td><td>','<a href="index.php?controller=admin&action=getarticle&id=', $article->getId(), '">Modifier</a> | <a href="?supprimer=', $article->getId(), '">Supprimer</a> ', '</td></tr>';
+   echo '<tr><td>', $article->getId(), '</td><td>', $article->getTitle(), '</td><td>', $article->getDate(), '</td><td>', ($article->getDate() == $article->getEdit() ? '-' : $article->getEdit()), '</td><td>','<a href="index.php?controller=admin&action=getarticle&id=', $article->getId(), '">Modifier</a> | <a href="index.php?controller=admin&action=supprimer&id=', $article->getId(), '">Supprimer</a> ', '</td></tr>';
 }
 ?>
 </table>

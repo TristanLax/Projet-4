@@ -23,8 +23,9 @@ class ArticleManager extends Manager
 
     public function postArticle($title, $content)
     {
-        $article = $this->db->prepare('INSERT INTO articles(title, content, article_date) VALUES(?, ?, NOW())');
-        $addArticle = $article->execute(array($title, $content));
+        $sql = 'INSERT INTO articles(title, content, article_date) VALUES(?, ?, NOW())';
+        $addArticle = $this->upsert($sql, [$title, $content]);
+        
         return $addArticle;
     }
     
@@ -40,7 +41,7 @@ class ArticleManager extends Manager
     
     public function deleteArticle($id)
     {
-        $req = $this->db->exec('DELETE FROM articles WHERE id = '.(int) $id);
+        $req = $this->db->exec('DELETE FROM articles WHERE id = '.$id);
     }
     
 }

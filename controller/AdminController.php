@@ -7,7 +7,7 @@ class AdminController
 {
     
     
-    public function AdminaccueilAction()
+    public function adminaccueilAction()
     {
         $ArticleManager = new ArticleManager();
         $posts = $ArticleManager->getArticles();
@@ -36,38 +36,43 @@ class AdminController
         exit;
     }
     
-    public function moderer() 
+    public function modererAction() 
     {
         $CommentManager = new CommentManager();
-        $CommentManager->moderateComment((int) $_GET['moderer']);
+        $CommentManager->moderateComment($_GET['id']);
+        header('location: index.php?controller=admin&action=reportedComments');
     }
     
-    public function ignorer() 
+    public function ignorerAction() 
     {
         $CommentManager = new CommentManager();
-        $CommentManager->ignoreReport((int) $_GET['ignorer']);
+        $CommentManager->ignoreReport($_GET['id']);
+        
+        header('location: index.php?controller=admin&action=reportedComments');
     }
     
     public function envoyerAction() 
     {
         $ArticleManager = new ArticleManager();
         $ArticleManager->postArticle($_POST["title"], $_POST["content"]);
-        header('location: index.php?controller=admin&action=Adminaccueil');
+        
+        header('location: index.php?controller=admin&action=adminaccueil');
     }
 
-    public function modifier() 
+    public function modifierAction() 
     {
         $ArticleManager = new ArticleManager();
-        $id = $_POST['id'];
-        $title = $_POST['title'];
-        $content = $_POST['content'];
-        $edit = $ArticleManager->editArticle($id, $title, $content);
+        $ArticleManager->editArticle($_POST['id'], $_POST['title'], $_POST['content']);
+        
+        header('location: index.php?controller=admin&action=getarticle&id='.$_POST['id']);
     }
 
-    public function supprimer() 
+    public function supprimerAction() 
     {
         $deleteArticle = new ArticleManager();
-        $deleteArticle->deleteArticle((int) $_GET['supprimer']);
+        $deleteArticle->deleteArticle($_GET['id']);
+        
+        header('location: index.php?controller=admin&action=adminaccueil');
     }
 
 }

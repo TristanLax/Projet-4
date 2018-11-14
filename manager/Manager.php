@@ -35,10 +35,18 @@ class Manager {
         $resultat = $req->fetchAll();
         
         if (!$resultat) {
-            return null;
+            return [];
         } 
 
         return $resultat;
+    }
+    
+    protected function upsert($sql, $params = [])
+    {
+        $query = $this->db->prepare($sql);
+        $result = $query->execute($params);
+        
+        return $result;
     }
     
 }
