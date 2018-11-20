@@ -1,7 +1,7 @@
 <footer>
 
     <div class="row footer">
-        <div class="col-lg-12 footer-text"> <p> </p>
+        <div class="col-lg-12"> <p class="footer-text">2 018, Jean Forteroche </p>
         </div>
     </div>
 

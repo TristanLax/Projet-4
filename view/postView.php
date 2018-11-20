@@ -1,10 +1,9 @@
 <?php include("header.php");
 $title = htmlspecialchars($article->getTitle()); ?>
 
-<p><a href="index.php">Retour au site</a></p>
-
     <div class ="row">
         <div class="col-lg-12">
+            <p><a href="index.php">Retour au site</a></p>
         <div class="col-lg-12 news">
             <div class="newsheader">
                 <h3>
@@ -13,9 +12,7 @@ $title = htmlspecialchars($article->getTitle()); ?>
                 </h3>
             </div>
             <div class="newstext">
-                <p>
-                    <?= $article->getContent() ?>
-                </p>
+                <p><?= $article->getContent() ?></p>
             </div>
         </div>
         </div>
@@ -24,9 +21,9 @@ $title = htmlspecialchars($article->getTitle()); ?>
 
     <div class ="row">
         <div class="col-lg-12">
-            <h2>Commentaires</h2>
+            <h2 class="commentaires">Commentaires</h2>
 
-            <form method="post" action="index.php?controller=front&action=addComment&id=<?=$article->getId() ?>">
+            <form method="post" action="index.php?controller=front&action=addComment&id=<?=$article->getId() ?>" class="comform">
                 <div>
                     <label for="author">Auteur</label><br />
                     <input type="text" id="author" name="author" />
@@ -45,7 +42,7 @@ $title = htmlspecialchars($article->getTitle()); ?>
             foreach ($comments as $comment)
             {
             ?>
-                <p><strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getDate() ?></p>
+                <p>Commentaire écrit par <strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getDate() ?></p>
                 <p><?= nl2br(htmlspecialchars($comment->getComment())) ?></p>
                 <a href="index.php?controller=front&action=signaler&id=<?=$comment->getId()?>">Signaler ce commentaire</a>
             <?php
@@ -55,5 +52,4 @@ $title = htmlspecialchars($article->getTitle()); ?>
     </div>
 
 <?php include("footer.php"); ?>
-
 <?php require('template.php'); ?>

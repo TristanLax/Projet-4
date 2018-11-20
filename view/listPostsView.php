@@ -1,11 +1,11 @@
 <?php $title = "Billet simple pour l'Alaska, un roman de Jean Rochefort"; ?>
 
 <?php include("header.php"); ?>
-<p><a href="index.php?controller=login&action=Loginaccueil">Se connecter à l'espace d'administration</a></p>
-
 
     <div class ="row">
-        <div class="col-lg-12"> <p>Derniers articles parus sur le site :</p>
+        <div class="col-lg-12"> 
+            <p><a href="index.php?controller=login&action=Loginaccueil">Se connecter à l'espace d'administration</a></p>
+            <p class="mainpage">Derniers articles parus sur le site :</p>
             <div class ="row">
 <?php
  foreach ($posts as $article)
@@ -35,8 +35,5 @@
         </div>
     </div>
 
-
-
 <?php include("footer.php"); ?>
-
 <?php require('template.php'); ?>

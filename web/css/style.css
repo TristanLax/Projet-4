@@ -1,6 +1,7 @@
 body 
 {
     background-color: #d4d4d4;
+    color: black;
 }
 
 h1,
@@ -8,7 +9,7 @@ h2,
 h3 
 {
     text-align: center;
-   font-family: 'Fira Sans', sans-serif;
+    font-family: 'Fira Sans', sans-serif;
 }
 
 h3
@@ -44,6 +45,12 @@ p
 {
     padding-right: 15px;
     padding-left: 15px;
+    text-align: center;
+}
+
+.lien
+{
+    text-align: center;
 }
 
 a 
@@ -52,33 +59,24 @@ a
     color: blue;
 }
 
-table,
 td 
 {
-    border: 1px solid black;
+    border: 2px solid black;
+    padding: 5px;
 }
 
 table 
 {
+    border: 2px solid black;
     margin: auto;
+    margin-top: 20px;
     text-align: center;
     border-collapse: collapse;
-}
-
-td 
-{
-    padding: 3px;
 }
 
 form 
 {
     text-align: center;
-}
-
-[class*="col-"] 
-{
-    text-align: center;
-    color: black;
 }
 
 .header-image 
@@ -98,6 +96,7 @@ form
 
 .footer
 {
+    margin-top: 120px;
     background-color: #0c1315;
     color: black;
     border: 2px solid #0c1315;
@@ -112,5 +111,31 @@ form
 
 .footer-text
 {
-    padding: 5px;
+    padding: 2px;
+    color: #f0efee;
+    text-align: center;
+    margin-bottom: 0px;
+}
+
+.commentaires
+{
+    margin-top: 50px;
+}
+
+.comform
+{
+    margin-bottom: 50px;
+}
+
+.mainpage
+{
+    margin-top: 50px;
+}
+
+.supporttitle
+{
+    margin-top: 50px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
 }
