@@ -1,22 +1,17 @@
-<?php $title = "Administration"; ?>
-
 <?php if (!isset($_SESSION['secured'])) 
 {
     header("location: index.php");
 }
 ?>
 
+<?php include("header.php"); ?>
 
-<?php ob_start(); ?>
+<?php $title = "Administration"; ?>
+
 <p><a href="index.php">Retourner sur le site</a></p>
 <p><a href="index.php?controller=admin&action=reportedComments">Accèder à la modération des commentaires</a></p>
 <p><a href="index.php?controller=admin&action=logout">Se deconnecter</a></p>
 
-
-<h1>Billet simple pour l'Alaska</h1>
-
-
-<h2>Un roman de Jean Rochefort</h2>
 
 <?php
 {

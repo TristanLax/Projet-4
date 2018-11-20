@@ -1,12 +1,11 @@
 <?php if (!isset($_SESSION['secured'])) 
 {
     header("location: index.php");
-}
+} ?>
 
-$title = htmlspecialchars($article->getTitle()); ?>
+<?php include("header.php"); ?>
+<?php $title = htmlspecialchars($article->getTitle()); ?>
 
-<?php ob_start(); ?>
-<h1>Billet simple pour l'Alaska</h1>
 <p><a href="index.php?controller=admin&action=Adminaccueil">Retour a l'Administration</a></p>
 
 <div class="news">

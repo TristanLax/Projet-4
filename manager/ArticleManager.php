@@ -7,7 +7,7 @@ class ArticleManager extends Manager
     
     public function getArticle($postId)
     {
-        $sql = 'SELECT id, title, content, DATE_FORMAT(article_date, \'%d/%m/%Y à %Hh%imin%ss\') AS article_date, DATE_FORMAT(article_edit, \'%d/%m/%Y à %Hh%imin%ss\') FROM articles WHERE id = ?';
+        $sql = 'SELECT id, title, content, DATE_FORMAT(article_date, \'%d/%m/%Y\') AS article_date, DATE_FORMAT(article_edit, \'%d/%m/%Y à %Hh%imin%ss\') FROM articles WHERE id = ?';
         $article = $this->fetch($sql, 'Article', [$postId]);
 
         return $article;
@@ -15,7 +15,7 @@ class ArticleManager extends Manager
     
     public function getArticles()
     {
-        $sql = 'SELECT id, title, content, DATE_FORMAT(article_date, \'%d/%m/%Y à %Hh%imin%ss\') AS article_date, DATE_FORMAT(article_edit, \'%d/%m/%Y à %Hh%imin%ss\') AS article_edit FROM articles ORDER BY article_date DESC';
+        $sql = 'SELECT id, title, content, DATE_FORMAT(article_date, \'%d/%m/%Y\') AS article_date, DATE_FORMAT(article_edit, \'%d/%m/%Y à %Hh%imin%ss\') AS article_edit FROM articles ORDER BY article_date DESC';
         $articles = $this->fetchAll($sql, 'Article');
 
         return $articles;

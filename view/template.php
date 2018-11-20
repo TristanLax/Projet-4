@@ -8,7 +8,6 @@
         <link href="web/css/style.css" rel="stylesheet" /> 
 
         <link href="https://fonts.googleapis.com/css?family=Fira+Sans:500" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Lato:700" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
 
         <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=yjsi4djzw00wupol3thu9mxk4mehvvp3ite0bv4ndjtslbh5"></script>
@@ -21,6 +20,8 @@
     </head>
         
     <body>
+        <div class="container-fluid">
         <?= $content ?>
+        </div>
     </body>
 </html>

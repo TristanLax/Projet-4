@@ -1,6 +1,6 @@
-<?php $title = "Connexion"; ?>
+<?php include("header.php");
+$title = "Connexion"; ?>
 
-<?php ob_start(); ?>
 <p><a href="index.php">Retourner sur le site</a></p>
 
 
