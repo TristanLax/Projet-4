@@ -9,6 +9,7 @@ class Article extends Modele
     private $content;
     private $article_date;
     private $article_edit;
+    private $sort;
     
     
     public function __construct(array $params=[])
@@ -69,6 +70,17 @@ class Article extends Modele
     public function getEdit() 
     {
         return $this->article_edit;
+    }
+    
+    public function setSort($sort)
+    {
+        $this->sort = $sort;
+        return $this;
+    }
+    
+    public function getsort() 
+    {
+        return $this->sort;
     }
     
     

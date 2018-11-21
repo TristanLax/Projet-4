@@ -6,6 +6,7 @@
 <?php include("header.php"); ?>
 <?php $title = "Administration"; ?>
 
+
     <div class="row">
     <div class="col-lg-12">
 
@@ -19,6 +20,7 @@
 ?>
 <table>
     <tr>
+        <th>Chapitre</th>
         <th>Titre</th>
         <th>Date d'ajout</th>
         <th>Dernière modification</th>
@@ -29,7 +31,7 @@
     
 foreach ($posts as $article)
 {
- echo '<tr><td>', $article->getTitle(), '</td><td>', $article->getDate(), '</td><td>', ($article->getDate() == $article->getEdit() ? '-' : $article->getEdit()), '</td><td>','<a href="index.php?controller=admin&action=getarticle&id=', $article->getId(), '">Modifier</a> | <a href="index.php?controller=admin&action=supprimer&id=', $article->getId(), '">Supprimer</a> ', '</td></tr>';
+ echo '<tr><td>', $article->getSort(), '</td><td>', $article->getTitle(), '</td><td>', $article->getDate(), '</td><td>', ($article->getDate() == $article->getEdit() ? '-' : $article->getEdit()), '</td><td>','<a href="index.php?controller=admin&action=getarticle&id=', $article->getId(), '">Modifier</a> | <a href="index.php?controller=admin&action=supprimer&id=', $article->getId(),'&sort=', $article->getSort(), '">Supprimer</a> ', '</td></tr>';
 }
 ?>
 </table>

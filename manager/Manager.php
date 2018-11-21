@@ -49,4 +49,18 @@ class Manager {
         return $result;
     }
     
+    protected function query($sql, $params = [])
+    {
+        $req = $this->db->prepare($sql);
+        $req->setFetchMode(PDO::FETCH_ASSOC);
+        $req->execute($params);
+        $resultat = $req->fetch();
+        
+        if (!$resultat) {
+            return null;
+        } 
+
+        return $resultat;
+    }
+    
 }

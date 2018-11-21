@@ -1,10 +1,11 @@
+
 <?php if (!isset($_SESSION['secured'])) 
 {
     header("location: index.php");
 } ?>
 
 <?php include("header.php"); ?>
-<?php $title = htmlspecialchars($article->getTitle()); ?>
+<?php $title = $article->getTitle(); ?>
 
 <div class="row">
     <div class="col-lg-12">
@@ -13,8 +14,7 @@
             <div class="col-lg-12 news mainpage">
                 <div class="newsheader">
                     <h3>
-                        <?= $article->getTitle()?>
-                        , article paru le <?= $article->getDate() ?> et mis à jour le <?=($article->getDate() == $article->getEdit() ? : $article->getEdit()) ?>
+                        Chapitre <?= $article->getSort() ?> : <?= $article->getTitle()?>, chapitre paru le <?= $article->getDate() ?> et mis à jour pour la dernière fois le <?=($article->getDate() == $article->getEdit() ? : $article->getEdit()) ?>
                     </h3>
                 </div>
                 <div class="newstext">
@@ -31,7 +31,9 @@
         <form method="post" action="index.php?controller=admin&action=modifier">
             <div>
                 <label for="title">Titre :</label><br />
-                <input type="text" id="title" name="title" size="30" value="<?= $article->getTitle(); ?>" />
+                <input type="text" id="title" name="title" size="30" value="<?= $article->getTitle(); ?>" /><br />
+                <label for="sort">Numéro du chapitre :</label><br />
+                <input type="text" id="sort" name="sort" size="30" value="<?= $article->getSort(); ?>" />
             </div>
             <div>
                 <label for="content">Contenu :</label><br />

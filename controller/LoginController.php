@@ -13,11 +13,14 @@ class LoginController
     
     public function LoginaccueilAction() 
     {
-        if (isset($_SESSION['secured'])) 
-        {   
+        if (isset($_SESSION['secured']))  {   
             header("location: index.php?controller=admin&action=Adminaccueil");
         }
         else { 
+            $error = '';
+            if (isset($_GET['error'])) {
+                $error = 'Mauvais login ou mot de passe';
+            }
             require('view/loginView.php');
         }
     }
@@ -31,11 +34,11 @@ class LoginController
     $user = $userManager->getUser($email);
         
     if (!$user) {
-        echo 'Mauvais identifiant ou mot de passe !';
+        header("location:index.php?controller=login&action=Loginaccueil&error=true");
         return;
     }
     if (!$user->checkPassword($password)) {
-        echo 'Mauvais identifiant ou mot de passe !';
+        header("location:index.php?controller=login&action=Loginaccueil&error=true");
         return;
     }
         session_start();

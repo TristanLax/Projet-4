@@ -7,8 +7,7 @@ $title = htmlspecialchars($article->getTitle()); ?>
         <div class="col-lg-12 news">
             <div class="newsheader">
                 <h3>
-                    <?= $article->getTitle()?>
-                    , un article écrit le <?= $article->getDate() ?>
+                    Chapitre <?= $article->getSort() ?> : <?= $article->getTitle()?>
                 </h3>
             </div>
             <div class="newstext">
@@ -42,9 +41,11 @@ $title = htmlspecialchars($article->getTitle()); ?>
             foreach ($comments as $comment)
             {
             ?>
+                <div>
                 <p>Commentaire écrit par <strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getDate() ?></p>
                 <p><?= nl2br(htmlspecialchars($comment->getComment())) ?></p>
-                <a href="index.php?controller=front&action=signaler&id=<?=$comment->getId()?>">Signaler ce commentaire</a>
+                <p><a href="index.php?controller=front&action=signaler&id=<?=$comment->getId()?>">Signaler ce commentaire</a></p>
+                </div>
             <?php
             }
             ?>

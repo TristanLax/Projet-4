@@ -62,7 +62,7 @@ class AdminController
     public function modifierAction() 
     {
         $ArticleManager = new ArticleManager();
-        $ArticleManager->editArticle($_POST['id'], $_POST['title'], $_POST['content']);
+        $ArticleManager->editArticle($_POST['id'], $_POST['title'], $_POST['content'],$_POST['sort']);
         
         header('location: index.php?controller=admin&action=getarticle&id='.$_POST['id']);
     }
@@ -70,7 +70,7 @@ class AdminController
     public function supprimerAction() 
     {
         $deleteArticle = new ArticleManager();
-        $deleteArticle->deleteArticle($_GET['id']);
+        $deleteArticle->deleteArticle($_GET['id'], $_GET['sort']);
         
         header('location: index.php?controller=admin&action=adminaccueil');
     }

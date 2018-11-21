@@ -15,8 +15,7 @@
                 <div class="col-lg-12 news">
                     <div class="newsheader">
                         <h3>
-                            <?= $article->getTitle()?>
-                            , un article écrit le <?= $article->getDate() ?>
+                            Chapitre <?= $article->getSort() ?> : <?= $article->getTitle()?>
                         </h3>
                     </div>
                     <div class="newstext">

@@ -18,6 +18,7 @@ $title = "Connexion"; ?>
                 <input type="password" id="password" name="password" size="30" />
             </div>
             <div>
+                <p><?= $error ?></p>
                 <br /><input type="submit" name="connexion" value="Connexion" />
             </div>
         </form>
