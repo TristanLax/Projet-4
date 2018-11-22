@@ -14,7 +14,7 @@
         <p><a href="index.php?controller=admin&action=reportedComments">Accèder à la modération des commentaires</a></p>
         <p><a href="index.php?controller=admin&action=logout">Se deconnecter</a></p>
         
-        <h2>Modifier un article :</h2>
+        <h2>Modifier un chapitre :</h2>
 <?php
 {
 ?>
@@ -29,9 +29,9 @@
     
 <?php
     
-foreach ($posts as $article)
+foreach ($chapitres as $chapitre)
 {
- echo '<tr><td>', $article->getSort(), '</td><td>', $article->getTitle(), '</td><td>', $article->getDate(), '</td><td>', ($article->getDate() == $article->getEdit() ? '-' : $article->getEdit()), '</td><td>','<a href="index.php?controller=admin&action=getarticle&id=', $article->getId(), '">Modifier</a> | <a href="index.php?controller=admin&action=supprimer&id=', $article->getId(),'&sort=', $article->getSort(), '">Supprimer</a> ', '</td></tr>';
+ echo '<tr><td>', $chapitre->getSort(), '</td><td>', $chapitre->getTitle(), '</td><td>', $chapitre->getDate(), '</td><td>', ($chapitre->getDate() == $chapitre->getEdit() ? '-' : $chapitre->getEdit()), '</td><td>','<a href="index.php?controller=admin&action=getchapitre&id=', $chapitre->getId(), '">Modifier</a> | <a href="index.php?controller=admin&action=supprimer&id=', $chapitre->getId(),'&sort=', $chapitre->getSort(), '">Supprimer</a> ', '</td></tr>';
 }
 ?>
 </table>
@@ -42,7 +42,7 @@ foreach ($posts as $article)
     </div>
         <div class="col-lg-12">
 
-            <h2 class="mainpage">Ecrire un nouvel article : </h2>
+            <h2 class="mainpage">Ecrire un nouveau chapitre : </h2>
 
                 <form method="post" action="<?php echo 'index.php?controller=admin&action=envoyer' ?>">
                     <div>

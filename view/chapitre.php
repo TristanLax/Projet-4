@@ -1,5 +1,5 @@
 <?php include("header.php");
-$title = htmlspecialchars($article->getTitle()); ?>
+$title = htmlspecialchars($chapitre->getTitle()); ?>
 
     <div class ="row">
         <div class="col-lg-12">
@@ -7,11 +7,11 @@ $title = htmlspecialchars($article->getTitle()); ?>
         <div class="col-lg-12 news">
             <div class="newsheader">
                 <h3>
-                    Chapitre <?= $article->getSort() ?> : <?= $article->getTitle()?>
+                    Chapitre <?= $chapitre->getSort() ?> : <?= $chapitre->getTitle()?>
                 </h3>
             </div>
             <div class="newstext">
-                <p><?= $article->getContent() ?></p>
+                <p><?= $chapitre->getContent() ?></p>
             </div>
         </div>
         </div>
@@ -22,7 +22,7 @@ $title = htmlspecialchars($article->getTitle()); ?>
         <div class="col-lg-12">
             <h2 class="commentaires">Commentaires</h2>
 
-            <form method="post" action="index.php?controller=front&action=addComment&id=<?=$article->getId() ?>" class="comform">
+            <form method="post" action="index.php?controller=front&action=addComment&id=<?=$chapitre->getId() ?>" class="comform">
                 <div>
                     <label for="author">Auteur</label><br />
                     <input type="text" id="author" name="author" />
@@ -32,7 +32,7 @@ $title = htmlspecialchars($article->getTitle()); ?>
                     <textarea id="comment" name="comment"></textarea>
                 </div>
                 <div>   
-                    <input type="hidden" name="article_id" value="<?= $article->getId()?>" />
+                    <input type="hidden" name="chapitre_id" value="<?= $chapitre->getId()?>" />
                     <input type="submit" />
                 </div>
             </form>

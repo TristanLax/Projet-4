@@ -5,18 +5,18 @@ Autoloader::register();
 class CommentManager extends Manager
 {
 
-    public function getComments($postId)
+    public function getComments($chapitre_id)
     {
-        $sql = 'SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date FROM comments WHERE article_id = ? ORDER BY comment_date DESC';
-        $comments = $this->fetchAll($sql, 'Comment', [$postId]);
+        $sql = 'SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date FROM comments WHERE chapitre_id = ? ORDER BY comment_date DESC';
+        $comments = $this->fetchAll($sql, 'Comment', [$chapitre_id]);
 
         return $comments;
     }
     
-    public function postComment($article_id, $author, $comment)
+    public function postComment($chapitre_id, $author, $comment)
     {
-        $sql = 'INSERT INTO comments(article_id, author, comment, reports, comment_date) VALUES(?, ?, ?, 0, NOW())';
-        $addComment = $this->upsert($sql, [$article_id, $author, $comment]);
+        $sql = 'INSERT INTO comments(chapitre_id, author, comment, reports, comment_date) VALUES(?, ?, ?, 0, NOW())';
+        $addComment = $this->upsert($sql, [$chapitre_id, $author, $comment]);
 
         return $addComment;
     }

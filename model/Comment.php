@@ -6,7 +6,7 @@ class Comment extends Modele
 {
     
     private $id;
-    private $article_id;
+    private $chapitre_id;
     private $author;
     private $comment;
     private $reports;
@@ -29,15 +29,15 @@ class Comment extends Modele
         return $this->id;
     }
     
-    public function setArticle_id($article_id)
+    public function setChapitre_id($chapitre_id)
     {
-        $this->article_id = $article_id;
+        $this->chapitre_id = $chapitre_id;
         return $this;
     }
     
-    public function getArticle_id() 
+    public function getChapitre_id() 
     {
-        return $this->article_id;
+        return $this->chapitre_id;
     }
     
     public function setAuthor($author)

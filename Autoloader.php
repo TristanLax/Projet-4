@@ -10,10 +10,10 @@ class Autoloader {
         if($class == 'AdminController' || $class ==  'Controller' || $class ==  'FrontController' || $class ==  'LoginController'){
             include 'Controller/'.$class.'.php';
         }
-        elseif ($class ==  'ArticleManager' || $class ==  'CommentManager' || $class == 'DB' || $class ==  'Manager' || $class ==  'UserManager') {
+        elseif ($class ==  'ChapitreManager' || $class ==  'CommentManager' || $class == 'DB' || $class ==  'Manager' || $class ==  'UserManager') {
             include 'Manager/'.$class.'.php';
         }
-        elseif ($class == 'Article' || $class == 'Comment' || $class == 'Modele' || $class == 'User') {
+        elseif ($class == 'Chapitre' || $class == 'Comment' || $class == 'Modele' || $class == 'User') {
             
             include 'Model/'.$class.'.php';
         }

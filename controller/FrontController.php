@@ -8,20 +8,20 @@ class FrontController
     
     public function AccueilAction() 
     {
-        $ArticleManager = new ArticleManager();
-        $posts = $ArticleManager->getArticles();
-        require('view/listPostsView.php');
+        $ChapitreManager = new ChapitreManager();
+        $chapitres = $ChapitreManager->getChapitres();
+        require('view/listeChapitres.php');
     }
     
-    public function GetarticleAction() 
+    public function GetchapitreAction() 
     {
-        $ArticleManager = new ArticleManager($_GET['id']);
+        $ChapitreManager = new ChapitreManager($_GET['id']);
         $CommentManager = new CommentManager($_GET['id']);
 
-        $article = $ArticleManager->getArticle($_GET['id']);
+        $chapitre = $ChapitreManager->getChapitre($_GET['id']);
         $comments = $CommentManager->getComments($_GET['id']);
 
-        require('view/postView.php');
+        require('view/chapitre.php');
     }
 
     public function signalerAction() 
@@ -36,9 +36,9 @@ class FrontController
     public function addcommentAction() 
     {
         $CommentManager = new CommentManager();
-        $CommentManager->postComment($_POST["article_id"], $_POST["author"], $_POST["comment"]);
+        $CommentManager->postComment($_POST["chapitre_id"], $_POST["author"], $_POST["comment"]);
 
-        header('Location: index.php?controller=front&action=getarticle&id='. $_POST['article_id']);
+        header('Location: index.php?controller=front&action=getchapitre&id='. $_POST['chapitre_id']);
     }
     
 }

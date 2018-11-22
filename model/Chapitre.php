@@ -2,13 +2,13 @@
 
 Autoloader::register();
 
-class Article extends Modele 
+class Chapitre extends Modele 
 {
     private $id;
     private $title;
     private $content;
-    private $article_date;
-    private $article_edit;
+    private $add_date;
+    private $edit_date;
     private $sort;
     
     
@@ -50,26 +50,26 @@ class Article extends Modele
         return $this->content;
     }
     
-    public function setArticle_date($article_date)
+    public function setAdd_date($add_date)
     {
-        $this->article_date = $article_date;
+        $this->add_date = $add_date;
         return $this;
     }
     
     public function getDate() 
     {
-        return $this->article_date;
+        return $this->add_date;
     }
     
-    public function setArticle_edit($article_edit)
+    public function setEdit_date($edit_date)
     {
-        $this->article_edit = $article_edit;
+        $this->edit_date = $edit_date;
         return $this;
     }
     
     public function getEdit() 
     {
-        return $this->article_edit;
+        return $this->edit_date;
     }
     
     public function setSort($sort)

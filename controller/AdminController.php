@@ -9,24 +9,24 @@ class AdminController
     
     public function adminaccueilAction()
     {
-        $ArticleManager = new ArticleManager();
-        $posts = $ArticleManager->getArticles();
-        require('view/adminView.php');
+        $ChapitreManager = new ChapitreManager();
+        $chapitres = $ChapitreManager->getChapitres();
+        require('view/admin.php');
     }
     
-    public function getArticleAction()
+    public function getchapitreAction()
     {
-        $ArticleManager = new ArticleManager($_GET['id']);
-        $article = $ArticleManager->getArticle($_GET['id']);
+        $ChapitreManager = new ChapitreManager($_GET['id']);
+        $chapitre = $ChapitreManager->getChapitre($_GET['id']);
         
-        require('view/articleView.php');
+        require('view/adminChapitre.php');
     }
     
-    public function reportedCommentsAction()
+    public function reportedcommentsAction()
     {
         $CommentManager = new CommentManager();
         $reportedComments = $CommentManager->getReports();
-        require('view/moderationView.php');
+        require('view/moderation.php');
     }
     
     public function logoutAction()
@@ -53,24 +53,24 @@ class AdminController
     
     public function envoyerAction() 
     {
-        $ArticleManager = new ArticleManager();
-        $ArticleManager->postArticle($_POST["title"], $_POST["content"]);
+        $ChapitreManager = new ChapitreManager();
+        $ChapitreManager->postChapitre($_POST["title"], $_POST["content"]);
         
         header('location: index.php?controller=admin&action=adminaccueil');
     }
 
     public function modifierAction() 
     {
-        $ArticleManager = new ArticleManager();
-        $ArticleManager->editArticle($_POST['id'], $_POST['title'], $_POST['content'],$_POST['sort']);
+        $ChapitreManager = new ChapitreManager();
+        $ChapitreManager->editChapitre($_POST['id'], $_POST['title'], $_POST['content'],$_POST['sort']);
         
-        header('location: index.php?controller=admin&action=getarticle&id='.$_POST['id']);
+        header('location: index.php?controller=admin&action=getchapitre&id='.$_POST['id']);
     }
 
     public function supprimerAction() 
     {
-        $deleteArticle = new ArticleManager();
-        $deleteArticle->deleteArticle($_GET['id'], $_GET['sort']);
+        $ChapitreManager = new ChapitreManager();
+        $ChapitreManager->deleteChapitre($_GET['id'], $_GET['sort']);
         
         header('location: index.php?controller=admin&action=adminaccueil');
     }
