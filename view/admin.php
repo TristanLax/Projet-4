@@ -13,6 +13,7 @@
         <p><a href="index.php">Retourner sur le site</a></p>
         <p><a href="index.php?controller=admin&action=reportedComments">Accèder à la modération des commentaires</a></p>
         <p><a href="index.php?controller=admin&action=logout">Se deconnecter</a></p>
+        <div class="modal"></div>
         
         <h2>Modifier un chapitre :</h2>
 <?php
@@ -31,15 +32,33 @@
     
 foreach ($chapitres as $chapitre)
 {
- echo '<tr><td>', $chapitre->getSort(), '</td><td>', $chapitre->getTitle(), '</td><td>', $chapitre->getDate(), '</td><td>', ($chapitre->getDate() == $chapitre->getEdit() ? '-' : $chapitre->getEdit()), '</td><td>','<a href="index.php?controller=admin&action=getchapitre&id=', $chapitre->getId(), '">Modifier</a> | <a href="index.php?controller=admin&action=supprimer&id=', $chapitre->getId(),'&sort=', $chapitre->getSort(), '">Supprimer</a> ', '</td></tr>';
+ echo '<tr><td>', $chapitre->getSort(), '</td><td>', $chapitre->getTitle(), '</td><td>', $chapitre->getDate(), '</td><td>', ($chapitre->getDate() == $chapitre->getEdit() ? '-' : $chapitre->getEdit()), '</td><td>','<a class="modifier" href="index.php?controller=admin&action=getchapitre&id=', $chapitre->getId(), '">Modifier</a> | <a class="supprimer" data-toggle="modal" data-target="#deleteChapter" data-chapterid="'.$chapitre->getId().'" href="#">Supprimer</a> ', '</td></tr>';
 }
 ?>
 </table>
 <?php
 }
 ?>
-    
+        
+<div class="modal fade" id="deleteChapter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="ModalTitle">Voulez-vous supprimer ce chapitre ?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>   
+   <input type='hidden' id='modal-chapter-id' />
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Retour</button>
+        <button type="button" class="btn btn-primary" id="confirmer">Confirmer</button>
+      </div>
     </div>
+  </div>
+</div>
+
+        
         <div class="col-lg-12">
 
             <h2 class="mainpage">Ecrire un nouveau chapitre : </h2>
@@ -60,6 +79,7 @@ foreach ($chapitres as $chapitre)
 
         </div>
     </div>
+</div>
 
 <?php include("footer.php"); ?>
 <?php require('template.php'); ?>

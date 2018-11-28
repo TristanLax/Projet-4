@@ -70,9 +70,7 @@ class AdminController
     public function supprimerAction() 
     {
         $ChapitreManager = new ChapitreManager();
-        $ChapitreManager->deleteChapitre($_GET['id'], $_GET['sort']);
-        
-        header('location: index.php?controller=admin&action=adminaccueil');
+        $ChapitreManager->deleteChapitre($_GET['id']);
     }
 
 }

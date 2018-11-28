@@ -25,14 +25,14 @@ $title = htmlspecialchars($chapitre->getTitle()); ?>
             <form method="post" action="index.php?controller=front&action=addComment&id=<?=$chapitre->getId() ?>" class="comform">
                 <div>
                     <label for="author">Auteur</label><br />
-                    <input type="text" id="author" name="author" />
+                    <input type="text" id="author" name="author" size="25" />
                 </div>
                 <div>
                     <label for="comment">Commentaire</label><br />
-                    <textarea id="comment" name="comment"></textarea>
+                    <textarea id="comment" name="comment" rows="4" cols="30"></textarea>
                 </div>
                 <div>   
-                    <input type="hidden" name="chapitre_id" value="<?= $chapitre->getId()?>" />
+                    <input type="hidden" name="chapitre_id" value="<?= $chapitre->getId()?>" /><br/>
                     <input type="submit" />
                 </div>
             </form>
