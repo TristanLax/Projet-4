@@ -49,10 +49,14 @@ class ChapitreManager extends Manager
         $edit->execute();
     }
     
-    public function deleteChapitre($id)
+    public function deleteChapitre($id, $sort)
     {
         $req = $this->db->exec('DELETE FROM chapitres WHERE id = '.$id);
         $req = $this->db->exec('DELETE FROM comments WHERE chapitre_id = '.$id);
+        $sql = 'UPDATE chapitres SET sort = sort -1 WHERE sort >'.$sort;
+        $correctSort = $this->upsert($sql, [$sort]);
+        
+        return $correctSort;
     }
     
 }

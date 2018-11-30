@@ -3,8 +3,12 @@ $title = "Connexion"; ?>
 
 <div class="row">
     <div class="col-lg-12">
+        <nav>
+            <ul class="menu">
+                <li><a href="index.php">Retourner sur le site</a></li>
+            </ul>
+        </nav>
         
-        <p><a href="index.php">Retourner sur le site</a></p>
         <h2 class="mainpage">Se connecter :</h2>
 
         <form class="login" action="<?php echo 'index.php?controller=login&action=login' ?>" method="post">

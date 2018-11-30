@@ -9,7 +9,12 @@
 
 <div class="row">
     <div class="col-lg-12">
-        <p><a href="index.php?controller=admin&action=Adminaccueil">Retour a l'Administration</a></p>
+        
+        <nav>
+            <ul class="menu">
+                <li><a href="index.php?controller=admin&action=Adminaccueil">Retourner à l'espace d'administration</a></li>
+            </ul>
+        </nav>
 
             <div class="col-lg-12 news mainpage">
                 <div class="newsheader">

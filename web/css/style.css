@@ -166,6 +166,24 @@ form
     font-weight: bold;
 }
 
+.menu
+{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: yellow;
+    border-radius: 6px;
+    list-style-type: none;
+}
+
+
+li
+{
+    display: inline;
+}
+
+
 
 /* Petits écrans */
 
@@ -215,6 +233,11 @@ form
         font-size: 1.6em;
     }
     
+    .menu
+    {
+        background-color: blue;
+    }
+    
     
 }
 
@@ -241,5 +264,17 @@ all and (max-device-width: 480px)
     .header-text
     {
         font-size: 1.4em;
+    }
+    
+    .menu
+    {
+         display: flex;
+        flex-direction: column;
+        background-color: green;
+    }
+    
+    li
+    {
+        margin: 2px;
     }
 }

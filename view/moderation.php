@@ -11,11 +11,15 @@ $title = "Moderation"; ?>
 <div class="row">
     <div class="col-lg-12">
 
-<p><a href="index.php?controller=admin&action=Adminaccueil">Retourner à l'espace d'administration</a></p>
+        <nav>
+            <ul class="menu">
+                <li><a href="index.php?controller=admin&action=Adminaccueil">Retourner à l'espace d'administration</a></li>
+            </ul>
+        </nav>
         
-    <h2 class="mainpage">Moderation des commentaires :</h2>
-        
-    <p class="supporttitle">Liste des commentaires signalés :</p>
+        <h2 class="mainpage">Moderation des commentaires :</h2>
+
+        <p class="supporttitle">Liste des commentaires signalés :</p>
     <?php
     {
     ?>

@@ -3,8 +3,12 @@
 <?php include("header.php"); ?>
 
     <div class ="row">
-        <div class="col-lg-12"> 
-            <p><a href="index.php?controller=login&action=Loginaccueil">Se connecter à l'espace d'administration</a></p>
+        <div class="col-lg-12">
+            <nav>
+                <ul class="menu">
+                    <li><a href="index.php?controller=login&action=Loginaccueil">Se connecter à l'espace d'administration</a></li>
+                </ul>
+            </nav>
             <p class="mainpage">Derniers chapitres parus sur le site :</p>
             <div class ="row">
 <?php
@@ -19,13 +23,13 @@
                         </h3>
                     </div>
                     <div class="newstext">
-                    <p>
-                        <?= $chapitre->getContent() ?>
-                    </p>
+                        <p>
+                            <?= $chapitre->getContent() ?>
+                        </p>
                     </div>
                         <p class="lien"><a href="index.php?controller=front&action=getchapitre&id=<?= $chapitre->getId() ?>">Accéder au chapitre</a></p>
                 </div>
-                </div>
+            </div>
 <?php
 }
 ?>

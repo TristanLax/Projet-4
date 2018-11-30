@@ -3,17 +3,23 @@ $title = htmlspecialchars($chapitre->getTitle()); ?>
 
     <div class ="row">
         <div class="col-lg-12">
-            <p><a href="index.php">Retour au site</a></p>
-        <div class="col-lg-12 news">
-            <div class="newsheader">
-                <h3>
-                    Chapitre <?= $chapitre->getSort() ?> : <?= $chapitre->getTitle()?>
-                </h3>
+            
+            <nav>
+                <ul class="menu">
+                    <li><a href="index.php">Retour au site</a></li>
+                </ul>
+            </nav>
+
+            <div class="col-lg-12 news">
+                <div class="newsheader">
+                    <h3>
+                        Chapitre <?= $chapitre->getSort() ?> : <?= $chapitre->getTitle()?>
+                    </h3>
+                </div>
+                <div class="newstext">
+                    <p><?= $chapitre->getContent() ?></p>
+                </div>
             </div>
-            <div class="newstext">
-                <p><?= $chapitre->getContent() ?></p>
-            </div>
-        </div>
         </div>
     </div>
 
@@ -39,13 +45,19 @@ $title = htmlspecialchars($chapitre->getTitle()); ?>
             <div class ="row">
             <?php
             foreach ($comments as $comment)
-            {
-            ?>  <div class="col-lg-12">
+            { ?>  
+                <div class="col-lg-12">
+                    
                     <div class="col-lg-12 comment">
-                <div class=""><p>Commentaire écrit par <strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getDate() ?></p></div>
-                <div class=""><p><?= nl2br(htmlspecialchars($comment->getComment())) ?></p></div>
-                <p><a href="index.php?controller=front&action=signaler&id=<?=$comment->getId()?>">Signaler ce commentaire</a></p>
+                        
+                        <div class=""><p>Commentaire écrit par <strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getDate() ?></p></div>
+                        
+                        <div class=""><p><?= nl2br(htmlspecialchars($comment->getComment())) ?></p></div>
+                        
+                        <p><a href="index.php?controller=front&action=signaler&id=<?=$comment->getId()?>">Signaler ce commentaire</a></p>
+                        
                     </div>
+                    
                 </div>
                 
             <?php

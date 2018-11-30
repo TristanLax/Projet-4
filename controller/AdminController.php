@@ -70,7 +70,7 @@ class AdminController
     public function supprimerAction() 
     {
         $ChapitreManager = new ChapitreManager();
-        $ChapitreManager->deleteChapitre($_GET['id']);
+        $ChapitreManager->deleteChapitre($_GET['id'], $_GET['sort']);
     }
 
 }
