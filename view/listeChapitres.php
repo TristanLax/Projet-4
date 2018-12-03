@@ -3,12 +3,17 @@
 <?php include("header.php"); ?>
 
     <div class ="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12" id="menu">
             <nav>
                 <ul class="menu">
                     <li><a href="index.php?controller=login&action=Loginaccueil">Se connecter à l'espace d'administration</a></li>
                 </ul>
             </nav>
+        </div>
+    </div>
+
+        <div class ="row">
+            <div class="col-lg-12">
             <p class="mainpage">Derniers chapitres parus sur le site :</p>
             <div class ="row">
 <?php

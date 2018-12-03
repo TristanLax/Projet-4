@@ -1,14 +1,21 @@
 <?php include("header.php");
 $title = htmlspecialchars($chapitre->getTitle()); ?>
 
+
+
+<div class ="row">
+    <div class="col-lg-12" id="menu">
+        <nav>
+            <ul class="menu">
+                <li><a href="index.php">Retour au site</a></li>
+            </ul>
+         </nav>
+    </div>
+</div>
+
+
     <div class ="row">
         <div class="col-lg-12">
-            
-            <nav>
-                <ul class="menu">
-                    <li><a href="index.php">Retour au site</a></li>
-                </ul>
-            </nav>
 
             <div class="col-lg-12 news">
                 <div class="newsheader">
@@ -45,19 +52,16 @@ $title = htmlspecialchars($chapitre->getTitle()); ?>
             <div class ="row">
             <?php
             foreach ($comments as $comment)
-            { ?>  
+            { 
+            ?>  
                 <div class="col-lg-12">
-                    
                     <div class="col-lg-12 comment">
                         
                         <div class=""><p>Commentaire écrit par <strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getDate() ?></p></div>
-                        
                         <div class=""><p><?= nl2br(htmlspecialchars($comment->getComment())) ?></p></div>
-                        
                         <p><a href="index.php?controller=front&action=signaler&id=<?=$comment->getId()?>">Signaler ce commentaire</a></p>
                         
                     </div>
-                    
                 </div>
                 
             <?php

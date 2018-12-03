@@ -7,15 +7,19 @@
 <?php include("header.php"); ?>
 <?php $title = $chapitre->getTitle(); ?>
 
-<div class="row">
-    <div class="col-lg-12">
-        
+
+<div class ="row">
+    <div class="col-lg-12" id="menu">
         <nav>
             <ul class="menu">
                 <li><a href="index.php?controller=admin&action=Adminaccueil">Retourner à l'espace d'administration</a></li>
             </ul>
-        </nav>
+         </nav>
+    </div>
+</div>
 
+<div class="row">
+    <div class="col-lg-12">
             <div class="col-lg-12 news mainpage">
                 <div class="newsheader">
                     <h3>

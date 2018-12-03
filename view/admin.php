@@ -7,20 +7,24 @@
 <?php $title = "Administration"; ?>
 
 
-<div class="row">
-    <div class="col-lg-12">
+<div class ="row">
+    <div class="col-lg-12" id="menu">
         <nav>
             <ul class="menu">
                 <li><a href="index.php">Retourner à l'accueil</a></li>
                 <li><a href="index.php?controller=admin&action=reportedComments">Modération des commentaires</a></li>
                 <li><a href="index.php?controller=admin&action=logout">Se deconnecter</a></li>
             </ul>
-        </nav>
+         </nav>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12">
         
         <h2>Modifier un chapitre :</h2>
-<?php
-{
-?>
+
 <table>
     <tr>
         <th>Chapitre</th>
@@ -39,7 +43,7 @@ foreach ($chapitres as $chapitre)
         <td> <?= $chapitre->getSort() ?> </td>
         <td> <?= $chapitre->getTitle() ?> </td>
         <td> <?= $chapitre->getDate() ?></td>
-        <td> <?= ($chapitre->getDate() == $chapitre->getEdit() ? : $chapitre->getEdit())?></td>
+        <td><?= ($chapitre->getDate() == $chapitre->getEdit() ? : $chapitre->getEdit()) ?></td>
         <td> <a class="modifier" href="index.php?controller=admin&action=getchapitre&id=<?= $chapitre->getId() ?>">Modifier</a> |
              <a class="supprimer" data-toggle="modal" data-target="#deleteChapter" data-chapterid="<?= $chapitre->getId() ?>" data-chaptersort="<?= $chapitre->getSort() ?>" href="#">Supprimer</a>
         </td>
@@ -49,9 +53,7 @@ foreach ($chapitres as $chapitre)
 }
 ?>
 </table>
-<?php
-}
-?>
+
         
 <div class="modal fade" id="deleteChapter" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -80,7 +82,7 @@ foreach ($chapitres as $chapitre)
                 <form method="post" action="<?php echo 'index.php?controller=admin&action=envoyer' ?>">
                     <div>
                         <label for="title">Titre :</label><br />
-                        <input type="text" id="title" name="title" size="30" />
+                        <input type="text" id="title" name="title" size="25" />
                     </div>
                     <div>
                         <label for="content">Contenu :</label><br />
