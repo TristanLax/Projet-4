@@ -84,5 +84,4 @@ class Comment extends Modele
         return $this->comment_date;
     }
     
-    
 }

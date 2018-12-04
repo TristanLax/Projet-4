@@ -6,7 +6,6 @@ Autoloader::register();
 class AdminController 
 {
     
-    
     public function adminaccueilAction()
     {
         $ChapitreManager = new ChapitreManager();
@@ -72,6 +71,6 @@ class AdminController
         $ChapitreManager = new ChapitreManager();
         $ChapitreManager->deleteChapitre($_GET['id'], $_GET['sort']);
     }
-
+    
 }
 

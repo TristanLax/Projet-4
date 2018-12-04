@@ -6,11 +6,6 @@ Autoloader::register();
 class LoginController
 {
     
-    public function __construct() 
-    {
-        
-    }
-    
     public function LoginaccueilAction() 
     {
         if (isset($_SESSION['secured']))  {   
@@ -45,6 +40,5 @@ class LoginController
         $_SESSION['secured'] = "secured";
         header("location: index.php?controller=admin&action=Adminaccueil");
     }
-    
     
 }

@@ -4,7 +4,7 @@ Autoloader::register();
 
 class CommentManager extends Manager
 {
-
+    
     public function getComments($chapitre_id)
     {
         $sql = 'SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date FROM comments WHERE chapitre_id = ? ORDER BY comment_date DESC';

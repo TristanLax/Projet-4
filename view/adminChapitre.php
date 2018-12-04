@@ -1,4 +1,3 @@
-
 <?php if (!isset($_SESSION['secured'])) 
 {
     header("location: index.php");
@@ -18,12 +17,13 @@
     </div>
 </div>
 
+
 <div class="row">
     <div class="col-lg-12">
             <div class="col-lg-12 news mainpage">
                 <div class="newsheader">
                     <h3>
-                        Chapitre <?= $chapitre->getSort() ?> : <?= $chapitre->getTitle()?>, chapitre paru le <?= $chapitre->getDate() ?> et mis à jour pour la dernière fois le <?=($chapitre->getDate() == $chapitre->getEdit() ? : $chapitre->getEdit()) ?>
+                        Chapitre <?= $chapitre->getSort() ?> : <?= $chapitre->getTitle()?>, chapitre paru le <?= $chapitre->getDate() ?> et mis à jour pour la dernière fois le <?=$chapitre->getEdit() ?>
                     </h3>
                 </div>
                 <div class="newstext">
@@ -32,6 +32,7 @@
             </div>
     </div>
 </div>
+
 
 <div class="row">
     <div class="col-lg-12 mainpage">
@@ -56,6 +57,7 @@
 
     </div>
 </div>
+
 
 <?php include("footer.php"); ?>
 <?php require('template.php'); ?>

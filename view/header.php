@@ -2,6 +2,7 @@
 ob_start(); ?>
 
 <header>
+    
     <div class="row">
         <div class="col-lg-12">
             <div class="row header">
@@ -14,7 +15,6 @@ ob_start(); ?>
         </div>
     </div>
 
-    
 </header>
 
 

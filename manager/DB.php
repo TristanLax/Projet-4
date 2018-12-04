@@ -1,12 +1,12 @@
 <?php
 
-    class DB 
-    {
-        
+class DB 
+{
+     
     private $connection;
     private static $_instance;
-        
-        
+    
+    
     private function __construct() 
     {
         $this->connection = new \PDO('mysql:host=localhost;dbname=projet;charset=utf8', 'root', '');
@@ -25,4 +25,5 @@
         {
             return $this->connection;
         }
-    }
+    
+}

@@ -4,81 +4,9 @@ body
     color: black;
 }
 
-h1,
-h2,
-h3 
-{
-    text-align: center;
-    font-family: 'Fira Sans', sans-serif;
-}
 
-h3
-{
-    font-size: 1em;
-}
+/* Header */
 
-p 
-{
-    font-family: 'Playfair Display', serif;
-}
-
-.news 
-{
-    background-color: #f0efee;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    color: black;
-    border: 2px solid black;
-    border-radius: 6px;
-    padding: 0px;
-}
-
-.newsheader
-{
-    background-color: #0c1315;
-    color: #f0efee;
-    border: 2px solid #0c1315;
-    border-radius: 0px 0px 6px 6px;
-}
-
-.newstext
-{
-    padding-right: 15px;
-    padding-left: 15px;
-    text-align: center;
-}
-
-.lien
-{
-    text-align: center;
-}
-
-a
-{
-    text-decoration: none;
-    color: #0000ff;
-}
-
-
-td 
-{
-    border: 2px solid black;
-    padding: 5px;
-}
-
-table 
-{
-    border: 2px solid black;
-    margin: auto;
-    margin-top: 20px;
-    text-align: center;
-    border-collapse: collapse;
-}
-
-form 
-{
-    text-align: center;
-}
 
 .header-image 
 {
@@ -94,15 +22,6 @@ form
     color: black;
     border: 2px solid #0c1315;
     border-radius: 0px 0px 6px 6px;
-}
-
-.footer
-{
-    margin-top: 200px;
-    background-color: #0c1315;
-    color: black;
-    border: 2px solid #0c1315;
-    border-radius: 6px 6px 0px 0px;
 }
 
 .header-text
@@ -123,15 +42,134 @@ form
     width: 30%;
     background-color: rgba(0,0,0,0.4);
     border-radius: 6px;
-    
 }
 
-.footer-text
+
+/* Menu */
+
+
+.menu
 {
-    padding: 2px;
-    color: #f0efee;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #a8a8a8;
+    border-radius: 6px;
+    list-style-type: none;
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+#menu
+{
+    padding: 0px;
+}
+
+
+/* Body */
+
+
+h1,
+h2,
+h3 
+{
     text-align: center;
-    margin-bottom: 0px;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+h3
+{
+    font-size: 1em;
+}
+
+.mainpage
+{
+    margin-top: 50px;
+}
+
+.supporttitle
+{
+    margin-top: 50px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+p 
+{
+    font-family: 'Playfair Display', serif;
+}
+
+.lien
+{
+    text-align: center;
+}
+
+a
+{
+    text-decoration: none;
+    color: #0000ff;
+}
+
+th
+{
+    border: 2px solid black;
+    padding: 10px;
+}
+
+td 
+{
+    border: 2px solid black;
+    padding: 5px;
+}
+
+table 
+{
+    margin: auto;
+    margin-top: 20px;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+form 
+{
+    text-align: center;
+}
+
+.comform
+{
+    margin-bottom: 50px;
+}
+
+
+/* Chapitres */
+
+
+.newsheader
+{
+    background-color: #0c1315;
+    color: #f0efee;
+    border: 2px solid #0c1315;
+    border-radius: 0px 0px 6px 6px;
+}
+
+.news 
+{
+    background-color: #f0efee;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: black;
+    border: 2px solid black;
+    border-radius: 6px;
+    padding: 0px;
+}
+
+.newstext
+{
+    padding-right: 15px;
+    padding-left: 15px;
+    text-align: center;
 }
 
 .commentaires
@@ -149,46 +187,27 @@ form
     border-radius: 6px;
 }
 
-.comform
+
+/* Footer */
+
+
+.footer
 {
-    margin-bottom: 50px;
+    margin-top: 200px;
+    background-color: #0c1315;
+    color: black;
+    border: 2px solid #0c1315;
+    border-radius: 6px 6px 0px 0px;
 }
 
-.mainpage
+.footer-text
 {
-    margin-top: 50px;
-}
-
-.supporttitle
-{
-    margin-top: 50px;
-    margin-bottom: 20px;
+    padding: 2px;
+    color: #f0efee;
     text-align: center;
-    font-weight: bold;
+    margin-bottom: 0px;
 }
 
-.menu
-{
-    display: flex;
-    justify-content: space-around;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: #a8a8a8;
-    border-radius: 6px;
-    list-style-type: none;
-}
-
-
-li
-{
-    display: inline;
-}
-
-
-#menu
-{
-    padding: 0px;
-}
 
 
 
@@ -216,6 +235,7 @@ li
     
 }
 
+
 /* Tablettes */
 
 @media all and (min-width: 768px) and (max-width: 992px) 
@@ -240,8 +260,13 @@ li
         font-size: 1.6em;
     }
     
+    th
+    {
+        padding: 5px;
+    }
     
 }
+
 
 /* Smartphones */
 
@@ -261,11 +286,6 @@ all and (max-device-width: 480px)
         padding: 2px;
     }
     
-    #menu
-    {
-        
-    }
-    
     .header-text
     {
         font-size: 1.4em;
@@ -280,5 +300,18 @@ all and (max-device-width: 480px)
     li
     {
         padding: 10px;
+        margin-left: 20px;
     }
+    
+    .cacher
+    {
+        display: none;
+    }
+    
+    th
+    {
+        padding: 2px;
+    }
+    
+    
 }

@@ -11,4 +11,5 @@ class UserManager extends Manager
 
         return $user;  
     }
+    
 }

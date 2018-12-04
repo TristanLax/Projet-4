@@ -8,10 +8,12 @@ $('#deleteChapter').on('show.bs.modal', function (event) {
     modal.find('.modal-title').append();
     modal.find('#modal-chapter-id').val(chapterId);
     modal.find('#modal-chapter-sort').val(chapterSort);
+    
 });
 
 
- $("#confirmer").on("click", function(){
+$("#confirmer").on("click", function(){
+    
      var id = $('#deleteChapter').find('#modal-chapter-id').val();
      var sort = $('#deleteChapter').find('#modal-chapter-sort').val();
      
@@ -22,10 +24,10 @@ $('#deleteChapter').on('show.bs.modal', function (event) {
          success : function(data){
              location.reload(); 
             },
-         
      });
      
    $("#deleteChapter").modal('hide');
- });
+ 
+});
 
 

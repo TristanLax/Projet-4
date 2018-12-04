@@ -1,9 +1,11 @@
 <?php
 
 
-class Manager {
+class Manager 
+{
     
     protected $db;
+    
     
     public function __construct() 
     {

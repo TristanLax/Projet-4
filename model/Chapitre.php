@@ -4,6 +4,7 @@ Autoloader::register();
 
 class Chapitre extends Modele 
 {
+    
     private $id;
     private $title;
     private $content;
@@ -82,7 +83,5 @@ class Chapitre extends Modele
     {
         return $this->sort;
     }
-    
-    
-    
+
 }
