@@ -51,15 +51,14 @@ $title = htmlspecialchars($chapitre->getTitle()); ?>
         
         <div class ="row">
         <?php
-        foreach ($comments as $comment)
-        { 
+        foreach ($comments as $comment) { 
         ?>  
             <div class="col-lg-12">
                 <div class="col-lg-12 comment">
                         
                     <div class=""><p>Commentaire écrit par <strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getDate() ?></p></div>
                     <div class=""><p><?= nl2br(htmlspecialchars($comment->getComment())) ?></p></div>
-                    <p><a href="index.php?controller=front&action=signaler&id=<?=$comment->getId()?>">Signaler ce commentaire</a></p>
+                    <p><a class="signaler" data-commentid="<?= $comment->getId()?>" href="#">Signaler ce commentaire</a></p>
                         
                 </div>
             </div>

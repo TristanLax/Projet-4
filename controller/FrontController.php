@@ -1,7 +1,5 @@
 <?php
 
-Autoloader::register();
-
 
 class FrontController
 {
@@ -20,7 +18,7 @@ class FrontController
 
         $chapitre = $ChapitreManager->getChapitre($_GET['id']);
         $comments = $CommentManager->getComments($_GET['id']);
-
+        
         require('view/chapitre.php');
     }
 
@@ -28,8 +26,6 @@ class FrontController
     {
         $CommentManager = new CommentManager();
         $CommentManager->reportComment($_GET['id']); 
-        
-        header('Location: index.php');
     }
 
 

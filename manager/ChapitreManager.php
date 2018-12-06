@@ -1,6 +1,5 @@
 <?php
 
-Autoloader::register();
 
 class ChapitreManager extends Manager
 {

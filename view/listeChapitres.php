@@ -21,8 +21,7 @@
         
             <div class ="row">
             <?php
-            foreach ($chapitres as $chapitre)
-            {
+            foreach ($chapitres as $chapitre) {
             ?>
                 <div class="col-lg-6">
                     <div class="col-lg-12 news">

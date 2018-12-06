@@ -1,6 +1,5 @@
 <?php
 
-require('Modele.php');
 
 class User extends Modele 
 {

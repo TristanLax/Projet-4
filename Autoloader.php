@@ -13,7 +13,7 @@ class Autoloader {
         elseif ($class ==  'ChapitreManager' || $class ==  'CommentManager' || $class == 'DB' || $class ==  'Manager' || $class ==  'UserManager') {
             include 'Manager/'.$class.'.php';
         }
-        elseif ($class == 'Chapitre' || $class == 'Comment' || $class == 'Modele' || $class == 'User') {
+        elseif ($class == 'Chapitre' || $class == 'Comment' || $class == 'Modele' || $class == 'User' || $class == 'Dispatcher') {
             
             include 'Model/'.$class.'.php';
         }

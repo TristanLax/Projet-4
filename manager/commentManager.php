@@ -1,6 +1,5 @@
 <?php
 
-Autoloader::register();
 
 class CommentManager extends Manager
 {

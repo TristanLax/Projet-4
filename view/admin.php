@@ -1,9 +1,3 @@
-<?php if (!isset($_SESSION['secured'])) 
-{
-    header("location: index.php");
-}
-?>
-
 <?php include("header.php"); ?>
 <?php $title = "Administration"; ?>
 
@@ -36,10 +30,9 @@
                 </tr>
 
             <?php
-            foreach ($chapitres as $chapitre)
-            { 
+            foreach ($chapitres as $chapitre) { 
             ?>
-                <tr>
+                <tr class="chapitre_<?= $chapitre->getId() ?>">
                     <td> <?= $chapitre->getSort() ?> </td>
                     <td> <?= $chapitre->getTitle() ?> </td>
                     <td class="cacher"> <?= $chapitre->getDate() ?></td>

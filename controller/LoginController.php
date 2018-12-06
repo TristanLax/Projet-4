@@ -1,7 +1,5 @@
 <?php 
 
-Autoloader::register();
-
 
 class LoginController
 {

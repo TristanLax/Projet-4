@@ -1,8 +1,3 @@
-<?php if (!isset($_SESSION['secured'])) 
-{
-    header("location: index.php");
-} ?>
-
 <?php include("header.php"); ?>
 <?php $title = $chapitre->getTitle(); ?>
 

@@ -1,6 +1,5 @@
 <?php
 
-Autoloader::register();
 
 class Chapitre extends Modele 
 {

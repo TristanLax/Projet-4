@@ -1,10 +1,15 @@
 <?php
 
-Autoloader::register();
-
 
 class AdminController 
 {
+    
+    public function __construct()
+    {
+        if (!isset($_SESSION['secured'])) {
+            header("location: index.php");
+        }
+    }
     
     public function adminaccueilAction()
     {
@@ -17,7 +22,6 @@ class AdminController
     {
         $ChapitreManager = new ChapitreManager($_GET['id']);
         $chapitre = $ChapitreManager->getChapitre($_GET['id']);
-        
         require('view/adminChapitre.php');
     }
     
@@ -39,15 +43,12 @@ class AdminController
     {
         $CommentManager = new CommentManager();
         $CommentManager->moderateComment($_GET['id']);
-        header('location: index.php?controller=admin&action=reportedComments');
     }
     
     public function ignorerAction() 
     {
         $CommentManager = new CommentManager();
         $CommentManager->ignoreReport($_GET['id']);
-        
-        header('location: index.php?controller=admin&action=reportedComments');
     }
     
     public function envoyerAction() 

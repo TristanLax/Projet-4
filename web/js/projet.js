@@ -8,7 +8,6 @@ $('#deleteChapter').on('show.bs.modal', function (event) {
     modal.find('.modal-title').append();
     modal.find('#modal-chapter-id').val(chapterId);
     modal.find('#modal-chapter-sort').val(chapterSort);
-    
 });
 
 
@@ -22,12 +21,58 @@ $("#confirmer").on("click", function(){
             data : "id=" + id + "&sort=" + sort  ,
             type : 'GET',
          success : function(data){
-             location.reload(); 
+             $('.chapitre_'+ id).remove();
             },
      });
-     
    $("#deleteChapter").modal('hide');
- 
+});
+
+
+$(".signaler").on("click", function() {
+    
+    var comment = $(this);
+    var id = $(this).data('commentid');
+    
+    $.ajax({
+            url : 'index.php?controller=front&action=signaler',
+            data : "id=" + id,
+            type : 'GET',
+         success : function(data){
+             location.reload();
+            },
+     });
+});
+
+
+$(".ignorer").on("click", function() {
+    
+    var comment = $(this);
+    var id = $(this).data('commentid');
+    
+    $.ajax({
+            url : 'index.php?controller=admin&action=ignorer',
+            data : "id=" + id,
+            type : 'GET',
+         success : function(data){
+             location.reload();
+            },
+     });
+});
+
+
+$(".moderer").on("click", function() {
+    
+    var comment = $(this);
+    var id = $(this).data('commentid');
+    
+    $.ajax({
+            url : 'index.php?controller=admin&action=moderer',
+            data : "id=" + id,
+            type : 'GET',
+         success : function(data){
+             location.reload();
+            },
+     });
 });
 
 

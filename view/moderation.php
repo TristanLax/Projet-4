@@ -1,9 +1,3 @@
-<?php if (!isset($_SESSION['secured'])) 
-{
-    header("location: index.php");
-}
-?>
-
 <?php include("header.php");
 $title = "Moderation"; ?>
 
@@ -34,15 +28,14 @@ $title = "Moderation"; ?>
                 </tr>
 
             <?php
-            foreach ($reportedComments as $comment)
-            { 
+            foreach ($reportedComments as $comment) { 
             ?>
                 <tr>
                     <td> <?= $comment->getAuthor() ?> </td>
                     <td> <?= $comment->getComment() ?> </td>
                     <td> <?= $comment->getReports() ?> </td>
-                    <td> <a href="index.php?controller=admin&action=ignorer&id=<?= $comment->getId() ?>">Ignorer</a> |
-                         <a href="index.php?controller=admin&action=moderer&id=<?= $comment->getId() ?>">Moderer</a>
+                    <td> <a class="ignorer" data-commentid="<?= $comment->getId()?>" href="#">Ignorer</a> |
+                         <a class="moderer" data-commentid="<?= $comment->getId()?>" href="#">Moderer</a>
                     </td>
                 </tr>
             <?php 
