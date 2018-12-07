@@ -28,7 +28,9 @@
                     <th class="cacher">Dernière modification</th>
                     <th>Action</th>
                 </tr>
-
+                
+            <!-- Retourne sous forme d'un tableau les objets PHP correspondant aux chapitres disponibles sur le site et stockés dans la BD -->
+                
             <?php
             foreach ($chapitres as $chapitre) { 
             ?>
@@ -45,7 +47,8 @@
             }
             ?>
             </table>
-
+        
+            <!-- Modal récupérant les valeurs "Sort" et "Id" utilisées en appel AJAX et permettant de confirmer ou d'annuler la suppression définitive d'un chapitre du site  -->
         
             <div class="modal fade" id="deleteChapter" tabindex="-1" role="dialog" aria-hidden="true">
               <div class="modal-dialog modal-dialog-centered" role="document">

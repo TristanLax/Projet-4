@@ -1,5 +1,6 @@
 <?php
 
+/* Objet User contenant les attributs tirés de la BDD, ainsi que ses setters/getters. Hérite de Modèle contenant la methode d'hydratation commune. */
 
 class User extends Modele 
 {
@@ -7,6 +8,7 @@ class User extends Modele
     private $id;
     private $email;
     private $password;
+    
     
     public function __construct(array $params=[])
     {
@@ -47,7 +49,8 @@ class User extends Modele
         return $this->password;
     }
         
-        
+    /* Fonction ayant pour simple but de vérifier si le password tapé corresponds au password en DB puis de le return. */  
+    
     public function checkPassword($password)
     {
         return password_verify($password, $this->getPassword());

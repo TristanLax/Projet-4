@@ -12,7 +12,7 @@ $title = "Connexion"; ?>
     </div>
 </div>
 
-
+<!-- Formulaire permettant d'envoyer l'adresse mail et le mot de passe au controlleur pour vérifier les identifiants. -->
 <div class="row">
     <div class="col-lg-12">
         

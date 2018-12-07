@@ -1,5 +1,6 @@
 <?php
 
+/* Autoloader classique chargeant automatiquement la classe appellée en lui ajoutant le chemin correct. */
 
 class Autoloader {
     static function register() {

@@ -26,7 +26,9 @@ $title = "Moderation"; ?>
                     <th>Nombre signalement</th>
                     <th>Action</th>
                 </tr>
-
+                
+            <!-- Retourne les objets commentaires présents en DB sous forme d'un tableau pour faciliter leur modération si nécéssaire, affichant les commentaires par ordre de nombre de signalements reçus. -->
+                
             <?php
             foreach ($reportedComments as $comment) { 
             ?>

@@ -17,15 +17,18 @@
             tinymce.init({
                 selector: '#content'
             });
-
         </script>
+        
+        <!-- Récupère le titre de chaque page de façon indépendante. -->
         
         <title><?= $title ?></title>
 
     </head>
         
     <body>
-
+        
+        <!-- Crée le container-fluid servant de base a tout le flux du site, puis récupère le contenu de $content commencé dans le header et terminé dans le footer. -->
+        
         <div class="container-fluid">
         <?= $content ?>
         </div>

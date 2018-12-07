@@ -1,8 +1,11 @@
 <?php
 
+/* Objet gérant les redirections de l'utilisateur, servant donc de routeur global au site. */
 
 class Dispatcher 
 {
+    
+    /* Fonction acceptant un paramètre, le nom du controlleur utilisé. Si aucun controlleur n'est spéficié, appellera automatiquement le front controlleur. Vérifie ensuite si le controlleur appellé existe puis le retournera, ou retournera une erreur si le controlleur n'existe pas ou n'est pas trouvé .*/
     
     public function getController($params) 
     {
@@ -18,6 +21,8 @@ class Dispatcher
         return $controller;
     }
     
+    /* Fonction acceptant aussi un seul paramètre, le nom de l'action utilisée. Si aucune action n'est spécifiée, appellera automatiquement l'accueil pour afficher la homepage du site. Autrement retournera l'action utilisée/appellée . */
+    
     public function getAction($params) 
     {
         
@@ -28,6 +33,8 @@ class Dispatcher
 
         return $action;
     } 
+    
+    /* Fonction acceptant en paramètre le controlleur et l'action vérifiant simplement si le duo action/controlleur existe bel et bien, et retournera une erreur si ce n'est pas le cas. */
     
     public function checkAction($controller, $action) 
     {

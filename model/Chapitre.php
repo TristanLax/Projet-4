@@ -1,5 +1,6 @@
 <?php
 
+/* Objet chapitre contenant les attributs tirés de la BDD, ainsi que ses setters/getters. Hérite de Modèle contenant la methode d'hydratation commune. */
 
 class Chapitre extends Modele 
 {

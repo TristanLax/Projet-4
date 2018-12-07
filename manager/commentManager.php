@@ -4,6 +4,8 @@
 class CommentManager extends Manager
 {
     
+    /* Methode récupérant l'ID d'un chapitre pour aller chercher via requête SQL les commentaires liés à ce chapitre puis de les return. */
+    
     public function getComments($chapitre_id)
     {
         $sql = 'SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date FROM comments WHERE chapitre_id = ? ORDER BY comment_date DESC';
@@ -11,6 +13,8 @@ class CommentManager extends Manager
 
         return $comments;
     }
+    
+    /* Methode récupérant en paramètres l'ID du chapitre où le commentaire a été écrit, puis le nom de l'auteur et le commentaire avant de les envoyer par requête SQL en DB. */
     
     public function postComment($chapitre_id, $author, $comment)
     {
@@ -20,6 +24,8 @@ class CommentManager extends Manager
         return $addComment;
     }
     
+    /* Methode acceptant l'ID du commentaire que l'on souhaite signaler avant d'utiliser une requête SQL utilisant ladite ID pour notifier et stocker le report. */
+    
     public function reportComment($id) 
     {
         $sql = 'UPDATE comments SET reports = reports +1 WHERE id ='.$id;
@@ -27,6 +33,8 @@ class CommentManager extends Manager
         
         return $reportComment;
     }
+    
+    /* Methode effectuant une requête SQL pour récupèrer la liste des commentaires par nombre decroissant de signalements avant de les fetch en un tableau d'objet. */
     
     public function getReports()
     {
@@ -36,6 +44,8 @@ class CommentManager extends Manager
         return $getReports;
     }
     
+    /* Methode acceptant l'ID du commentaire dont on souhaite annuler les reports avant d'utiliser une requête SQL a partir de l'ID dudit commentaire. */
+    
     public function ignoreReport($id)
     {
         $sql = 'UPDATE comments SET reports = 0 WHERE id = '.$id;
@@ -43,6 +53,8 @@ class CommentManager extends Manager
         
         return $ignoreReport;
     }
+    
+    /* Methode acceptant l'ID du commentaire avant d'effectuer une requête SQL pour en modèrer le contenu par une phrase automatisée et de le notifier en DB. */
     
     public function moderateComment($id)
     {

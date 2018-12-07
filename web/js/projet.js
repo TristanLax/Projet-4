@@ -1,3 +1,5 @@
+/* Gère l'appel a la modal de confirmation de suppression d'article en partie admin une fois l'action "supprimer" appellée. Passe en variable les ID et Sort de l'article puis les envoie a la modal pour permettre leur utilisation en requête AJAX. */
+
 $('#deleteChapter').on('show.bs.modal', function (event) {
     
     var button = $(event.relatedTarget);
@@ -10,6 +12,8 @@ $('#deleteChapter').on('show.bs.modal', function (event) {
     modal.find('#modal-chapter-sort').val(chapterSort);
 });
 
+
+/* Une fois le bouton "confirmer" cliqué pour la suppression d'un article, récupère en variable l'ID et le sort de l'article choisi avant d'effectuer un appel AJAX pour supprimer l'article en DB, retire ensuite la ligne incriminée du HTML pour ne pas forcer un rechargement de la page. */
 
 $("#confirmer").on("click", function(){
     
@@ -28,6 +32,8 @@ $("#confirmer").on("click", function(){
 });
 
 
+/* Fonction gérant l'envoi via requête AJAX des données nécéssaires au fonctionnement de la methode signalerAction après les avoir récupérées en variables dans l'AdminController et rendre plus fluide le processus pour l'utilisateur. */
+
 $(".signaler").on("click", function() {
     
     var comment = $(this);
@@ -38,7 +44,6 @@ $(".signaler").on("click", function() {
             data : "id=" + id,
             type : 'GET',
          success : function(data){
-             location.reload();
             },
      });
 });
@@ -59,6 +64,8 @@ $(".ignorer").on("click", function() {
      });
 });
 
+
+/* Fonction gérant l'envoi via requête AJAX des données nécéssaires au fonctionnement de la methode modererAction après les avoir récupérées en variables dans l'AdminController et rendre plus fluide le processus pour l'utilisateur. */
 
 $(".moderer").on("click", function() {
     

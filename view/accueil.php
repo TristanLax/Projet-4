@@ -20,6 +20,9 @@
         <p class="mainpage">Derniers chapitres parus sur le site :</p>
         
             <div class ="row">
+                
+            <!-- Retourne la liste des objets chapitres disponibles sur le site depuis la DB puis les arrange graçe à bootstrap pour les placer correctement dans le flux de la page. -->
+                
             <?php
             foreach ($chapitres as $chapitre) {
             ?>

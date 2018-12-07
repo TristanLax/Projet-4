@@ -1,5 +1,6 @@
 <?php
 
+/* Classe commune a tous les managers, récupérant en constructeur la connection a la DB et contenant les multiples methodes protégées nécéssaires a l'appel ou a l'envoi de données à cette dernière. */
 
 class Manager 
 {
@@ -13,6 +14,8 @@ class Manager
         $dbInstance = DB::getInstance();
         $this->db = $dbInstance->getConnection();
     }
+    
+    /* Methode permettant de fetch une unique classe objet, utile par exemple lors la récupération d'un chapitre unique. Accepte en paramètres une requête SQL, le nom de la classe demandée et un tableau de paramètres, qui est vide nativement pour éviter les erreurs. */
     
     protected function fetch($sql, $class, $params = [])
     {
@@ -28,6 +31,7 @@ class Manager
         return $resultat;
     }
     
+    /* Methode permettant de fetch de multiples objets d'une même classe, utile lors de la récupération de tous les articles du site ou de tous les commentaires, fonctionne autrement de la même façon que la methode fetch */
     
     protected function fetchAll($sql, $class, $params = []) 
     {
@@ -43,6 +47,8 @@ class Manager
         return $resultat;
     }
     
+    /* Methode permettant d'exécuter une requête SQL, utile quand il n'est pas nécéssaire de récupèrer un objet mais qu'il est demandé d'envoyer des données brutes au serveur. Accepte en paramètres la requête SQL demandée et un tableau de paramètres. */
+    
     protected function upsert($sql, $params = [])
     {
         $query = $this->db->prepare($sql);
@@ -50,6 +56,8 @@ class Manager
         
         return $result;
     }
+    
+    /* Effectue tout simplement une query au serveur pour récupèrer une valeur précise du tableau et/ou pour la modifier. Accepte en paramètres la requête SQL souhaitée et un tableau de paramètres comme ses compères. */
     
     protected function query($sql, $params = [])
     {

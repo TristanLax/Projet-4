@@ -4,6 +4,8 @@
 class ChapitreManager extends Manager
 {
     
+    /* Methode permettant de récupèrer un chapitre unique en acceptant en paramètre son ID avant de faire une requête SQL pour le récupèrer en DB puis de le retourner en un objet. */
+    
     public function getChapitre($chapitre_id)
     {
         $sql = 'SELECT id, title, content, DATE_FORMAT(add_date, \'%d/%m/%Y\') AS add_date, DATE_FORMAT(edit_date, \'%d/%m/%Y\') AS edit_date, sort FROM chapitres WHERE id = ?';
@@ -11,6 +13,8 @@ class ChapitreManager extends Manager
 
         return $chapitre;
     }
+    
+    /* Methode récupérant l'intégralité des chapitres présents en DB avant de les retourner sous forme d'objets. */
     
     public function getChapitres()
     {
@@ -20,6 +24,8 @@ class ChapitreManager extends Manager
         return $chapitres;
     }
     
+    /* Methode effectuant une simple query pour ajuster le sort d'un nouveau chapitre en fonction de ceux précédents, permettant de garder automatiquement une cohérence dans la liste. */
+    
     public function maxSort()
     {
         $sql ='SELECT MAX(sort)+1 AS maxSort FROM chapitres';
@@ -27,6 +33,8 @@ class ChapitreManager extends Manager
         
         return $sort['maxSort'];
     }
+    
+    /* Récupère le titre et le contenu de TinyMCE avant d'attribuer automatiquement le sort graçe à la methode maxSort, puis envoie le tout en DB pour stockage et sauvegarde. */
 
     public function postChapitre($title, $content)
     {
@@ -36,6 +44,8 @@ class ChapitreManager extends Manager
         
         return $addChapitre;
     }
+    
+    /* Methode qui accepte en paramètre les contenu, titre, id et le sort avant de les bindValue pour pouvoir les envoyer a la DB pour éditer les données et les mettre à jour. */
     
     public function editChapitre($id, $title, $content, $sort)
     {
@@ -47,6 +57,8 @@ class ChapitreManager extends Manager
 
         $edit->execute();
     }
+    
+    /* Methode récupérant l'ID et le sort du chapitre sélectionné avant de le supprimer de la BD, réduisant ensuite le sort de tous les chapitres ayant un sort supérieur pour garder automatiquement une cohérence dans la liste. */
     
     public function deleteChapitre($id, $sort)
     {
