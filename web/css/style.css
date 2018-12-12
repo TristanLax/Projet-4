@@ -21,7 +21,6 @@ body
     background-color: #0c1315;
     color: black;
     border: 2px solid #0c1315;
-    border-radius: 0px 0px 6px 6px;
 }
 
 .header-text
@@ -47,18 +46,10 @@ body
 
 /* Menu */
 
-
-.menu
+.navbar
 {
-    display: flex;
-    justify-content: space-around;
-    padding-top: 10px;
-    padding-bottom: 10px;
     background-color: #a8a8a8;
-    border-radius: 6px;
-    list-style-type: none;
-    margin-left: 0px;
-    padding-left: 0px;
+    border-radius: 0px 0px 6px 6px;
 }
 
 #menu
@@ -289,18 +280,6 @@ all and (max-device-width: 480px)
     .header-text
     {
         font-size: 1.4em;
-    }
-    
-    .menu
-    {
-        display: flex;
-        flex-direction: column;
-    }
-    
-    li
-    {
-        padding: 10px;
-        margin-left: 20px;
     }
     
     .cacher
