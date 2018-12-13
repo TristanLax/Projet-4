@@ -14,7 +14,7 @@
                 
                 <div class="navbar-nav mr-auto">
                     <a class="nav-item nav-link" href="index.php">Retourner a l'accueil</a>
-                    <a class="nav-item nav-link" href="index.php?controller=admin&action=reportedComments">Modération des commentaires</a>
+                    <a class="nav-item nav-link" href="index.php?controller=comment&action=reportedComments">Modération des commentaires</a>
                 </div>
                 
                 <div class="navbar-nav">
@@ -52,7 +52,7 @@
                     <td> <?= $chapitre->getTitle() ?> </td>
                     <td class="cacher"> <?= $chapitre->getDate() ?></td>
                     <td class="cacher"> <?= $chapitre->getEdit() ?></td>
-                    <td> <a class="modifier" href="index.php?controller=admin&action=getchapitre&id=<?= $chapitre->getId() ?>">Modifier</a> |
+                    <td> <a class="modifier" href="index.php?controller=chapitre&action=getchapitre&id=<?= $chapitre->getId() ?>">Modifier</a> |
                          <a class="supprimer" data-toggle="modal" data-target="#deleteChapter" data-chapterid="<?= $chapitre->getId() ?>" data-chaptersort="<?= $chapitre->getSort() ?>" href="#">Supprimer</a>
                     </td>
                 </tr>
@@ -86,7 +86,7 @@
             <div class="col-lg-12">
                 <h2 class="mainpage">Ecrire un nouveau chapitre : </h2>
 
-                    <form method="post" action="<?php echo 'index.php?controller=admin&action=envoyer' ?>">
+                    <form method="post" action="<?php echo 'index.php?controller=chapitre&action=envoyer' ?>">
                         <div>
                             <label for="title">Titre :</label><br />
                             <input type="text" id="title" name="title" size="25" />

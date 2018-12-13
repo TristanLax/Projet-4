@@ -49,7 +49,7 @@
                             </p>
                         </div>
                             <p class="lien">
-                                <a href="index.php?controller=front&action=getchapitre&id=<?= $chapitre->getId() ?>">Accéder au chapitre</a>
+                                <a href="index.php?controller=home&action=getchapitre&id=<?= $chapitre->getId() ?>">Accéder au chapitre</a>
                             </p>
                     </div>
                 </div>

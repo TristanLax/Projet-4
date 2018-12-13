@@ -21,7 +21,7 @@ $("#confirmer").on("click", function(){
      var sort = $('#deleteChapter').find('#modal-chapter-sort').val();
      
      $.ajax({
-            url : 'index.php?controller=admin&action=supprimer',
+            url : 'index.php?controller=chapitre&action=supprimer',
             data : "id=" + id + "&sort=" + sort  ,
             type : 'GET',
          success : function(data){
@@ -34,9 +34,11 @@ $("#confirmer").on("click", function(){
 
 /* Fonction gérant l'envoi via requête AJAX des données nécéssaires au fonctionnement de la methode signalerAction après les avoir récupérées en variables dans l'AdminController et rendre plus fluide le processus pour l'utilisateur. */
 
-$(".signaler").on("click", function() {
+$(".signaler").on("click", function(event) {
     
+    event.preventDefault();
     var comment = $(this);
+    var self = this;
     var id = $(this).data('commentid');
     
     $.ajax({
@@ -44,22 +46,24 @@ $(".signaler").on("click", function() {
             data : "id=" + id,
             type : 'GET',
          success : function(data){
+             $(self).after('<p>Signalement enregistré</p>');
             },
      });
 });
 
 
-$(".ignorer").on("click", function() {
+$(".ignorer").on("click", function(event) {
     
+    event.preventDefault();
     var comment = $(this);
     var id = $(this).data('commentid');
     
     $.ajax({
-            url : 'index.php?controller=admin&action=ignorer',
+            url : 'index.php?controller=comment&action=ignorer',
             data : "id=" + id,
             type : 'GET',
          success : function(data){
-             location.reload();
+             $('.report_' + id).html('0');
             },
      });
 });
@@ -67,17 +71,18 @@ $(".ignorer").on("click", function() {
 
 /* Fonction gérant l'envoi via requête AJAX des données nécéssaires au fonctionnement de la methode modererAction après les avoir récupérées en variables dans l'AdminController et rendre plus fluide le processus pour l'utilisateur. */
 
-$(".moderer").on("click", function() {
+$(".moderer").on("click", function(event) {
     
+    event.preventDefault();
     var comment = $(this);
     var id = $(this).data('commentid');
     
     $.ajax({
-            url : 'index.php?controller=admin&action=moderer',
+            url : 'index.php?controller=comment&action=moderer',
             data : "id=" + id,
             type : 'GET',
          success : function(data){
-             location.reload();
+             $('.moderate_' + id).html('Commentaire modéré par l\'administration');
             },
      });
 });

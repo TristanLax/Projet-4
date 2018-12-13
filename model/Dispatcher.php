@@ -11,7 +11,7 @@ class Dispatcher
     {
         
         if(!isset($params['controller'])) {
-            $params['controller'] = 'front';
+            $params['controller'] = 'home';
         }
         
         $controller = ucfirst(strtolower($params['controller'])) . 'Controller';

@@ -8,8 +8,8 @@ class LoginController
     
     public function LoginaccueilAction() 
     {
-        if (isset($_SESSION['secured']))  {   
-            header("location: index.php?controller=admin&action=Adminaccueil");
+        if (isset($_SESSION['user']))  {   
+            header("location: index.php?controller=chapitre&action=AdminList");
         }
         else { 
             $error = '';
@@ -39,8 +39,8 @@ class LoginController
         return;
     }
         session_start();
-        $_SESSION['secured'] = "secured";
-        header("location: index.php?controller=admin&action=Adminaccueil");
+        $_SESSION['user'] = $user;
+        header("location: index.php?controller=chapitre&action=AdminList");
     }
     
 }

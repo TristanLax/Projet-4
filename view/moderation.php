@@ -13,7 +13,7 @@ $title = "Moderation"; ?>
             <div class="collapse navbar-collapse" id="navbarText" >
                 
                 <div class="navbar-nav mr-auto">
-                    <a class="nav-item nav-link" href="index.php?controller=admin&action=Adminaccueil">Retourner à l'espace d'administration</a>
+                    <a class="nav-item nav-link" href="index.php?controller=chapitre&action=adminList">Retourner à l'espace d'administration</a>
                 </div>
                 
                 <div class="navbar-nav">
@@ -48,8 +48,8 @@ $title = "Moderation"; ?>
             ?>
                 <tr>
                     <td> <?= $comment->getAuthor() ?> </td>
-                    <td> <?= $comment->getComment() ?> </td>
-                    <td> <?= $comment->getReports() ?> </td>
+                    <td class="moderate_<?= $comment->getId()?>"> <?= $comment->getComment() ?> </td>
+                    <td class="report_<?= $comment->getId()?>"> <?= $comment->getReports() ?> </td>
                     <td> <a class="ignorer" data-commentid="<?= $comment->getId()?>" href="#">Ignorer</a> |
                          <a class="moderer" data-commentid="<?= $comment->getId()?>" href="#">Moderer</a>
                     </td>

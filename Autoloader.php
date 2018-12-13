@@ -8,7 +8,7 @@ class Autoloader {
     }
     
     static function autoload($class) {
-        if($class == 'AdminController' || $class ==  'Controller' || $class ==  'FrontController' || $class ==  'LoginController'){
+        if($class == 'AdminController' || $class ==  'Controller' || $class ==  'FrontController' || $class ==  'LoginController'  || $class ==  'ChapitreController' || $class ==  'CommentController' || $class ==  'HomeController'){
             include 'Controller/'.$class.'.php';
         }
         elseif ($class ==  'ChapitreManager' || $class ==  'CommentManager' || $class == 'DB' || $class ==  'Manager' || $class ==  'UserManager') {
