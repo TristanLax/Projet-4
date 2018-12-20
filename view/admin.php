@@ -15,6 +15,7 @@
                 <div class="navbar-nav mr-auto">
                     <a class="nav-item nav-link" href="index.php">Retourner a l'accueil</a>
                     <a class="nav-item nav-link" href="index.php?controller=comment&action=reportedComments">Modération des commentaires</a>
+                    <a class="nav-item nav-link" href="index.php?controller=chapitre&action=ecrirechapitre">Ecrire un nouveau chapitre</a>
                 </div>
                 
                 <div class="navbar-nav">
@@ -31,7 +32,7 @@
 <div class="row">
     <div class="col-lg-12">
         
-        <h2 class="mainpage">Modifier un chapitre :</h2>
+        <h2 class="mainpage">Gestion des chapitres :</h2>
 
             <table>
                 <tr>
@@ -48,7 +49,7 @@
             foreach ($chapitres as $chapitre) { 
             ?>
                 <tr class="chapitre_<?= $chapitre->getId() ?>">
-                    <td> <?= $chapitre->getSort() ?> </td>
+                    <td class="sort"> <?= $chapitre->getSort() ?> </td>
                     <td> <?= $chapitre->getTitle() ?> </td>
                     <td class="cacher"> <?= $chapitre->getDate() ?></td>
                     <td class="cacher"> <?= $chapitre->getEdit() ?></td>

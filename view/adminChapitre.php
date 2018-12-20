@@ -32,12 +32,14 @@
     <div class="col-lg-12 mainpage">
         
         <h2>Editer le chapitre :</h2>
-        <form method="post" action="index.php?controller=chapitre&action=modifier">
+        <form method="post" action="<?= $formAction ?>">
             <div>
                 <label for="title">Titre :</label><br />
                 <input type="text" id="title" name="title" size="25" value="<?= isset($chapitre) ? $chapitre->getTitle() : ''; ?>" /><br />
+                <?php if(isset($chapitre)) { ?>
                 <label for="sort">Numéro du chapitre :</label><br />
                 <input type="text" id="sort" name="sort" size="25" value="<?= isset($chapitre) ? $chapitre->getSort() : ''; ?>" />
+                <?php }?>
             </div>
             <div>
                 <label for="content">Contenu :</label><br />

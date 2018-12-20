@@ -2,7 +2,7 @@
 
 /* Class DB servant a créer une connection à la base de donnée, utilise le template singleton pour éviter la redondance des appels ne nécéssitant qu'une seule instance. Crée la connection dans le constructeur puis les methodes permettant d'éviter la duplication et d'appeller la connection. */
 
-class DB 
+class DB extends Config
 {
      
     private $connection;
@@ -11,7 +11,11 @@ class DB
     
     private function __construct() 
     {
-        $this->connection = new \PDO('mysql:host=localhost;dbname=projet;charset=utf8', 'root', '');
+        $host = Config::getParam('host');
+        $name = Config::getParam('name');
+        $user = Config::getParam('user');
+        $pass = Config::getParam('pass');
+        $this->connection = new \PDO("mysql:host=$host;dbname=$name;charset=utf8", $user, $pass);
         $this->connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
     }
 

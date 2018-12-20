@@ -17,8 +17,20 @@ class ChapitreController extends AdminController
     
     public function getchapitreAction()
     {
+        $formAction = 'index.php?controller=chapitre&action=modifier';
         $ChapitreManager = new ChapitreManager($_GET['id']);
         $chapitre = $ChapitreManager->getChapitre($_GET['id']);  
+        require('view/adminChapitre.php');
+    }
+    
+    public function ecrirechapitreAction()
+    {
+        $formAction = 'index.php?controller=chapitre&action=envoyer';
+        
+        if ('POST' == $_SERVER['REQUEST_METHOD']) {  
+            $ChapitreManager = new ChapitreManager();
+            $chapitre = $ChapitreManager->postChapitre($_POST["title"], $_POST["content"]); 
+        }
         require('view/adminChapitre.php');
     }
     

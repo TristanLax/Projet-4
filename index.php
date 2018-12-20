@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 
 /* Crée un session start global pour le site pour permettre l'accès aux parties admin si connecté, ainsi que la création de l'auto-loader pour le bon fonctionnement du site. */

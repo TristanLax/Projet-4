@@ -26,6 +26,10 @@ $("#confirmer").on("click", function(){
             type : 'GET',
          success : function(data){
              $('.chapitre_'+ id).remove();
+             var sort = 1;
+             $('.sort').each(function(){
+                $(this).html(sort++);
+                });
             },
      });
    $("#deleteChapter").modal('hide');

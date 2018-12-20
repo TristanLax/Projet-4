@@ -1,5 +1,5 @@
 <?php
-
+    
 /* Base de modèle objet pour tous les autres modèles contenant la fonction automatisée d'hydratation des attributs et des setters. */
 
 class Modele 

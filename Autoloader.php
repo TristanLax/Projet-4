@@ -11,8 +11,11 @@ class Autoloader {
         if($class == 'AdminController' || $class ==  'Controller' || $class ==  'FrontController' || $class ==  'LoginController'  || $class ==  'ChapitreController' || $class ==  'CommentController' || $class ==  'HomeController'){
             include 'Controller/'.$class.'.php';
         }
-        elseif ($class ==  'ChapitreManager' || $class ==  'CommentManager' || $class == 'DB' || $class ==  'Manager' || $class ==  'UserManager') {
+        elseif ($class ==  'ChapitreManager' || $class ==  'CommentManager' || $class ==  'Config' || $class == 'DB' || $class ==  'Manager' || $class ==  'UserManager') {
             include 'Manager/'.$class.'.php';
+        }
+        elseif ($class ==  'Configuration') {
+            include 'Config/'.$class.'.ini';
         }
         elseif ($class == 'Chapitre' || $class == 'Comment' || $class == 'Modele' || $class == 'User' || $class == 'Dispatcher') {
             
