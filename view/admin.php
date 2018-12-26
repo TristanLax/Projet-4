@@ -82,27 +82,7 @@
                 </div>
               </div>
             </div>
-
-        
-            <div class="col-lg-12">
-                <h2 class="mainpage">Ecrire un nouveau chapitre : </h2>
-
-                    <form method="post" action="<?php echo 'index.php?controller=chapitre&action=envoyer' ?>">
-                        <div>
-                            <label for="title">Titre :</label><br />
-                            <input type="text" id="title" name="title" size="25" />
-                        </div>
-                        <div>
-                            <label for="content">Contenu :</label><br />
-                            <textarea rows="8" cols="60" id="content" name="content"></textarea>
-                        </div>
-                        <div>
-                            <input type="submit" name="envoyer" />
-                        </div>
-                    </form>
-            </div>
-        
-        
+   
     </div>
 </div>
 

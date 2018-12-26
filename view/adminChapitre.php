@@ -29,7 +29,7 @@
 
 
 <div class="row">
-    <div class="col-lg-12 mainpage">
+    <div class="col-lg-12 maincenter">
         
         <h2>Editer le chapitre :</h2>
         <form method="post" action="<?= $formAction ?>">

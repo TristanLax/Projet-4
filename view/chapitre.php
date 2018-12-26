@@ -41,6 +41,7 @@ $title = htmlspecialchars($chapitre->getTitle()); ?>
 
 <div class ="row">
     <div class="col-lg-12">
+        <div class="col-lg-4 offset-lg-4 com">
         <h2 class="commentaires">Commentaires</h2>
 
         <form method="post" action="index.php?controller=front&action=addComment&id=<?=$chapitre->getId() ?>" class="comform">
@@ -57,6 +58,8 @@ $title = htmlspecialchars($chapitre->getTitle()); ?>
                 <input type="submit" />
             </div>
         </form>
+        </div>
+        
         
         <div class ="row">
         <?php

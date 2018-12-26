@@ -25,11 +25,11 @@ $title = "Connexion"; ?>
 
 <!-- Formulaire permettant d'envoyer l'adresse mail et le mot de passe au controlleur pour vérifier les identifiants. -->
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-4 offset-lg-4 login">
         
         <h2 class="mainpage">Se connecter :</h2>
 
-        <form class="login" action="<?php echo 'index.php?controller=login&action=login' ?>" method="post">
+        <form class="loginform" action="<?php echo 'index.php?controller=login&action=login' ?>" method="post">
             <div>
                 <label for="email">Email</label><br />
                 <input type="text" id="email" name="email" size="25" />
