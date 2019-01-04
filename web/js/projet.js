@@ -50,7 +50,7 @@ $(".signaler").on("click", function(event) {
             data : "id=" + id,
             type : 'GET',
          success : function(data){
-             $(self).after('<p>Signalement enregistré</p>');
+             $(self).replaceWith('<p>Signalement enregistré</p>');
             },
      });
 });

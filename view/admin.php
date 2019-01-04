@@ -50,7 +50,7 @@
             ?>
                 <tr class="chapitre_<?= $chapitre->getId() ?>">
                     <td class="sort"> <?= $chapitre->getSort() ?> </td>
-                    <td> <?= $chapitre->getTitle() ?> </td>
+                    <td> <a href="index.php?controller=home&action=getchapitre&id=<?= $chapitre->getId() ?>" /> <?= $chapitre->getTitle() ?> </td>
                     <td class="cacher"> <?= $chapitre->getDate() ?></td>
                     <td class="cacher"> <?= $chapitre->getEdit() ?></td>
                     <td> <a class="modifier" href="index.php?controller=chapitre&action=getchapitre&id=<?= $chapitre->getId() ?>">Modifier</a> |

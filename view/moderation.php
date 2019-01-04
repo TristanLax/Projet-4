@@ -13,7 +13,9 @@ $title = "Moderation"; ?>
             <div class="collapse navbar-collapse" id="navbarText" >
                 
                 <div class="navbar-nav mr-auto">
+                    <a class="nav-item nav-link" href="index.php">Retourner a l'accueil</a>
                     <a class="nav-item nav-link" href="index.php?controller=chapitre&action=adminList">Retourner à l'espace d'administration</a>
+                    <a class="nav-item nav-link" href="index.php?controller=chapitre&action=ecrirechapitre">Ecrire un nouveau chapitre</a>
                 </div>
                 
                 <div class="navbar-nav">

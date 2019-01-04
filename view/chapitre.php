@@ -25,6 +25,8 @@ $title = htmlspecialchars($chapitre->getTitle()); ?>
 
 <div class ="row">
     <div class="col-lg-12 mainpage">
+        <a class="previous" href="">&laquo;Chapitre Precedent</a>
+        <a class="next" href="">Chapitre Suivant&raquo;</a>
         <div class="col-lg-12 news">
             <div class="newsheader">
                 <h3>
@@ -47,7 +49,7 @@ $title = htmlspecialchars($chapitre->getTitle()); ?>
         <form method="post" action="index.php?controller=front&action=addComment&id=<?=$chapitre->getId() ?>" class="comform">
             <div>
                 <label for="author">Auteur</label><br />
-                <input type="text" id="author" name="author" size="25" />
+                <input type="text" id="author" name="author" size="32" />
             </div>
             <div>
                 <label for="comment">Commentaire</label><br />
@@ -70,7 +72,7 @@ $title = htmlspecialchars($chapitre->getTitle()); ?>
                         
                     <div class=""><p>Commentaire écrit par <strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getDate() ?></p></div>
                     <div class=""><p><?= nl2br(htmlspecialchars($comment->getComment())) ?></p></div>
-                    <p><a class="signaler" data-commentid="<?= $comment->getId()?>" href="#">Signaler ce commentaire</a></p>
+                    <p class="signalement_<?= $comment->getId()?>"><a class="signaler" data-commentid="<?= $comment->getId()?>" href="#">Signaler ce commentaire</a></p>
                         
                 </div>
             </div>

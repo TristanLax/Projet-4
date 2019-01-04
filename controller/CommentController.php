@@ -8,8 +8,14 @@ class CommentController extends AdminController
     
     public function reportedcommentsAction()
     {
+        $chapitreId = null;
+        
+        if (isset($_GET['chapitre-id'])){
+            $chapitreId = $_GET['chapitre-id'];
+        }
+        
         $CommentManager = new CommentManager();
-        $reportedComments = $CommentManager->getReports();
+        $reportedComments = $CommentManager->getReports($chapitreId);
         require('view/moderation.php');
     }
     

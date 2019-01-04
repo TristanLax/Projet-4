@@ -36,11 +36,17 @@ class CommentManager extends Manager
     
     /* Methode effectuant une requête SQL pour récupèrer la liste des commentaires par nombre decroissant de signalements avant de les fetch en un tableau d'objet. */
     
-    public function getReports()
+    public function getReports($chapitreId = null)
     {
-        $sql = 'SELECT id, author, comment, reports FROM comments WHERE reports >= 0 ORDER BY reports DESC';
-        $getReports = $this->fetchAll($sql, 'Comment');
-            
+        $params = ['reports' => 0];
+        $and = '';
+        if(null !== $chapitreId) {
+            $params['chapitreId'] = $chapitreId;
+            $and = 'AND chapitre_id = :chapitreId';
+        }
+        $sql = 'SELECT id, author, comment, reports FROM comments WHERE reports >= :reports '.$and.' ORDER BY reports DESC';
+        $getReports = $this->fetchAll($sql, 'Comment', $params);
+        
         return $getReports;
     }
     
