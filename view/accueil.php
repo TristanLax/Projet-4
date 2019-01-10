@@ -34,7 +34,18 @@
                 
             <?php
             foreach ($chapitres as $chapitre) {
+                
+                if (strlen($chapitre->getContent()) <= 300)
+                    {
+                      $content = $chapitre->getContent();
+                    }
+                    else {
+                        $start = substr($chapitre->getContent(), 0, 300);
+                        $start = substr($start, 0, strrpos($start, ' ')) . '...';
+                        $content = $start;
+                     }
             ?>
+                
                 <div class="col-lg-6">
                     <div class="col-lg-12 news">
                         
@@ -45,11 +56,11 @@
                         </div>
                         <div class="newstext">
                             <p>
-                                <?= $chapitre->getContent() ?>
+                                <?= $content; ?>
                             </p>
                         </div>
                             <p class="lien">
-                                <a href="index.php?controller=home&action=getchapitre&id=<?= $chapitre->getId() ?>">Accéder au chapitre</a>
+                                <a href="index.php?controller=home&action=getchapitre&chapitre=<?= $chapitre->getSort() ?>">Accéder au chapitre</a>
                             </p>
                     </div>
                 </div>

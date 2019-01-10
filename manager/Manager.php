@@ -47,6 +47,21 @@ class Manager
         return $resultat;
     }
     
+    /* */
+    protected function fetchAllWithDependencies($sql, $class, $params = []) 
+    {
+        $req = $this->db->prepare($sql);
+        $req->setFetchMode(PDO::FETCH_ASSOC);
+        $req->execute($params);
+        $resultat = $req->fetchAll();
+        
+        if (!$resultat) {
+            return [];
+        } 
+
+        return $resultat;
+    }
+    
     /* Methode permettant d'exécuter une requête SQL, utile quand il n'est pas nécéssaire de récupèrer un objet mais qu'il est demandé d'envoyer des données brutes au serveur. Accepte en paramètres la requête SQL demandée et un tableau de paramètres. */
     
     protected function upsert($sql, $params = [])

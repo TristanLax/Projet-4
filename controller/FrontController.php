@@ -18,9 +18,14 @@ class FrontController
     public function addcommentAction() 
     {
         $CommentManager = new CommentManager();
-        $CommentManager->postComment($_POST["chapitre_id"], $_POST["author"], $_POST["comment"]);
-
-        header('Location: index.php?controller=home&action=getchapitre&id='. $_POST['chapitre_id']);
+        
+        if (empty($_POST["author"]) or empty($_POST["comment"])) {
+            throw new Exception('Commentaire invalide !');
+        }
+        else {
+            $addComment = $CommentManager->postComment($_POST["chapitre_id"], $_POST["author"], $_POST["comment"]);
+            header('Location: index.php?controller=home&action=getchapitre&id='. $_POST['chapitre_id']);
+        }
     }
     
 }

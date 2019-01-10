@@ -41,6 +41,7 @@
                 <?php if(isset($chapitre)) { ?>
                 <label for="sort">Numéro du chapitre :</label><br />
                 <input type="text" id="sort" name="sort" size="25" value="<?= isset($chapitre) ? $chapitre->getSort() : ''; ?>" />
+                <input type="hidden" name="currentSort" value="<?= isset($chapitre) ? $chapitre->getSort() : ''; ?>" />
                 <?php }?>
             </div>
             <div>

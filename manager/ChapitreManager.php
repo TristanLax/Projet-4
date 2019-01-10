@@ -6,7 +6,15 @@ class ChapitreManager extends Manager
     
     /* Methode permettant de récupèrer un chapitre unique en acceptant en paramètre son ID avant de faire une requête SQL pour le récupèrer en DB puis de le retourner en un objet. */
     
-    public function getChapitre($chapitre_id)
+    public function getChapitre($chapitre_sort)
+    {
+        $sql = 'SELECT id, title, content, DATE_FORMAT(add_date, \'%d/%m/%Y\') AS add_date, DATE_FORMAT(edit_date, \'%d/%m/%Y\') AS edit_date, sort FROM chapitres WHERE sort = ?';
+        $chapitre = $this->fetch($sql, 'Chapitre', [$chapitre_sort]);
+
+        return $chapitre;
+    }
+    
+    public function getAdminChapitre($chapitre_id)
     {
         $sql = 'SELECT id, title, content, DATE_FORMAT(add_date, \'%d/%m/%Y\') AS add_date, DATE_FORMAT(edit_date, \'%d/%m/%Y\') AS edit_date, sort FROM chapitres WHERE id = ?';
         $chapitre = $this->fetch($sql, 'Chapitre', [$chapitre_id]);
@@ -28,7 +36,7 @@ class ChapitreManager extends Manager
     
     public function maxSort()
     {
-        $sql ='SELECT MAX(sort)+1 AS maxSort FROM chapitres';
+        $sql ='SELECT MAX(sort) AS maxSort FROM chapitres';
         $sort = $this->query($sql);
         
         return $sort['maxSort'];
@@ -38,7 +46,7 @@ class ChapitreManager extends Manager
 
     public function postChapitre($title, $content)
     {
-        $sort = $this->maxSort();
+        $sort = $this->maxSort()+1;
         $sql = 'INSERT INTO chapitres(title, content, add_date, sort) VALUES(?, ?, NOW(), ?)';
         $addChapitre = $this->upsert($sql, [$title, $content, $sort]);
         
@@ -47,8 +55,12 @@ class ChapitreManager extends Manager
     
     /* Methode qui accepte en paramètre les contenu, titre, id et le sort avant de les bindValue pour pouvoir les envoyer a la DB pour éditer les données et les mettre à jour. */
     
-    public function editChapitre($id, $title, $content, $sort)
+    public function editChapitre($id, $title, $content, $currentSort, $sort)
     {
+        $sql = 'UPDATE chapitres SET sort = :currentSort WHERE sort = :sort';
+        $params = ['currentSort' => $currentSort, 'sort' => $sort];
+        $editSort = $this->upsert($sql, $params);
+        
         $edit = $this->db->prepare('UPDATE chapitres SET title = :title, content = :content, edit_date = NOW(), sort = :sort WHERE id = :id');
         $edit->bindValue(':title', $title);
         $edit->bindValue(':content', $content);
@@ -64,8 +76,8 @@ class ChapitreManager extends Manager
     {
         $req = $this->db->exec('DELETE FROM chapitres WHERE id = '.$id);
         $req = $this->db->exec('DELETE FROM comments WHERE chapitre_id = '.$id);
-        $sql = 'UPDATE chapitres SET sort = sort -1 WHERE sort >'.$sort;
-        $correctSort = $this->upsert($sql, [$sort]);
+        $sql = 'UPDATE chapitres SET sort = sort -1 WHERE sort > :sort';
+        $correctSort = $this->upsert($sql, ['sort' => $sort]);
         
         return $correctSort;
     }

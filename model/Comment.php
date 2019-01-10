@@ -7,6 +7,7 @@ class Comment extends Modele
     
     private $id;
     private $chapitre_id;
+    private $chapitre;
     private $author;
     private $comment;
     private $reports;
@@ -33,6 +34,17 @@ class Comment extends Modele
     {
         $this->chapitre_id = $chapitre_id;
         return $this;
+    }
+    
+    public function setChapitre($params)
+    {
+        $this->chapitre = new Chapitre($params);
+        return $this;
+    }
+    
+    public function getChapitre()
+    {
+        return $this->chapitre;
     }
     
     public function getChapitre_id() 

@@ -17,13 +17,17 @@ class HomeController
     
     public function GetchapitreAction() 
     {
-        $ChapitreManager = new ChapitreManager($_GET['id']);
-        $CommentManager = new CommentManager($_GET['id']);
+        $page = $_GET['chapitre'] ?? 1;
+        $ChapitreManager = new ChapitreManager();
+        $CommentManager = new CommentManager();
 
-        $chapitre = $ChapitreManager->getChapitre($_GET['id']);
-        $comments = $CommentManager->getComments($_GET['id']);
+        $maxPage = $ChapitreManager->maxSort();
+        $chapitre = $ChapitreManager->getChapitre($page);
+        $comments = $CommentManager->getComments($chapitre->getId());
         
         require('view/chapitre.php');
     }
+    
+    
     
 }

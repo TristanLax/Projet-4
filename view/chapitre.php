@@ -22,11 +22,19 @@ $title = htmlspecialchars($chapitre->getTitle()); ?>
     </div>
 </div>
 
-
 <div class ="row">
     <div class="col-lg-12 mainpage">
-        <a class="previous" href="">&laquo;Chapitre Precedent</a>
-        <a class="next" href="">Chapitre Suivant&raquo;</a>
+        <?php 
+            if ($page > 1) { ?>
+                <a class="previous" href="index.php?controller=home&action=getchapitre&chapitre=<?= $chapitre->getSort()-1 ?>">&laquo;Chapitre Precedent</a>
+        <?php 
+            }
+        
+            if ($page < $maxPage ) { ?> 
+        <a class="next" href="index.php?controller=home&action=getchapitre&chapitre=<?= $chapitre->getSort()+1 ?>">Chapitre Suivant&raquo;</a>
+        <?php 
+            } ?>
+        
         <div class="col-lg-12 news">
             <div class="newsheader">
                 <h3>
@@ -72,7 +80,7 @@ $title = htmlspecialchars($chapitre->getTitle()); ?>
                         
                     <div class=""><p>Commentaire écrit par <strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getDate() ?></p></div>
                     <div class=""><p><?= nl2br(htmlspecialchars($comment->getComment())) ?></p></div>
-                    <p class="signalement_<?= $comment->getId()?>"><a class="signaler" data-commentid="<?= $comment->getId()?>" href="#">Signaler ce commentaire</a></p>
+                    <p><a class="signaler" data-commentid="<?= $comment->getId()?>" href="#">Signaler ce commentaire</a></p>
                         
                 </div>
             </div>

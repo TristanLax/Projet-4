@@ -38,16 +38,24 @@ class CommentManager extends Manager
     
     public function getReports($chapitreId = null)
     {
+        $reports = [];
         $params = ['reports' => 0];
         $and = '';
         if(null !== $chapitreId) {
             $params['chapitreId'] = $chapitreId;
             $and = 'AND chapitre_id = :chapitreId';
         }
-        $sql = 'SELECT id, author, comment, reports FROM comments WHERE reports >= :reports '.$and.' ORDER BY reports DESC';
-        $getReports = $this->fetchAll($sql, 'Comment', $params);
         
-        return $getReports;
+        $sql = 'SELECT * FROM comments INNER JOIN chapitres ON comments.chapitre_id = chapitres.id WHERE reports >= :reports '.$and.' ORDER BY reports DESC';
+        $results = $this->fetchAllWithDependencies($sql, 'Comment', $params);
+        foreach($results as $result)
+        {
+            $report = new Comment($result);
+            $report->setChapitre($result);
+            $reports[] = $report;
+        } 
+
+        return $reports;
     }
     
     /* Methode acceptant l'ID du commentaire dont on souhaite annuler les reports avant d'utiliser une requête SQL a partir de l'ID dudit commentaire. */

@@ -33,10 +33,12 @@ $title = "Moderation"; ?>
     <div class="col-lg-12">
         
         <h2 class="mainpage">Moderation des commentaires :</h2>
+        <p> <a class="reportbutton" href="">Filtrer les commentaires</a></p>
         <p class="supporttitle">Liste des commentaires signalés :</p>
 
             <table>
                 <tr>
+                    <th>Chapitre</th>
                     <th>Auteur</th>
                     <th>Commentaire</th>
                     <th>Nombre signalement</th>
@@ -49,6 +51,7 @@ $title = "Moderation"; ?>
             foreach ($reportedComments as $comment) { 
             ?>
                 <tr>
+                    <td> <?= $comment->getChapitre()->getTitle()?></td>
                     <td> <?= $comment->getAuthor() ?> </td>
                     <td class="moderate_<?= $comment->getId()?>"> <?= $comment->getComment() ?> </td>
                     <td class="report_<?= $comment->getId()?>"> <?= $comment->getReports() ?> </td>

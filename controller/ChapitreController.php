@@ -18,8 +18,8 @@ class ChapitreController extends AdminController
     public function getchapitreAction()
     {
         $formAction = 'index.php?controller=chapitre&action=modifier';
-        $ChapitreManager = new ChapitreManager($_GET['id']);
-        $chapitre = $ChapitreManager->getChapitre($_GET['id']);  
+        $ChapitreManager = new ChapitreManager();
+        $chapitre = $ChapitreManager->getAdminChapitre($_GET['id']);  
         require('view/adminChapitre.php');
     }
     
@@ -49,7 +49,7 @@ class ChapitreController extends AdminController
     public function modifierAction() 
     {
         $ChapitreManager = new ChapitreManager();
-        $ChapitreManager->editChapitre($_POST['id'], $_POST['title'], $_POST['content'],$_POST['sort']);
+        $ChapitreManager->editChapitre($_POST['id'], $_POST['title'], $_POST['content'], $_POST['currentSort'], $_POST['sort']);
         
         header('location: index.php?controller=chapitre&action=getchapitre&id='.$_POST['id']);
     }
