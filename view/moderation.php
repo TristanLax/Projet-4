@@ -31,9 +31,28 @@ $title = "Moderation"; ?>
 
 <div class="row">
     <div class="col-lg-12">
+    
         
         <h2 class="mainpage">Moderation des commentaires :</h2>
-        <p> <a class="reportbutton" href="">Filtrer les commentaires</a></p>
+        
+                <div class="dropdown">
+                    
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria expanded="false"> Liste de modération </a>
+                    
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="index.php?controller=comment&action=reportedComments">Tout les chapitres</a>
+                        
+                        <?php
+                        foreach ($chapitres as $chapitre) { 
+                        ?>
+                            <a class="dropdown-item" href="index.php?controller=comment&action=reportedComments&chapitre-id=<?= $chapitre->getId() ?>"><?= $chapitre->getTitle() ?></a>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                    
+                </div>
+        
         <p class="supporttitle">Liste des commentaires signalés :</p>
 
             <table>
@@ -53,10 +72,10 @@ $title = "Moderation"; ?>
                 <tr>
                     <td> <?= $comment->getChapitre()->getTitle()?></td>
                     <td> <?= $comment->getAuthor() ?> </td>
-                    <td class="moderate_<?= $comment->getId()?>"> <?= $comment->getComment() ?> </td>
-                    <td class="report_<?= $comment->getId()?>"> <?= $comment->getReports() ?> </td>
-                    <td> <a class="ignorer" data-commentid="<?= $comment->getId()?>" href="#">Ignorer</a> |
-                         <a class="moderer" data-commentid="<?= $comment->getId()?>" href="#">Moderer</a>
+                    <td class="moderate_<?= $comment->getComment_Id()?>"> <?= $comment->getComment() ?> </td>
+                    <td class="report_<?= $comment->getComment_Id()?>"> <?= $comment->getReports() ?> </td>
+                    <td> <a class="ignorer" data-commentid="<?= $comment->getComment_Id()?>" href="#">Ignorer</a> |
+                         <a class="moderer" data-commentid="<?= $comment->getComment_Id()?>" href="#">Moderer</a>
                     </td>
                 </tr>
             <?php 

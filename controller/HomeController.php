@@ -4,12 +4,18 @@
 class HomeController
 { 
     
+    public function __construct()
+    {
+    }
+    
     /* Methode "de base" du site, récupérant grace au chapitreManager la liste de tous les chapitres présents en DB pour les afficher via la vue demandée. */
     
     public function accueilAction() 
-    {
+    {   
+        $page = $_GET['page'] ?? 1;
         $ChapitreManager = new ChapitreManager();
-        $chapitres = $ChapitreManager->getChapitres();
+        $chapitres = $ChapitreManager->getChapitres($page);
+        
         require('view/accueil.php');
     }
     
@@ -18,12 +24,13 @@ class HomeController
     public function GetchapitreAction() 
     {
         $page = $_GET['chapitre'] ?? 1;
+        $comPage = $_GET['nbPage'] ?? 1;
         $ChapitreManager = new ChapitreManager();
         $CommentManager = new CommentManager();
 
         $maxPage = $ChapitreManager->maxSort();
         $chapitre = $ChapitreManager->getChapitre($page);
-        $comments = $CommentManager->getComments($chapitre->getId());
+        $comments = $CommentManager->getComments($chapitre->getId(), $comPage);
         
         require('view/chapitre.php');
     }

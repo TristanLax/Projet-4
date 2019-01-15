@@ -4,13 +4,31 @@
 class CommentManager extends Manager
 {
     
+    
+    /* Fonction comptant le nombre de chapitres présents dans la DB pour permettre la pagination. */
+    
+    public function paginationComments()
+    {
+        $sql = "SELECT COUNT(comment_id) as nbComments FROM comments";
+        $result = $this->query($sql);
+        
+        return $result;
+    }
+    
     /* Methode récupérant l'ID d'un chapitre pour aller chercher via requête SQL les commentaires liés à ce chapitre puis de les return. */
     
-    public function getComments($chapitre_id)
+    public function getComments($chapitre_id, $comPage)
     {
-        $sql = 'SELECT id, author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date FROM comments WHERE chapitre_id = ? ORDER BY comment_date DESC';
+        
+        $req = $this->paginationComments();
+        
+        $nbComments = $req['nbComments'];
+        $affichage = 2;
+        $totalPage = ceil($nbComments/$affichage);
+        
+        $sql = "SELECT comment_id, author, comment, DATE_FORMAT(comment_date, \"%d/%m/%Y à %Hh%imin%ss\") AS comment_date FROM comments WHERE chapitre_id = ? ORDER BY comment_date DESC LIMIT ".(($comPage-1)*$affichage).",$affichage";
         $comments = $this->fetchAll($sql, 'Comment', [$chapitre_id]);
-
+        
         return $comments;
     }
     
@@ -28,7 +46,7 @@ class CommentManager extends Manager
     
     public function reportComment($id) 
     {
-        $sql = 'UPDATE comments SET reports = reports +1 WHERE id ='.$id;
+        $sql = 'UPDATE comments SET reports = reports +1 WHERE comment_id ='.$id;
         $reportComment = $this->upsert($sql, [$id]);
         
         return $reportComment;
@@ -46,7 +64,7 @@ class CommentManager extends Manager
             $and = 'AND chapitre_id = :chapitreId';
         }
         
-        $sql = 'SELECT * FROM comments INNER JOIN chapitres ON comments.chapitre_id = chapitres.id WHERE reports >= :reports '.$and.' ORDER BY reports DESC';
+        $sql = 'SELECT * FROM comments INNER JOIN chapitres ON comments.chapitre_id = chapitres.id WHERE reports >= :reports '.$and.' ORDER BY reports DESC, chapitre_id';
         $results = $this->fetchAllWithDependencies($sql, 'Comment', $params);
         foreach($results as $result)
         {
@@ -62,7 +80,7 @@ class CommentManager extends Manager
     
     public function ignoreReport($id)
     {
-        $sql = 'UPDATE comments SET reports = 0 WHERE id = '.$id;
+        $sql = 'UPDATE comments SET reports = 0 WHERE comment_id = '.$id;
         $ignoreReport = $this->upsert($sql, [$id]);
         
         return $ignoreReport;
@@ -72,7 +90,7 @@ class CommentManager extends Manager
     
     public function moderateComment($id)
     {
-        $sql = 'UPDATE comments SET comment = "Commentaire modéré par l\'administration" WHERE id = '.$id;
+        $sql = 'UPDATE comments SET comment = "Commentaire modéré par l\'administration" WHERE comment_id = '.$id;
         $moderateComment = $this->upsert($sql, [$id]);
         
         return $moderateComment;

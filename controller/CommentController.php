@@ -15,6 +15,8 @@ class CommentController extends AdminController
         }
         
         $CommentManager = new CommentManager();
+        $ChapitreManager = new ChapitreManager();
+        $chapitres = $ChapitreManager->getAllChapitres();
         $reportedComments = $CommentManager->getReports($chapitreId);
         require('view/moderation.php');
     }

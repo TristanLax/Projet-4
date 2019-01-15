@@ -1,5 +1,5 @@
-<?php $title = "Billet simple pour l'Alaska, un roman de Jean Rochefort"; ?>
-<?php include("header.php"); ?>
+<?php $title = "Billet simple pour l'Alaska, un roman de Jean Rochefort";
+include("header.php"); ?>
 
 
 <div class="row">
@@ -60,7 +60,7 @@
                             </p>
                         </div>
                             <p class="lien">
-                                <a href="index.php?controller=home&action=getchapitre&chapitre=<?= $chapitre->getSort() ?>">Accéder au chapitre</a>
+                                <a href="index.php?controller=home&action=getchapitre&id=<?= $chapitre->getId() ?>&chapitre=<?= $chapitre->getSort() ?>">Accéder au chapitre</a>
                             </p>
                     </div>
                 </div>

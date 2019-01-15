@@ -4,15 +4,17 @@
 class ChapitreManager extends Manager
 {
     
-    /* Methode permettant de récupèrer un chapitre unique en acceptant en paramètre son ID avant de faire une requête SQL pour le récupèrer en DB puis de le retourner en un objet. */
+    /* Methode permettant de récupèrer un chapitre unique en acceptant en paramètre son sort avant de faire une requête SQL pour le récupèrer en DB puis de le retourner en un objet. */
     
     public function getChapitre($chapitre_sort)
     {
-        $sql = 'SELECT id, title, content, DATE_FORMAT(add_date, \'%d/%m/%Y\') AS add_date, DATE_FORMAT(edit_date, \'%d/%m/%Y\') AS edit_date, sort FROM chapitres WHERE sort = ?';
+        $sql = 'SELECT id, title, content, DATE_FORMAT(add_date, \'%d/%m/%Y\') AS add_date, DATE_FORMAT(edit_date, \'%d/%m/%Y\') AS edit_date, sort FROM chapitres WHERE sort = ? ';
         $chapitre = $this->fetch($sql, 'Chapitre', [$chapitre_sort]);
 
         return $chapitre;
     }
+    
+    /* Methode permettant de récupèrer un chapitre unique en acceptant en paramètre son ID avant de faire une requête SQL pour le récupèrer en DB puis de le retourner en un objet. La principale différence étant la récupération par ID plutôt que par sort en cas de soucis dans les sort. Plus sur. */
     
     public function getAdminChapitre($chapitre_id)
     {
@@ -22,13 +24,46 @@ class ChapitreManager extends Manager
         return $chapitre;
     }
     
+    /* Fonction comptant le nombre de chapitres présents dans la DB pour permettre la pagination. */
+    
+    public function paginationChapitre()
+    {
+        $sql = "SELECT COUNT(id) as nbChap FROM chapitres";
+        $result = $this->query($sql);
+        
+        return $result;
+        
+    }
+    
     /* Methode récupérant l'intégralité des chapitres présents en DB avant de les retourner sous forme d'objets. */
     
-    public function getChapitres()
+    public function getChapitres($page)
+    {
+        $req = $this->paginationChapitre();
+        
+        $nbChap = $req['nbChap'];
+        $affichage = 6;
+        $totalPage = ceil($nbChap/$affichage);
+        
+         
+        $sql = "SELECT id, title, content, DATE_FORMAT(add_date, \"%d/%m/%Y\") AS add_date, DATE_FORMAT(edit_date, \"%d/%m/%Y\") AS edit_date, sort FROM chapitres ORDER BY sort LIMIT ".(($page-1)*$affichage).",$affichage";
+        $chapitres = $this->fetchAll($sql, 'Chapitre');
+        
+        
+        for ($i = 1; $i <= $totalPage; $i++) 
+        { ?>
+            <a href="?page=<?php echo $page - 1; ?>">Page précédente</a>
+                —
+            <a href="?page=<?php echo $page + 1; ?>">Page suivante</a>  
+       <?php }
+
+        return $chapitres;
+    }
+    
+    public function getAllChapitres()
     {
         $sql = 'SELECT id, title, content, DATE_FORMAT(add_date, \'%d/%m/%Y\') AS add_date, DATE_FORMAT(edit_date, \'%d/%m/%Y\') AS edit_date, sort FROM chapitres ORDER BY sort';
         $chapitres = $this->fetchAll($sql, 'Chapitre');
-
         return $chapitres;
     }
     

@@ -65,6 +65,7 @@ $title = htmlspecialchars($chapitre->getTitle()); ?>
             </div>
             <div>   
                 <input type="hidden" name="chapitre_id" value="<?= $chapitre->getId()?>" /><br/>
+                <input type="hidden" name="chapitre_sort" value="<?= $chapitre->getSort()?>" /><br/>
                 <input type="submit" />
             </div>
         </form>
@@ -80,7 +81,7 @@ $title = htmlspecialchars($chapitre->getTitle()); ?>
                         
                     <div class=""><p>Commentaire écrit par <strong><?= htmlspecialchars($comment->getAuthor()) ?></strong> le <?= $comment->getDate() ?></p></div>
                     <div class=""><p><?= nl2br(htmlspecialchars($comment->getComment())) ?></p></div>
-                    <p><a class="signaler" data-commentid="<?= $comment->getId()?>" href="#">Signaler ce commentaire</a></p>
+                    <p><a class="signaler" data-commentid="<?= $comment->getComment_Id()?>" href="#">Signaler ce commentaire</a></p>
                         
                 </div>
             </div>

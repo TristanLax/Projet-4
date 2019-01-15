@@ -5,7 +5,7 @@
 class Comment extends Modele 
 {
     
-    private $id;
+    private $comment_id;
     private $chapitre_id;
     private $chapitre;
     private $author;
@@ -19,21 +19,26 @@ class Comment extends Modele
         $this->fromArray($params);
     }
     
-    public function setId($id)
+    public function setComment_Id($comment_id)
     {
-        $this->id = $id;
+        $this->comment_id = $comment_id;
         return $this;
     }
     
-    public function getId() 
+    public function getComment_Id() 
     {
-        return $this->id;
+        return $this->comment_id;
     }
     
     public function setChapitre_id($chapitre_id)
     {
         $this->chapitre_id = $chapitre_id;
         return $this;
+    }
+    
+    public function getChapitre_id() 
+    {
+        return $this->chapitre_id;
     }
     
     public function setChapitre($params)
@@ -45,11 +50,6 @@ class Comment extends Modele
     public function getChapitre()
     {
         return $this->chapitre;
-    }
-    
-    public function getChapitre_id() 
-    {
-        return $this->chapitre_id;
     }
     
     public function setAuthor($author)

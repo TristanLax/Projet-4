@@ -8,8 +8,9 @@ class ChapitreController extends AdminController
     
     public function adminListAction()
     {
+        $page = $_GET['page'] ?? 1;
         $ChapitreManager = new ChapitreManager();
-        $chapitres = $ChapitreManager->getChapitres();
+        $chapitres = $ChapitreManager->getChapitres($page);
         require('view/admin.php');
     }
     
@@ -22,6 +23,8 @@ class ChapitreController extends AdminController
         $chapitre = $ChapitreManager->getAdminChapitre($_GET['id']);  
         require('view/adminChapitre.php');
     }
+    
+    /*  Vérifie les informations puis poste les données pour enregistrement en DB */
     
     public function ecrirechapitreAction()
     {
