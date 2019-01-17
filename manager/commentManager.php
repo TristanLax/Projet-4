@@ -7,26 +7,19 @@ class CommentManager extends Manager
     
     /* Fonction comptant le nombre de chapitres présents dans la DB pour permettre la pagination. */
     
-    public function paginationComments()
+    public function countComments($chapitre_id)
     {
-        $sql = "SELECT COUNT(comment_id) as nbComments FROM comments";
-        $result = $this->query($sql);
+        $sql = "SELECT COUNT(comment_id) as nbComments FROM comments WHERE chapitre_id = ? ";
+        $result = $this->query($sql, [$chapitre_id]);
         
-        return $result;
+        return $result['nbComments'];
     }
     
     /* Methode récupérant l'ID d'un chapitre pour aller chercher via requête SQL les commentaires liés à ce chapitre puis de les return. */
     
-    public function getComments($chapitre_id, $comPage)
+    public function getComments($chapitre_id, $comPage, $perPage)
     {
-        
-        $req = $this->paginationComments();
-        
-        $nbComments = $req['nbComments'];
-        $affichage = 2;
-        $totalPage = ceil($nbComments/$affichage);
-        
-        $sql = "SELECT comment_id, author, comment, DATE_FORMAT(comment_date, \"%d/%m/%Y à %Hh%imin%ss\") AS comment_date FROM comments WHERE chapitre_id = ? ORDER BY comment_date DESC LIMIT ".(($comPage-1)*$affichage).",$affichage";
+        $sql = "SELECT comment_id, author, comment, DATE_FORMAT(comment_date, \"%d/%m/%Y à %Hh%imin%ss\") AS comment_date FROM comments WHERE chapitre_id = ? ORDER BY comment_date DESC LIMIT ".(($comPage-1)*$perPage).",$perPage";
         $comments = $this->fetchAll($sql, 'Comment', [$chapitre_id]);
         
         return $comments;
@@ -54,10 +47,12 @@ class CommentManager extends Manager
     
     /* Methode effectuant une requête SQL pour récupèrer la liste des commentaires par nombre decroissant de signalements avant de les fetch en un tableau d'objet. */
     
-    public function getReports($chapitreId = null)
+    public function getReports($chapitreId = null, $report)
     {
         $reports = [];
-        $params = ['reports' => 0];
+        $report = $report ?? 0;
+        print_r($report);
+        $params = ['reports' => $report];
         $and = '';
         if(null !== $chapitreId) {
             $params['chapitreId'] = $chapitreId;

@@ -32,7 +32,7 @@ $title = "Moderation"; ?>
 <div class="row">
     <div class="col-lg-12">
     
-        
+        <a href="index.php?controller=comment&action=reportedComments&reports=<?= !$report ? 1 : 0 ?>">Trier les commentaires</a>
         <h2 class="mainpage">Moderation des commentaires :</h2>
         
                 <div class="dropdown">

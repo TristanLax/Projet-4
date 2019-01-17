@@ -29,6 +29,15 @@
 </div>
 
 
+        <?php 
+            for ($i = 1; $i <= $totalPage; $i++) 
+        { ?>
+            <a href="index.php?controller=chapitre&action=AdminList&page=<?= $i ?>"><?= $i ?></a>
+       <?php 
+        } ?>
+
+
+
 <div class="row">
     <div class="col-lg-12">
         

@@ -24,7 +24,7 @@ class FrontController
         }
         else {
             $addComment = $CommentManager->postComment($_POST["chapitre_id"], $_POST["author"], $_POST["comment"]);
-            header('Location: index.php?controller=home&action=getchapitre&id='. $_POST['chapitre_id'].'&chapitre='. $_POST['chapitre_sort']);
+            header('Location: index.php?controller=home&action=getchapitre&chapitre='. $_POST['chapitre_sort']);
         }
     }
     

@@ -22,6 +22,11 @@ include("header.php"); ?>
     </div>
 </div>
 
+        <?php for ($i = 1; $i <= $totalPage; $i++) 
+        { ?>
+            <a href="?page=<?= $i ?>"><?= $i ?></a>
+       <?php } ?>
+
 
 <div class ="row">
     <div class="col-lg-12">
@@ -60,7 +65,7 @@ include("header.php"); ?>
                             </p>
                         </div>
                             <p class="lien">
-                                <a href="index.php?controller=home&action=getchapitre&id=<?= $chapitre->getId() ?>&chapitre=<?= $chapitre->getSort() ?>">Accéder au chapitre</a>
+                                <a href="index.php?controller=home&action=getchapitre&chapitre=<?= $chapitre->getSort() ?>">Accéder au chapitre</a>
                             </p>
                     </div>
                 </div>

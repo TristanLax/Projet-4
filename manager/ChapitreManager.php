@@ -26,36 +26,21 @@ class ChapitreManager extends Manager
     
     /* Fonction comptant le nombre de chapitres présents dans la DB pour permettre la pagination. */
     
-    public function paginationChapitre()
+    public function countChapitres()
     {
         $sql = "SELECT COUNT(id) as nbChap FROM chapitres";
         $result = $this->query($sql);
         
-        return $result;
+        return $result['nbChap'];
         
     }
     
     /* Methode récupérant l'intégralité des chapitres présents en DB avant de les retourner sous forme d'objets. */
     
-    public function getChapitres($page)
+    public function getChapitres($page, $perPage)
     {
-        $req = $this->paginationChapitre();
-        
-        $nbChap = $req['nbChap'];
-        $affichage = 6;
-        $totalPage = ceil($nbChap/$affichage);
-        
-         
-        $sql = "SELECT id, title, content, DATE_FORMAT(add_date, \"%d/%m/%Y\") AS add_date, DATE_FORMAT(edit_date, \"%d/%m/%Y\") AS edit_date, sort FROM chapitres ORDER BY sort LIMIT ".(($page-1)*$affichage).",$affichage";
+        $sql = "SELECT id, title, content, DATE_FORMAT(add_date, \"%d/%m/%Y\") AS add_date, DATE_FORMAT(edit_date, \"%d/%m/%Y\") AS edit_date, sort FROM chapitres ORDER BY sort LIMIT ".(($page-1)*$perPage).",$perPage";
         $chapitres = $this->fetchAll($sql, 'Chapitre');
-        
-        
-        for ($i = 1; $i <= $totalPage; $i++) 
-        { ?>
-            <a href="?page=<?php echo $page - 1; ?>">Page précédente</a>
-                —
-            <a href="?page=<?php echo $page + 1; ?>">Page suivante</a>  
-       <?php }
 
         return $chapitres;
     }

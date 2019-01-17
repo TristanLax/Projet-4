@@ -13,8 +13,13 @@ class HomeController
     public function accueilAction() 
     {   
         $page = $_GET['page'] ?? 1;
-        $ChapitreManager = new ChapitreManager();
-        $chapitres = $ChapitreManager->getChapitres($page);
+        $chapitreManager = new ChapitreManager();
+        
+        $nbChapitres = $chapitreManager->countChapitres();
+        $perPage = 6;
+        $totalPage = ceil($nbChapitres/$perPage);
+
+        $chapitres = $chapitreManager->getChapitres($page, $perPage);
         
         require('view/accueil.php');
     }
@@ -24,13 +29,17 @@ class HomeController
     public function GetchapitreAction() 
     {
         $page = $_GET['chapitre'] ?? 1;
-        $comPage = $_GET['nbPage'] ?? 1;
+        $comPage = $_GET['comPage'] ?? 1;
         $ChapitreManager = new ChapitreManager();
         $CommentManager = new CommentManager();
-
-        $maxPage = $ChapitreManager->maxSort();
         $chapitre = $ChapitreManager->getChapitre($page);
-        $comments = $CommentManager->getComments($chapitre->getId(), $comPage);
+        
+        $nbComments = $CommentManager->countComments($chapitre->getId());
+        $perPage = 4;
+        $totalPage = ceil($nbComments/$perPage);
+        
+        $maxPage = $ChapitreManager->maxSort();
+        $comments = $CommentManager->getComments($chapitre->getId(), $comPage, $perPage);
         
         require('view/chapitre.php');
     }

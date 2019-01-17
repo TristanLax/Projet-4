@@ -72,6 +72,12 @@ $title = htmlspecialchars($chapitre->getTitle()); ?>
         </div>
         
         
+        <?= for ($i = 1; $i <= $totalPage; $i++) 
+            { ?>
+                <a href="index.php?controller=home&action=getchapitre&chapitre=<?= $chapitre->getSort() ?>&comPage=<?= $i ?>"><?= $i ?></a>
+       <?=  } ?>
+        
+        
         <div class ="row">
         <?php
         foreach ($comments as $comment) { 

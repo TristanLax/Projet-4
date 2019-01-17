@@ -9,8 +9,14 @@ class ChapitreController extends AdminController
     public function adminListAction()
     {
         $page = $_GET['page'] ?? 1;
-        $ChapitreManager = new ChapitreManager();
-        $chapitres = $ChapitreManager->getChapitres($page);
+        $chapitreManager = new ChapitreManager();
+        
+        $nbChapitres = $chapitreManager->countChapitres();
+        $perPage = 6;
+        $totalPage = ceil($nbChapitres/$perPage);
+        
+        $chapitres = $chapitreManager->getChapitres($page, $perPage);
+        
         require('view/admin.php');
     }
     

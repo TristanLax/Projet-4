@@ -9,7 +9,6 @@ class CommentController extends AdminController
     public function reportedcommentsAction()
     {
         $chapitreId = null;
-        
         if (isset($_GET['chapitre-id'])){
             $chapitreId = $_GET['chapitre-id'];
         }
@@ -17,7 +16,10 @@ class CommentController extends AdminController
         $CommentManager = new CommentManager();
         $ChapitreManager = new ChapitreManager();
         $chapitres = $ChapitreManager->getAllChapitres();
-        $reportedComments = $CommentManager->getReports($chapitreId);
+        
+        $report = $_GET['reports'] ?? null;
+        $reportedComments = $CommentManager->getReports($chapitreId, $report);
+        
         require('view/moderation.php');
     }
     
