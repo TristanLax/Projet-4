@@ -35,7 +35,7 @@ class ChapitreManager extends Manager
         
     }
     
-    /* Methode récupérant l'intégralité des chapitres présents en DB avant de les retourner sous forme d'objets. */
+    /* Methode récupérant l'intégralité des chapitres présents en DB avant de les retourner sous forme d'objets. Récupère aussi les paramètres liés à la pagination pour permettre cette dernière. */
     
     public function getChapitres($page, $perPage)
     {
@@ -44,6 +44,9 @@ class ChapitreManager extends Manager
 
         return $chapitres;
     }
+    
+    
+    /* Methode servant dans la partie modération des commentaires permettant de récupèrer la liste de tous les chapitres triés directement par sort pour pouvoir ensuite les afficher. */
     
     public function getAllChapitres()
     {

@@ -13,7 +13,7 @@ class FrontController
     }
 
 
-    /* Methode passant au manager l'ID du chapitre sur lequel le commentaire est écrit ainsi que le nom de l'auteur et le contenu du commentaire pour les faire traiter en DB via la methode postComment. */
+    /* Methode passant au manager l'ID du chapitre sur lequel le commentaire est écrit ainsi que le nom de l'auteur et le contenu du commentaire pour les faire traiter en DB via la methode postComment après vérification que les champs ne soient pas invalides. */
     
     public function addcommentAction() 
     {

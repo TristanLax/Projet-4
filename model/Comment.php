@@ -41,6 +41,8 @@ class Comment extends Modele
         return $this->chapitre_id;
     }
     
+    /* Methode permettant de créer l'objet chapitre a partir de l'ID par liaison de DB, utile dans les fonctions reports pour pouvoir afficher le nom du chapitre auquel appartient le commentaire signalé. */
+    
     public function setChapitre($params)
     {
         $this->chapitre = new Chapitre($params);

@@ -4,7 +4,7 @@
 class CommentController extends AdminController
 {
     
-    /* Récupère via le manager et sa fonction GetReport la liste de tous les commentaires dans le bon ordre pour pouvoir les afficher dans la vue. */
+    /* Récupère via le manager et sa fonction GetReport la liste de tous les commentaires, qu'ils soient signalés ou non. Gère aussi la possibilité d'utiliser l'ID précise d'un chapitre pour pouvoir n'afficher que les commentaires de ce dernier, ainsi qu'une possibilité de n'afficher que les commentaires avec des reports ou non. */
     
     public function reportedcommentsAction()
     {
@@ -23,7 +23,7 @@ class CommentController extends AdminController
         require('view/moderation.php');
     }
     
-    /* Envoie l'ID du commentaire a moderer au Manager appellant ensuite la fonction nécéssaire pour accomplir l'action.  */
+    /* Envoie l'ID du commentaire a moderer au Manager appellant ensuite la fonction nécéssaire pour accomplir l'action qui édite le commentaire en un message pré-programmé.  */
     
     public function modererAction() 
     {

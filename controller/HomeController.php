@@ -8,7 +8,7 @@ class HomeController
     {
     }
     
-    /* Methode "de base" du site, récupérant grace au chapitreManager la liste de tous les chapitres présents en DB pour les afficher via la vue demandée. */
+    /* Methode "de base" du site, récupérant grace au chapitreManager la liste de tous les chapitres présents en DB pour les afficher via la vue demandée. Considère aussi l'index comme la page 1 et incluant une pagination pour rendre la navigation sur le site plus claire. */
     
     public function accueilAction() 
     {   
@@ -24,7 +24,7 @@ class HomeController
         require('view/accueil.php');
     }
     
-    /* Methode récupérant un chapitre unique graçe aux methodes des managers getChapitre/Comment en leur passant l'ID présente dans l'URL pour génèrer la vue présente dans le require. */
+    /* Methode récupérant un chapitre unique graçe aux methodes des managers getChapitre/Comment en leur passant l'ID présente dans l'URL pour génèrer la vue présente dans le require. Contient aussi le système de pagination des commentaires pour éviter qu'un chapitre avec trop de commentaires soit interminable. */
     
     public function GetchapitreAction() 
     {

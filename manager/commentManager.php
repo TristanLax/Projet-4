@@ -5,7 +5,7 @@ class CommentManager extends Manager
 {
     
     
-    /* Fonction comptant le nombre de chapitres présents dans la DB pour permettre la pagination. */
+    /* Fonction comptant le nombre de commentaires présents dans la DB pour permettre la pagination. Contrairement a son homologue countChapitre, récupère aussi l'ID du chapitre pour ne récupèrer que les bons commentaires et pas tous les commentaires présents en DB. */
     
     public function countComments($chapitre_id)
     {
@@ -15,7 +15,7 @@ class CommentManager extends Manager
         return $result['nbComments'];
     }
     
-    /* Methode récupérant l'ID d'un chapitre pour aller chercher via requête SQL les commentaires liés à ce chapitre puis de les return. */
+    /* Methode récupérant l'ID d'un chapitre pour aller chercher via requête SQL les commentaires liés à ce chapitre puis de les return sous forme d'objets. Récupère aussi en paramètres tout comme son homologue chapitre les variables servant à effectuer la pagination des pages de commentaires. */
     
     public function getComments($chapitre_id, $comPage, $perPage)
     {
@@ -45,7 +45,7 @@ class CommentManager extends Manager
         return $reportComment;
     }
     
-    /* Methode effectuant une requête SQL pour récupèrer la liste des commentaires par nombre decroissant de signalements avant de les fetch en un tableau d'objet. */
+    /* Methode effectuant une requête SQL pour récupèrer la liste des commentaires par nombre decroissant de signalements puis par chapitres avant de les fetch en un tableau d'objet. Peut récupèrer en paramètre l'ID du chapitre, permettant de choisir pour n'afficher que les commentaires d'un article précis, et report pour n'afficher que les commentaires ayant reçu des signalements. */
     
     public function getReports($chapitreId = null, $report)
     {

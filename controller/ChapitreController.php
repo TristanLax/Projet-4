@@ -4,7 +4,7 @@
 class ChapitreController extends AdminController
 {
 
-    /* Fonctionne de la même façon que l'action accueil de la partie utilisateur. */
+    /* Fonctionne de la même façon que l'action accueil de la partie utilisateur. Inclut la pagination pour améliorer la visibilité. */
     
     public function adminListAction()
     {
@@ -20,7 +20,7 @@ class ChapitreController extends AdminController
         require('view/admin.php');
     }
     
-    /* Fonctionne de la même façon que l'action getChapitre de la partie utilisateur, ne récupérant juste pas les commentaires. */
+    /* Fonctionne de la même façon que l'action getChapitre de la partie utilisateur, ne récupérant juste pas les commentaires et utilisant l'ID plutôt que le sort. */
     
     public function getchapitreAction()
     {
@@ -30,7 +30,7 @@ class ChapitreController extends AdminController
         require('view/adminChapitre.php');
     }
     
-    /*  Vérifie les informations puis poste les données pour enregistrement en DB */
+    /*  Methode vérifiant les informations puis poste les données pour enregistrement en DB et création d'un nouveau chapitre. */
     
     public function ecrirechapitreAction()
     {
@@ -43,17 +43,7 @@ class ChapitreController extends AdminController
         require('view/adminChapitre.php');
     }
     
-    /* Methode envoyant au Manager le contenu du form présent en partie admin pour écrire de nouveaux commentaires puis affiche la page mise à jour. */
-    
-    public function envoyerAction() 
-    {
-        $ChapitreManager = new ChapitreManager();
-        $ChapitreManager->postChapitre($_POST["title"], $_POST["content"]);
-        
-        header('location: index.php?controller=chapitre&action=adminlist');
-    }
-    
-    /* Envoie au Manager l'ID, le titre, le contenu et le sort pour lui permettre de mettre a jour l'article édité, puis affiche la page mise à jour. */
+    /* Envoie au Manager l'ID, le titre, le contenu et l'ancien puis le nouveau sort pour lui permettre de mettre a jour l'article édité, puis affiche la page mise à jour. */
     
     public function modifierAction() 
     {
