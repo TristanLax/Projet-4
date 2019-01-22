@@ -32,8 +32,8 @@ $title = "Moderation"; ?>
 <div class="row">
     <div class="col-lg-12">
     
-        <a href="index.php?controller=comment&action=reportedComments&reports=<?= !$report ? 1 : 0 ?>">Trier les commentaires</a>
         <h2 class="mainpage">Moderation des commentaires :</h2>
+            <a class="d-flex justify-content-center" href="index.php?controller=comment&action=reportedComments&reports=<?= !$report ? 1 : 0 ?>">Trier les commentaires par signalements</a>
         
                 <div class="dropdown">
                     
@@ -57,8 +57,8 @@ $title = "Moderation"; ?>
 
             <table>
                 <tr>
-                    <th>Chapitre</th>
-                    <th>Auteur</th>
+                    <th class="cacher">Chapitre</th>
+                    <th class="cacher">Auteur</th>
                     <th>Commentaire</th>
                     <th>Nombre signalement</th>
                     <th>Action</th>
@@ -70,8 +70,8 @@ $title = "Moderation"; ?>
             foreach ($reportedComments as $comment) { 
             ?>
                 <tr>
-                    <td> <?= $comment->getChapitre()->getTitle()?></td>
-                    <td> <?= $comment->getAuthor() ?> </td>
+                    <td class="cacher"> <?= $comment->getChapitre()->getTitle()?></td>
+                    <td class="cacher"> <?= $comment->getAuthor() ?> </td>
                     <td class="moderate_<?= $comment->getComment_Id()?>"> <?= $comment->getComment() ?> </td>
                     <td class="report_<?= $comment->getComment_Id()?>"> <?= $comment->getReports() ?> </td>
                     <td> <a class="ignorer" data-commentid="<?= $comment->getComment_Id()?>" href="#">Ignorer</a> |

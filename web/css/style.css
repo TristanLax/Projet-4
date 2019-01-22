@@ -82,6 +82,7 @@ h3
 .mainpage
 {
     margin-top: 50px;
+    margin-bottom: 20px;
 }
 
 .maincenter
@@ -94,7 +95,7 @@ h3
 
 .supporttitle
 {
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 20px;
     text-align: center;
     font-weight: bold;
@@ -153,6 +154,7 @@ form
 .dropdown
 {
     text-align: center;
+    margin-top: 30px;
 }
 
 /* Chapitres */

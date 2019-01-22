@@ -34,7 +34,7 @@
         
         <h2 class="mainpage">Gestion des chapitres :</h2>
 
-            <table>
+            <table class="mt-5">
                 <tr>
                     <th>Chapitre</th>
                     <th>Titre</th>

@@ -58,11 +58,11 @@ $title = htmlspecialchars($chapitre->getTitle()); ?>
         <form method="post" action="index.php?controller=front&action=addComment&id=<?=$chapitre->getId() ?>" class="comform">
             <div>
                 <label for="author">Auteur</label><br />
-                <input type="text" id="author" name="author" size="30" />
+                <input type="text" id="author" name="author" size="25" />
             </div>
             <div>
                 <label for="comment">Commentaire</label><br />
-                <textarea id="comment" name="comment" rows="4" cols="30"></textarea>
+                <textarea id="comment" name="comment" rows="4" cols="25"></textarea>
             </div>
             <div>   
                 <input type="hidden" name="chapitre_id" value="<?= $chapitre->getId()?>" /><br/>
@@ -91,6 +91,7 @@ $title = htmlspecialchars($chapitre->getTitle()); ?>
         ?>
         </div>
         
+        <?php if (!empty($totalPage > 1)) { ?>
         <p class="mt-2">Accèder a la page de commentaires : 
         <?php 
             for ($i = 1; $i <= $totalPage; $i++){ 
@@ -100,7 +101,8 @@ $title = htmlspecialchars($chapitre->getTitle()); ?>
                 else { ?>
                     <a href="index.php?controller=home&action=getchapitre&chapitre=<?= $chapitre->getSort() ?>&comPage=<?= $i ?>"><?= $i ?></a>
                 <?php  } 
-        } ?>
+        } 
+            }?>
         </p>
         
     </div>

@@ -3,13 +3,21 @@
 Repository pour le projet 4 de la formation Développeur Web Junior d'OpenClassRooms "Créez un blog pour un écrivain".
 
 
-Dans ce repository il sera possible de trouver tous les fichiers du projet, mis à jour au fur et à mesure de l'avancée. Ainsi que la base de donnée pour permettre l'utilisation dudit Projet.
+Dans ce repository il sera possible de trouver tous les fichiers du projet, mis à jour au fur et à mesure de l'avancée. Ainsi que la base de donnée contenant les tables nécéssaires au bon fonctionnement du site. Les détails à propos des différents dossiers se trouvent un peu plus bas.
 
 
-Le projet est fait en Programmation Orienté Objet et suit les consignes d'une structure faite selon le modèle MVC. 
+## Les demandes et exigences du projet :
+
+La demande de ce projet est de créer un blog pour l'écrivain "Jean Forteroche" à l'occasion de l'écriture de son livre "billet Simple pour l'Alaska". Il souhaite pouvoir innover et publier ses épisodes sous forme de billets organisés en chapitres lisibles sur internet sans devoir utiliser Wordpress. Cela implique donc un site unique et fait à la main.
+
+- Le blog doit posséder une interface Frontend et une interface Backend, le tout fonctionnant selon le système CRUD (Create, Read, Update, Delete) permettant donc de lire les billets dans sa partie Frontend, et de les gèrer en partie Backend.
+- Les billets doivent permettre l'ajout de commentaires dans leur partie Frontend avec une option de signalement, et possèder une partie Backend permettant de gèrer les commentaires ainsi que de pouvoir les modèrer, tout en faisant remonter en priorité les commentaires signalés.
+- La partie Backend qu'est l'interface d'Administration doit être protégée par mot de passe pour éviter les intrusions et les possibles désagréments que pourraient apporter un système d'administration ouvert à tous.
+- La rédaction de nouveaux billets se fera a l'aide de TinyMCE afin d'offrir a l'écrivain une interface WYSIWYG permettant de lui éviter de devoir tout écrire en HTML.
+- Le tout doit être développé sans framework et doit correspondre aux normes de l'architecture MVC. De plus, le maximum d'éléments doivent être conçus en Programmation Orienté Objet.
 
 
-## Ses fichiers se découpent ainsi :
+## Structure et liste des dossiers du projet :
 
 
 - Le dossier "Config" contient les informations relatives à la base de données pour permettre la connection à cette dernières et sont en .ini.
