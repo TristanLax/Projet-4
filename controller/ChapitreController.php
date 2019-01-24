@@ -17,7 +17,7 @@ class ChapitreController extends AdminController
         
         $chapitres = $chapitreManager->getChapitres($page, $perPage);
         
-        require('view/admin.php');
+        require(dirname(__FILE__).'/../View/admin.php');
     }
     
     /* Fonctionne de la même façon que l'action getChapitre de la partie utilisateur, ne récupérant juste pas les commentaires et utilisant l'ID plutôt que le sort. */
@@ -27,7 +27,7 @@ class ChapitreController extends AdminController
         $formAction = 'index.php?controller=chapitre&action=modifier';
         $ChapitreManager = new ChapitreManager();
         $chapitre = $ChapitreManager->getAdminChapitre($_GET['id']);  
-        require('view/adminChapitre.php');
+        require(dirname(__FILE__).'/../View/adminChapitre.php');
     }
     
     /*  Methode vérifiant les informations puis poste les données pour enregistrement en DB et création d'un nouveau chapitre. */
@@ -40,7 +40,7 @@ class ChapitreController extends AdminController
             $ChapitreManager = new ChapitreManager();
             $chapitre = $ChapitreManager->postChapitre($_POST["title"], $_POST["content"]); 
         }
-        require('view/adminChapitre.php');
+        require(dirname(__FILE__).'/../View/adminChapitre.php');
     }
     
     /* Envoie au Manager l'ID, le titre, le contenu et l'ancien puis le nouveau sort pour lui permettre de mettre a jour l'article édité, puis affiche la page mise à jour. */

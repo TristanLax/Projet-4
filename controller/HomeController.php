@@ -21,7 +21,7 @@ class HomeController
 
         $chapitres = $chapitreManager->getChapitres($page, $perPage);
         
-        require('view/accueil.php');
+        require(dirname(__FILE__).'/../View/accueil.php');
     }
     
     /* Methode récupérant un chapitre unique graçe aux methodes des managers getChapitre/Comment en leur passant l'ID présente dans l'URL pour génèrer la vue présente dans le require. Contient aussi le système de pagination des commentaires pour éviter qu'un chapitre avec trop de commentaires soit interminable. */
@@ -41,7 +41,7 @@ class HomeController
         $maxPage = $ChapitreManager->maxSort();
         $comments = $CommentManager->getComments($chapitre->getId(), $comPage, $perPage);
         
-        require('view/chapitre.php');
+        require(dirname(__FILE__).'/../View/chapitre.php');
     }
     
     

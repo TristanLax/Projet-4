@@ -28,3 +28,11 @@ La demande de ce projet est de créer un blog pour l'écrivain "Jean Forteroche"
 - Le dossier "View" contient les différentes vues du site, ainsi que le header et le footer de ce dernier, avec le template originel.
 - Et enfin, le dossier "Web" contient toutes les extensions nécéssaires au site comme Bootstrap, Javascript et Jquery mais aussi du CSS et la librairie d'images utilisées.
 - Les derniers fichiers sont l'Autoloader servant a charger automatiquement les classes sur le site, l'index servant de base au site entier et gérant avec l'aide du dispatcher les redirections et les pages à charger et afficher ainsi que le README que vous êtes actuellement en train de lire !
+
+
+## Installer le projet :
+
+- Cloner ou télécharger tous les fichiers du projet présents ci-dessus.
+- Charger sur une nouvelle base de données ou une base de données déjà existante l'un des deux fichiers présents dans le dossier "DB" selon l'utilisation souhaitée et expliquée ci-dessous :
+- Dans le dossier "DB" sont donc présents deux fichiers : un fichier "projet-clean" contenant simplement les tables vierges utilisées pour ce projet si vous souhaitez les remplir vous même avec vos propres données, et un fichier "projet" contenant les tables déjà pré-remplies avec des données vous permettant d'effectuer des tests rapidement ou de pouvoir avoir un aperçu du site fonctionnel.
+- Ajouter dans le fichier dev.ini présent dans le dossier "Config" les identifiants requis pour se connecter à votre base de données(host, name, user et pass).
