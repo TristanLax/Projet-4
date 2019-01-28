@@ -6,7 +6,7 @@ class LoginController
     
     /* Methode vérifiant si une session a été ouverte, si c'est le cas redirige automatiquement en partie administration, gère aussi le message d'erreur en cas de mauvais email/mot de passe. Et si aucune de ces conditions n'est appliquée, affiche tout simplement l'accueil. */
     
-    public function LoginaccueilAction() 
+    public function loginaccueilAction() 
     {
         if (isset($_SESSION['user']))  {   
             header("location: index.php?controller=chapitre&action=Adminindex");

@@ -13,7 +13,7 @@ include("header.php"); ?>
             <div class="collapse navbar-collapse" id="navbarText" >
                 
                 <div class="navbar-nav mr-auto">
-                    <a class="nav-item nav-link" href="index.php?controller=login&action=Loginaccueil">Se connecter à l'espace d'administration</a>
+                    <a class="nav-item nav-link" href="index.php?controller=login&action=loginaccueil">Se connecter à l'espace d'administration</a>
                 </div>
                 
             </div>
