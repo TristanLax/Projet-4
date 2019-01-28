@@ -15,7 +15,7 @@ class Dispatcher
         }
         
         $controller = ucfirst(strtolower($params['controller'])) . 'Controller';
-        if(!file_exists('Controller/' . $controller . '.php' )) {
+        if(!file_exists('controller/' . $controller . '.php' )) {
             throw new \Exception('Page non existante');
         }
         return $controller;

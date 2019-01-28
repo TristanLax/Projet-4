@@ -16,7 +16,7 @@ class LoginController
             if (isset($_GET['error'])) {
                 $error = 'Mauvais login ou mot de passe';
             }
-            require(dirname(__FILE__).'/../View/login.php');
+            require(dirname(__FILE__).'/../view/login.php');
         }
     }
     

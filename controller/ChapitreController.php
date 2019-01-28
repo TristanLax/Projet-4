@@ -17,7 +17,7 @@ class ChapitreController extends AdminController
         
         $chapitres = $chapitreManager->getChapitres($page, $perPage);
         
-        require(dirname(__FILE__).'/../View/admin.php');
+        require(dirname(__FILE__).'/../view/admin.php');
     }
     
     /* Fonctionne de la même façon que l'action getChapitre de la partie utilisateur, ne récupérant juste pas les commentaires et utilisant l'ID plutôt que le sort. Sa seule réelle modification étant le $formaction. */
@@ -29,7 +29,7 @@ class ChapitreController extends AdminController
         $ChapitreManager = new ChapitreManager();
         $chapitre = $ChapitreManager->getAdminChapitre($_GET['id']);  
         
-        require(dirname(__FILE__).'/../View/adminChapitre.php');
+        require(dirname(__FILE__).'/../view/adminChapitre.php');
     }
     
     /* Cette methode sert tout simplement à modifier l'action du formulaire pour lui permettre d'envoyer un nouveau chapitre en DB au lieu de l'éditer quand on choisir d'écrire un nouveau chapitre.  */
@@ -38,7 +38,7 @@ class ChapitreController extends AdminController
     {
         $formAction = 'index.php?controller=chapitre&action=envoyer';
         
-        require(dirname(__FILE__).'/../View/adminChapitre.php');
+        require(dirname(__FILE__).'/../view/adminChapitre.php');
     }
     
     /*  Methode vérifiant les informations puis poste les données pour enregistrement en DB et création d'un nouveau chapitre. */

@@ -20,7 +20,7 @@ class CommentController extends AdminController
         $report = $_GET['reports'] ?? null;
         $reportedComments = $CommentManager->getReports($chapitreId, $report);
         
-        require(dirname(__FILE__).'/../View/moderation.php');
+        require(dirname(__FILE__).'/../view/moderation.php');
     }
     
     /* Envoie l'ID du commentaire a moderer au Manager appellant ensuite la fonction nécéssaire pour accomplir l'action qui édite le commentaire en un message pré-programmé.  */
