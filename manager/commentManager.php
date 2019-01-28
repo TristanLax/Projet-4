@@ -51,7 +51,6 @@ class CommentManager extends Manager
     {
         $reports = [];
         $report = $report ?? 0;
-        print_r($report);
         $params = ['reports' => $report];
         $and = '';
         if(null !== $chapitreId) {

@@ -26,7 +26,7 @@ class HomeController
     
     /* Methode récupérant un chapitre unique graçe aux methodes des managers getChapitre/Comment en leur passant l'ID présente dans l'URL pour génèrer la vue présente dans le require. Contient aussi le système de pagination des commentaires pour éviter qu'un chapitre avec trop de commentaires soit interminable. */
     
-    public function GetchapitreAction() 
+    public function getchapitreAction() 
     {
         $page = $_GET['chapitre'] ?? 1;
         $comPage = $_GET['comPage'] ?? 1;

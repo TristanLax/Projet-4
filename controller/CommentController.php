@@ -6,7 +6,7 @@ class CommentController extends AdminController
     
     /* Récupère via le manager et sa fonction GetReport la liste de tous les commentaires, qu'ils soient signalés ou non. Gère aussi la possibilité d'utiliser l'ID précise d'un chapitre pour pouvoir n'afficher que les commentaires de ce dernier, ainsi qu'une possibilité de n'afficher que les commentaires avec des reports ou non. */
     
-    public function reportedcommentsAction()
+    public function reportslistAction()
     {
         $chapitreId = null;
         if (isset($_GET['chapitre-id'])){

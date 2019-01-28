@@ -14,7 +14,7 @@
                 
                 <div class="navbar-nav mr-auto">
                     <a class="nav-item nav-link" href="index.php">Retourner a l'accueil</a>
-                    <a class="nav-item nav-link" href="index.php?controller=comment&action=reportedComments">Modération des commentaires</a>
+                    <a class="nav-item nav-link" href="index.php?controller=comment&action=reportslist">Modération des commentaires</a>
                     <a class="nav-item nav-link" href="index.php?controller=chapitre&action=ecrirechapitre">Ecrire un nouveau chapitre</a>
                 </div>
                 
@@ -69,7 +69,7 @@
                             <?= $i ?>
                     <?php } 
                     else { ?>
-                        <a href="index.php?controller=chapitre&action=AdminList&page=<?= $i ?>"><?= $i ?></a>
+                        <a href="index.php?controller=chapitre&action=adminindex&page=<?= $i ?>"><?= $i ?></a>
                     <?php  } 
                 } ?>
             </p>

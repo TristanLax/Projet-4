@@ -9,7 +9,7 @@ class LoginController
     public function LoginaccueilAction() 
     {
         if (isset($_SESSION['user']))  {   
-            header("location: index.php?controller=chapitre&action=AdminList");
+            header("location: index.php?controller=chapitre&action=Adminindex");
         }
         else { 
             $error = '';
@@ -40,7 +40,7 @@ class LoginController
     }
         session_start();
         $_SESSION['user'] = $user;
-        header("location: index.php?controller=chapitre&action=AdminList");
+        header("location: index.php?controller=chapitre&action=Adminindex");
     }
     
 }

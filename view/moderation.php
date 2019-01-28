@@ -14,7 +14,7 @@ $title = "Moderation"; ?>
                 
                 <div class="navbar-nav mr-auto">
                     <a class="nav-item nav-link" href="index.php">Retourner a l'accueil</a>
-                    <a class="nav-item nav-link" href="index.php?controller=chapitre&action=adminList">Retourner à l'espace d'administration</a>
+                    <a class="nav-item nav-link" href="index.php?controller=chapitre&action=adminindex">Retourner à l'espace d'administration</a>
                     <a class="nav-item nav-link" href="index.php?controller=chapitre&action=ecrirechapitre">Ecrire un nouveau chapitre</a>
                 </div>
                 
@@ -33,19 +33,19 @@ $title = "Moderation"; ?>
     <div class="col-lg-12">
     
         <h2 class="mainpage">Moderation des commentaires :</h2>
-            <a class="d-flex justify-content-center" href="index.php?controller=comment&action=reportedComments&reports=<?= !$report ? 1 : 0 ?>">Trier les commentaires par signalements</a>
+            <a class="d-flex justify-content-center" href="index.php?controller=comment&action=reportslist&reports=<?= !$report ? 1 : 0 ?>">Trier les commentaires par signalements</a>
         
                 <div class="dropdown">
                     
                     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria expanded="false"> Liste de modération </a>
                     
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="index.php?controller=comment&action=reportedComments">Tout les chapitres</a>
+                        <a class="dropdown-item" href="index.php?controller=comment&action=reportslist">Tout les chapitres</a>
                         
                         <?php
                         foreach ($chapitres as $chapitre) { 
                         ?>
-                            <a class="dropdown-item" href="index.php?controller=comment&action=reportedComments&chapitre-id=<?= $chapitre->getId() ?>"><?= $chapitre->getTitle() ?></a>
+                            <a class="dropdown-item" href="index.php?controller=comment&action=reportslist&chapitre-id=<?= $chapitre->getId() ?>"><?= $chapitre->getTitle() ?></a>
                         <?php
                         }
                         ?>

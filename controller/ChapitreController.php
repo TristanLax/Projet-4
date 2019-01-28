@@ -6,7 +6,7 @@ class ChapitreController extends AdminController
 
     /* Fonctionne de la même façon que l'action accueil de la partie utilisateur. Inclut la pagination pour améliorer la visibilité. */
     
-    public function adminListAction()
+    public function adminindexAction()
     {
         $page = $_GET['page'] ?? 1;
         $chapitreManager = new ChapitreManager();
@@ -20,27 +20,35 @@ class ChapitreController extends AdminController
         require(dirname(__FILE__).'/../View/admin.php');
     }
     
-    /* Fonctionne de la même façon que l'action getChapitre de la partie utilisateur, ne récupérant juste pas les commentaires et utilisant l'ID plutôt que le sort. */
+    /* Fonctionne de la même façon que l'action getChapitre de la partie utilisateur, ne récupérant juste pas les commentaires et utilisant l'ID plutôt que le sort. Sa seule réelle modification étant le $formaction. */
     
     public function getchapitreAction()
     {
         $formAction = 'index.php?controller=chapitre&action=modifier';
+        
         $ChapitreManager = new ChapitreManager();
         $chapitre = $ChapitreManager->getAdminChapitre($_GET['id']);  
+        
         require(dirname(__FILE__).'/../View/adminChapitre.php');
     }
     
-    /*  Methode vérifiant les informations puis poste les données pour enregistrement en DB et création d'un nouveau chapitre. */
+    /* Cette methode sert tout simplement à modifier l'action du formulaire pour lui permettre d'envoyer un nouveau chapitre en DB au lieu de l'éditer quand on choisir d'écrire un nouveau chapitre.  */
     
     public function ecrirechapitreAction()
     {
         $formAction = 'index.php?controller=chapitre&action=envoyer';
         
-        if ('POST' == $_SERVER['REQUEST_METHOD']) {  
-            $ChapitreManager = new ChapitreManager();
-            $chapitre = $ChapitreManager->postChapitre($_POST["title"], $_POST["content"]); 
-        }
         require(dirname(__FILE__).'/../View/adminChapitre.php');
+    }
+    
+    /*  Methode vérifiant les informations puis poste les données pour enregistrement en DB et création d'un nouveau chapitre. */
+    
+    public function envoyerAction() 
+    {
+        $ChapitreManager = new ChapitreManager();
+        $ChapitreManager->postChapitre($_POST["title"], $_POST["content"]);
+        
+        header('location: index.php?controller=chapitre&action=adminindex');
     }
     
     /* Envoie au Manager l'ID, le titre, le contenu et l'ancien puis le nouveau sort pour lui permettre de mettre a jour l'article édité, puis affiche la page mise à jour. */
