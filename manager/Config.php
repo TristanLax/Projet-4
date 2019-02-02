@@ -11,7 +11,7 @@ class Config
         if (file_exists('Config/dev.ini')) {
             return 'Config/dev.ini';
         }
-        return 'Config/prod.ini';
+        return 'config/prod.ini';
     }
     
     protected static function getParams()

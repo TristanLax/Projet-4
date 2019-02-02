@@ -27,7 +27,7 @@ class ChapitreController extends AdminController
         $formAction = 'index.php?controller=chapitre&action=modifier';
         
         $ChapitreManager = new ChapitreManager();
-        $chapitre = $ChapitreManager->getAdminChapitre($_GET['id']);  
+        $chapitre = $ChapitreManager->getChapitre($_GET['sort']);  
         
         require(dirname(__FILE__).'/../view/adminChapitre.php');
     }
@@ -58,7 +58,7 @@ class ChapitreController extends AdminController
         $ChapitreManager = new ChapitreManager();
         $ChapitreManager->editChapitre($_POST['id'], $_POST['title'], $_POST['content'], $_POST['currentSort'], $_POST['sort']);
         
-        header('location: index.php?controller=chapitre&action=getchapitre&id='.$_POST['id']);
+        header('location: index.php?controller=chapitre&action=getchapitre&sort='.$_POST['sort']);
     }
 
     /* Envoie au Manager l'ID du chapitre et son sort pour permettre leur traitement et la suppression de l'article. */

@@ -79,6 +79,12 @@ h3
     font-size: 1em;
 }
 
+.error-page
+{
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
 .mainpage
 {
     margin-top: 50px;

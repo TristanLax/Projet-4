@@ -22,7 +22,7 @@ $("#confirmer").on("click", function(){
      
      $.ajax({
             url : 'index.php?controller=chapitre&action=supprimer',
-            data : "id=" + id + "&sort=" + sort  ,
+            data : "id=" + id + "&sort=" + sort,
             type : 'GET',
          success : function(data){
              $('.chapitre_'+ id).remove();

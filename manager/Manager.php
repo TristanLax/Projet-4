@@ -15,6 +15,15 @@ class Manager
         $this->db = $dbInstance->getConnection();
     }
     
+    protected function isValid($number)
+    {
+        $recup = $number;
+        if(preg_match('#[0-9]#', $recup)) {
+            $number = array('number' => $recup);
+            return $number;
+    }
+    }
+    
     /* Methode permettant de fetch une unique classe objet, utile par exemple lors la récupération d'un chapitre unique. Accepte en paramètres une requête SQL, le nom de la classe demandée et un tableau de paramètres, qui est vide nativement pour éviter les erreurs. */
     
     protected function fetch($sql, $class, $params = [])

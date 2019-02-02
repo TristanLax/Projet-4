@@ -53,7 +53,7 @@
                     <td> <a href="index.php?controller=home&action=getchapitre&chapitre=<?= $chapitre->getSort() ?>" /> <?= $chapitre->getTitle() ?> </td>
                     <td class="cacher"> <?= $chapitre->getDate() ?></td>
                     <td class="cacher"> <?= $chapitre->getEdit() ?></td>
-                    <td> <a class="modifier" href="index.php?controller=chapitre&action=getchapitre&id=<?= $chapitre->getId() ?>">Modifier</a> |
+                    <td> <a class="modifier" href="index.php?controller=chapitre&action=getchapitre&sort=<?= $chapitre->getSort() ?>">Modifier</a> |
                          <a class="supprimer" data-toggle="modal" data-target="#deleteChapter" data-chapterid="<?= $chapitre->getId() ?>" data-chaptersort="<?= $chapitre->getSort() ?>" href="#">Supprimer</a>
                     </td>
                 </tr>

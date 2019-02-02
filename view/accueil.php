@@ -1,7 +1,6 @@
 <?php $title = "Billet simple pour l'Alaska, un roman de Jean Rochefort";
 include("header.php"); ?>
 
-
 <div class="row">
     <div class="col-lg-12" id="menu">
         <nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-center">

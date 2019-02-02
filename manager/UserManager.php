@@ -8,9 +8,15 @@ class UserManager extends Manager
     
     public function getUser($email)
     {
-        $user = $this->fetch('SELECT * FROM users WHERE email = :email', 'User', array('email' => $email));
+        $req = $this->db->prepare('SELECT * FROM users WHERE email = :email');
+        $req->execute(array(':email' => $email));
 
-        return $user;  
+        $results = $req->fetch(PDO::FETCH_ASSOC);
+        
+        if (!$results) {
+            return null;
+        } 
+            
+        return new User($results);  
     }
-    
 }
